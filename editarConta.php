@@ -22,6 +22,50 @@
     echo "Não há dados cadastrados com o usuário informado.";
     exit;
   }
+  //SE ATUALIZAR POST
+  if (isset($_POST["atualizar"])) {
+    if ($_POST["usuario"] != $usuario) {
+      $sql = "SELECT * FROM tb_usuario WHERE usuario='".$_POST["usuario"]."'";
+      $result = $conn->query($sql);
+      if ($result->num_rows > 0) { // se achar algum registro
+        echo "<script>alert('Esse nome de usuário já existe.');</script>";
+        echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
+        exit;
+      }
+    }
+    if ($_POST["email"] != $email) {
+      $SQL = "SELECT * FROM tb_usuario WHERE email='".$_POST["email"]."'";
+      $result = $conn->query($SQL);
+      if ($result->num_rows > 0) { // se achar algum registro
+        echo "<script>alert('Já existe uma conta cadastrada com esse e-mail.');</script>";
+        echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
+        exit;
+      }
+    }
+        
+        $nome = $_POST["nome"];
+        $sobrenome = $_POST["sobrenome"];
+        $email = $_POST["email"];
+        $usuario = $_POST["usuario"];
+
+        $sql = "UPDATE tb_usuario SET usuario= '".$usuario."', nome= '".$nome."', sobrenome= '".$sobrenome."', email = '".$email."', senha= '".$senha."' WHERE usuario = '".$_SESSION["usuario"]."'";
+        //echo "<script>alert(".$sql.");</script>";
+        if ($conn->query($sql) === TRUE) {
+          $_SESSION['usuario'] = $usuario;
+          $_SESSION['nome'] = $nome;
+          //$('.modal').modal('show')myModal
+          //echo '<script>$("#myModal").modal("show");</script>';
+          //echo "<script>$('#myModal').modal('show');</script>";
+          //echo '<script>alert("'.$sql.'");</script>';
+          //echo $sql;
+          echo "<script>alert('Sua conta foi atualizada com sucesso!');</script>";
+          echo "<script>window.location = 'editarConta.php';</script>";
+        } else {
+          echo "Erro: " . $sql . "<br>" . $conn->error;
+        }
+        $conn->close();
+      
+  } //fim se atualizar perfil
 ?>
 
 <!DOCTYPE html>
@@ -432,6 +476,16 @@
                   <a href="javascript:window.history.go(-1)"><input type="button" class="btn btn-default" value="Cancelar"></input></a>
                 </div> <!--fim col-sm-8-->
                 
+                
+                  <!--início função apagar usuário-->
+                          <script type="text/javascript">
+                            function apagar(usuario) {
+                              if (window.confirm('Deseja realmente desativar sua conta @' + usuario + '? Essa ação não poderá ser desfeita.')) {
+                                window.location = 'inativarUsuario.php?usuario=' + usuario;
+                              }
+                            }
+
+                          </script>
 
                   <!-- Modal -->
                   <div class="modal fade" id="myModal" role="dialog">
