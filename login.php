@@ -4,7 +4,7 @@ include("conexao/conecta.php"); //incluir arquivo com conexão ao banco de dados
 //$conecta = mysqli_connect($servername, $username, $password) or die("Sem conexão com o servidor"); // isso já é feito pelo conexao/conecta
 //$select=mysqli_select_db($conecta,$dbname) or die("Sem acesso ao DB, Entre em contato com o Administrador"); // isso já é feito pelo conexao/conecta
 
-//session_start();
+session_start();
 
 if (isset($_POST["entrar"])) {
 
