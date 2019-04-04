@@ -53,7 +53,6 @@
   <header class="masthead text-center">
     <div class="container">
       <img class="img-fluid mb-5 d-block mx-auto" style="width: 700px;" src="img/samp-logo.jpg" alt="">
-      <h1 style="font-size: 30px;" class="mb-0">SCRUM - Agile - Management - Planning</h1>
     </div>
   </header>
 
