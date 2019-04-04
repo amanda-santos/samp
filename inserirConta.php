@@ -35,23 +35,17 @@
 					include("conexao/conecta.php"); //incluir arquivo com conexão ao banco de dados
 
 					//define o comando sql para inserção do nome da imagem no banco de dados
-					$SQL = "INSERT INTO tb_usuario (usuario, senha, nome, sobrenome, email) VALUES ('".$usuario."','".$senha."','".$nome."','".$sobrenome."','" . $email."')";
+					$SQL = "INSERT INTO tb_usuario (usuario, senha, nome, sobrenome, email, ativo) VALUES ('".$usuario."','".$senha."','".$nome."','".$sobrenome."','" . $email."',0)";
 
 					if ($conn->query($SQL) === TRUE){
 						//verifica se o comando foi executado com sucesso
-						echo "<script>alert('Sua conta foi criada com sucesso!');</script>";
-						$_SESSION['usuario'] = $usuario;
-						$_SESSION['nome'] = $nome;
-						echo "<script>window.location = 'dashboard.html';</script>";
+						echo "<script>alert('Sua conta foi criada com sucesso! Faça a ativação para começar a usar a ferramenta.');</script>";
+						echo "<script>window.location = 'enviarEmailAtivacao.php?email='" . $email . "';</script>";
 
 					}else{
 						//mensagem exibida caso ocorra algum erro na execução do comando sql
 						echo "<script>alert('Erro ao criar a conta!');</script>";
 						echo "Erro: ". $SQL. "<br>" . $conn->error;
-					}
-					//var_dump($msg); //para debugar e ver o conteúdo da variável $msg
-					foreach ($msg as $mensagem) {
-						echo $mensagem."<br>";
 					}
 				}	
 			}
