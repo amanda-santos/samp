@@ -1,7 +1,7 @@
-﻿<?php
+<?php
 	include("conexao/conecta.php"); //incluir arquivo com conexão ao banco de dados
 	if (isset($_SESSION["usuario"])) { //SE EXISTIR AUTENTICAÇÃO
-		$sql = "UPDATE tb_usuario SET status='Inativo' WHERE usuario = '".$_GET["usuario"]."'";
+		$sql = "UPDATE tb_usuario SET ativo = 0 WHERE usuario = '".$_GET["usuario"]."'";
 
 		if ($conn->query($sql) === TRUE) { //se o comando funcionou
 			echo "<script>alert('Sua conta foi desativada com sucesso.');</script>";
