@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	include("conexao/conecta.php"); //incluir arquivo com conexão ao banco de dados
 ?>
 
@@ -47,10 +47,10 @@
                   </div>
                   <form method="post" action="login.php" id="formlogin" name="formlogin" >
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" id="usuario" placeholder="Entre com o Usuario">
+                      <input type="text" class="form-control form-control-user" name="usuario" placeholder="Entre com o Usuario"> <!--troquei id por nome-->
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="senha" placeholder="Senha">
+                      <input type="password" class="form-control form-control-user" name="senha" placeholder="Senha"> <!--troquei id por nome-->
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
@@ -59,7 +59,7 @@
                       </div>
                     </div>
                     <p>
-                  <input type="submit" class="btn btn-primary btn-user btn-block" value="LOGAR">
+                  <input type="submit" class="btn btn-primary btn-user btn-block" name="entrar" value="Entrar"> <!--sempre adicione o name dos buttons e inputs, quando vc envia pra outra página é isso que o POST consegue pegar-->
                 </p>
                     <hr>
                     <a href="index.php" class="btn btn-google btn-user btn-block">
