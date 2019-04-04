@@ -21,7 +21,7 @@ if (isset($_POST["entrar"])) {
 			$_SESSION['senha'] = $linha['senha'];
 			$_SESSION['nome'] = $linha['nome'];
 			$_SESSION['sobrenome'] = $linha['sobrenome'];
-			header('location:dashboard.html');
+			header('location:dashboard.php');
 		}
 	}else{
 
