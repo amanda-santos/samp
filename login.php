@@ -14,8 +14,25 @@ if (isset($_POST["entrar"])) {
 	$resultado = $conn->query($sql);
 
 	if ($resultado->num_rows > 0) { //SE O USUÁRIO E SENHA FOREM VÁLIDOS
-		$_SESSION['usuario'] = $usuario;
-		header('location:dashboard.php');
+
+		$linha = $resultado->fetch_assoc();
+		$ativo = $linha["ativo"];
+
+		if($ativo == 1){ //se o status do usuário for ativo
+
+			$_SESSION['usuario'] = $usuario;
+			$_SESSION['nome'] = $nome;
+			$_SESSION['sobrenome'] = $sobrenome;
+			$_SESSION['email'] = $email;
+			header('location:dashboard.php');
+
+		}else{
+			//REDIRECIONA PARA A PAGINA INICIAL REPORTANDO O ERRO
+			$_SESSION['erro']='Erro';
+			echo "<script>alert('Erro no login. Tente novamente.');</script>";
+			echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
+		}
+
 	}else{
 
 		unset ($_SESSION['login']);
