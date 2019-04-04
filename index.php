@@ -117,7 +117,7 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-6">
-        <a class="btn btn-lg btn-block btn-outline-light" href="#">
+        <a class="btn btn-lg btn-block btn-outline-light" href="entrar.php">
             Entrar
         </a>
         <a class="btn btn-lg btn-block btn-outline-light" href="criarConta.php">

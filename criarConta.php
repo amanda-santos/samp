@@ -70,7 +70,7 @@
                 <a class="small" href="recuperarSenha.html">Esqueceu sua senha?</a>
               </div>
               <div class="text-center">
-                <a class="small" href="entrar.html">Já possui uma conta? Faça Login!</a>
+                <a class="small" href="entrar.php">Já possui uma conta? Faça Login!</a>
               </div>
             </div>
           </div>
