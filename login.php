@@ -24,6 +24,7 @@ if (isset($_POST["entrar"])) {
 			$_SESSION['nome'] = $nome;
 			$_SESSION['sobrenome'] = $sobrenome;
 			$_SESSION['email'] = $email;
+			$_SESSION['senha'] = $senha;
 			header('location:dashboard.php');
 
 		}else{
