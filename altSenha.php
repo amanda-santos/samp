@@ -1,6 +1,3 @@
-<?php
-include("conexao/conecta.php"); //incluir arquivo com conexão ao banco de dados
-//session_start();
 if (isset($_SESSION["usuario"])) { //SE EXISTIR AUTENTICAÇÃO
     
   //usuário e senha são aqueles da sessão atual
@@ -34,7 +31,7 @@ if (isset($_SESSION["usuario"])) { //SE EXISTIR AUTENTICAÇÃO
     
       if ($conn->query($sql) === TRUE) {
         echo "<script>alert('Sua senha foi atualizada com sucesso!');</script>";
-        echo "<script>window.location = 'index.php';</script>";
+        echo "<script>window.location = 'dashboard.php';</script>";
       } else {
         echo "Erro: " . $sql . "<br>" . $conn->error;
       }
@@ -502,4 +499,4 @@ if (isset($_SESSION["usuario"])) { //SE EXISTIR AUTENTICAÇÃO
   } else {
     echo "<script>window.location = 'index.php';</script>";
   }
-?>  
+?>
