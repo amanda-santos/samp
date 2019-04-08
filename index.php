@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SAMP-SCRUM Agile Management Planning</title>
+  <title>SAMP</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -116,11 +116,11 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-6">
-        <a class="btn btn-lg btn-block btn-outline-light" href="entrar.php">
-            Entrar
+        <a class="btn btn-lg btn-block btn-light" href="entrar.php">
+            <i class="fas fa-sign-in-alt"></i> Entrar
         </a>
-        <a class="btn btn-lg btn-block btn-outline-light" href="criarConta.php">
-            Crie sua conta
+        <a class="btn btn-lg btn-block btn-light" href="criarConta.php">
+            <i class="fas fa-user-plus"></i> Crie sua conta
         </a>
         </div>
       </div>
