@@ -31,11 +31,9 @@
 
 					if ($conn->query($SQL) === TRUE){
 						//verifica se o comando foi executado com sucesso
-						echo "<script>alert('Sua conta foi criada com sucesso, acesse o email para ativar!');</script>";
 						//$_SESSION['usuario'] = $this->$usuario;
 						//$_SESSION['nome'] = $this->$nome;
-						echo "<script>window.location = 'enviarEmailAtivacao.php?email='". $this->email . "'';</script>";
-						echo "<script>window.location = 'index.php'</script>";
+						echo "<script>window.location = 'enviarEmailAtivacao.php?email=$this->email';</script>";
 					}else{
 						//mensagem exibida caso ocorra algum erro na execução do comando sql
 						echo "<script>alert('Erro ao criar a conta!');</script>";
