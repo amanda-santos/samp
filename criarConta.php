@@ -1,5 +1,10 @@
 <?php
-  include("conexao/conecta.php"); //incluir arquivo com conexão ao banco de dados
+  require_once 'Usuario.php';
+  //Criando e Instanciando o objeto
+  if (isset($_POST["cadastrar"])){
+    $usuario = new Usuario($_POST['nome'], $_POST['sobrenome'], $_POST['usuario'], $_POST['email'], $_POST['senha']);
+    $usuario->inserirUsuario($conn);
+  }
 ?>
 
 <!DOCTYPE html>
@@ -32,13 +37,13 @@
       <div class="card-body p-0">
         <!-- Nested Row within Card Body -->
         <div class="row">
-          <div class="col-lg-6 d-none d-lg-block bg-register-image"></div>
-          <div class="col-lg-6">
+          <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+          <div class="col-lg-7">
             <div class="p-5">
               <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Crie uma conta</h1>
+                <h1 class="h4 text-gray-900 mb-4">Crie uma conta!</h1>
               </div>
-              <form method="post" action="inserirConta.php" enctype="multipart/form-data" data-toggle="validator">
+              <form class="user" method="post" action="criarConta.php" enctype="multipart/form-data" data-toggle="validator">
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="text" class="form-control form-control-user" name="nome" placeholder="Primeiro Nome">
@@ -67,17 +72,16 @@
               </form>
               <hr>
               <div class="text-center">
-                <a class="small" href="recuperarSenha.html">Esqueceu sua senha?</a>
+                <a class="small" href="recuperarSenha.php">Esqueceu sua senha?</a>
               </div>
               <div class="text-center">
-                <a class="small" href="entrar.php">Já possui uma conta? Faça seu login!</a>
+                <a class="small" href="entrar.php">Já possui uma conta? Faça Login!</a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 
   <!-- Bootstrap core JavaScript-->
