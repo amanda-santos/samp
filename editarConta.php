@@ -103,7 +103,7 @@
         <label class="control-label col-sm-3" for="email">E-mail:</label>
         <div class="col-sm-5">
           <input type="email" class="form-control" id="email" name="email" value="<?php echo $email;?>" data-error="Por favor, informe um e-mail correto." required>
-            <div class="help-block with-errors"></div>
+          <div class="help-block with-errors"></div>
         </div> <!--fim col-sm-5-->
       </div> <!--fim form-group-->
       
@@ -111,21 +111,20 @@
         <label for="usuario" class="control-label col-sm-3">Nome de usuário:</label>
         <div class="col-sm-5">
           <div class="input-group">
-            <input type="text" pattern="^[_A-z0-9]{1,}$" maxlength="15" class="form-control" name="usuario" id="usuario" value="<?php echo $usuario;?>" required>
-          </div> <!--fim input-group-->
-          <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-          <div class="help-block with-errors">Seu nome de usuário só pode conter letras, números e '_'.</div>
+            <input required type="text" value="<?php echo $usuario;?>" pattern="^[_A-z0-9]{1,}$" maxlength="15" class="form-control form-control-user" name="usuario" placeholder="Nome de usuário" data-error="Seu nome de usuário só pode conter letras, números e '_'.">
+            <div class="help-block with-errors"></div>
+          </div>
         </div> <!--fim col-sm-5-->
       </div> <!--fim form-group-->
       
       
       <div class="col-sm-9">
         <p>
-          <a href="#" onclick="apagar('<?php echo $usuario; ?>');" id="admButtons" class="btn btn-sm btn-danger" style="font-size: 14px;">
-            <span class="glyphicon glyphicon-remove"></span> Desativar conta
-          </a>
           <a href="altSenha.php"  id="admButtons" class="btn btn-sm btn-success" style="font-size: 14px;">
             <span class="glyphicon glyphicon-edit"></span> Alterar senha
+          </a>
+          <a href="#" onclick="apagar('<?php echo $usuario; ?>');" id="admButtons" class="btn btn-sm btn-danger" style="font-size: 14px;">
+            <span class="glyphicon glyphicon-remove"></span> Desativar conta
           </a>
         </p>
       </div>
