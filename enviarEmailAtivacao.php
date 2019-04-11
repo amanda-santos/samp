@@ -39,7 +39,7 @@ $mailer->AddAddress($email,$nome);
 $mailer->Subject = 'Ative sua conta no SAMP';
 $mailer->Body = 'Prezado (a) ' . $nome . ',
 
-para autenticar sua conta na ferramenta SAMP, favor clicar no link a seguir: https://localhost/ativarConta.php?id=' . $usuario . '
+para autenticar sua conta na ferramenta SAMP, favor clicar no link a seguir: https://localhost/samp/ativarConta.php?usuario=' . $usuario . '
 
 Atenciosamente,
 				

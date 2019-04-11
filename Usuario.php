@@ -43,7 +43,7 @@
 			}
 		}
 
-		public function ativarUsuario(){
+		public function ativarUsuario($conn){
 			$SQL = "UPDATE tb_usuario SET ativo = 1 WHERE usuario = '$this->$usuario'";
 			$result = $conn->query($sql);
 
