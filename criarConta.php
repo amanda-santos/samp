@@ -2,8 +2,9 @@
   require_once 'Usuario.php';
   //Criando e Instanciando o objeto
   if (isset($_POST["cadastrar"])){
-    $usuario = new Usuario($_POST['nome'], $_POST['sobrenome'], $_POST['usuario'], $_POST['email'], $_POST['senha']);
-    $usuario->inserirUsuario($conn);
+    $senha = base64_encode($_POST['senha']);
+    $usuario = new Usuario();
+    $usuario->inserirUsuario($_POST['nome'], $_POST['sobrenome'], $_POST['usuario'], $_POST['email'], $senha, $conn);
   }
 ?>
 
@@ -37,33 +38,36 @@
       <div class="card-body p-0">
         <!-- Nested Row within Card Body -->
         <div class="row">
-          <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-          <div class="col-lg-7">
+          <div class="col-lg-6 d-none d-lg-block bg-register-image"></div>
+          <div class="col-lg-6">
             <div class="p-5">
               <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Crie uma conta!</h1>
+                <h1 class="h4 text-gray-900 mb-4">Crie uma conta</h1>
               </div>
-              <form class="user" method="post" action="criarConta.php" enctype="multipart/form-data" data-toggle="validator">
+              <form method="post" action="criarConta.php" enctype="multipart/form-data" data-toggle="validator">
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" name="nome" placeholder="Primeiro Nome">
+                    <input required type="text" class="form-control form-control-user" name="nome" placeholder="Primeiro Nome">
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user" name="sobrenome" placeholder="Último Nome">
+                    <input required type="text" class="form-control form-control-user" name="sobrenome" placeholder="Último Nome">
                   </div>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-user" name="usuario" placeholder="Nome de usuário">
+                  <input required type="text"  pattern="^[_A-z0-9]{1,}$" maxlength="15" class="form-control form-control-user" name="usuario" placeholder="Nome de usuário" data-error="Seu nome de usuário só pode conter letras, números e '_'.">
+                  <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-user" name="email" placeholder="Endereço de e-mail">
+                  <input required type="email" class="form-control form-control-user" name="email" placeholder="Endereço de e-mail" data-error="Por favor, informe um e-mail válido." required>
+                  <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password" class="form-control form-control-user" id = "senha" name="senha" placeholder="Senha">
+                    <input required type="password" class="form-control form-control-user" id = "senha" name="senha" placeholder="Senha">
                   </div>
                   <div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" id = "confirma_senha" name="cofirma_senha" placeholder="Confirme sua senha" data-match="#senha" data-match-error="Atenção! As senhas não estão iguais.">
+                    <input required type="password" class="form-control form-control-user" id = "confirma_senha" name="confirma_senha" placeholder="Confirme sua senha" data-match="#senha" data-match-error="Atenção! As senhas não estão iguais.">
+                    <div class="help-block with-errors"></div>
                   </div>
                 </div>
                 <p>
@@ -72,16 +76,17 @@
               </form>
               <hr>
               <div class="text-center">
-                <a class="small" href="recuperarSenha.php">Esqueceu sua senha?</a>
+                <a class="small" href="recuperarSenha.html">Esqueceu sua senha?</a>
               </div>
               <div class="text-center">
-                <a class="small" href="entrar.php">Já possui uma conta? Faça Login!</a>
+                <a class="small" href="entrar.php">Já possui uma conta? Faça seu login!</a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 
   <!-- Bootstrap core JavaScript-->
@@ -93,6 +98,8 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
+
+  <script src="js/validator.min.js"></script>
 
 </body>
 
