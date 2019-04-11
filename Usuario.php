@@ -4,6 +4,10 @@
 	class Usuario{
 		private $nome, $sobrenome, $usuario, $email, $senha, $ativo;
 
+		public function __construct(){
+			
+		}
+
 		public function Usuario($nome, $sobrenome, $usuario, $email, $senha){
 			$this->nome = $nome;
 			$this->sobrenome = $sobrenome;
@@ -43,8 +47,8 @@
 			}
 		}
 
-		public function ativarUsuario($conn){
-			$SQL = "UPDATE tb_usuario SET ativo = 1 WHERE usuario = '$this->$usuario'";
+		public function ativarUsuario($usuario, $conn){
+			$SQL = "UPDATE tb_usuario SET ativo = 1 WHERE usuario = '".$usuario."'";
 			$result = $conn->query($sql);
 
 			if ($conn->query($SQL) === TRUE){
@@ -52,7 +56,7 @@
 				echo "<script>alert('Sua conta foi ativada com sucesso!');</script>";
 				$_SESSION['usuario'] = $this->usuario;
 				$_SESSION['nome'] = $this->nome;
-				echo "<script>window.location = 'dashboard.html';</script>";
+				echo "<script>window.location = 'dashboard.php';</script>";
 			}else{
 				//mensagem exibida caso ocorra algum erro na execução do comando sql
 				echo "<script>alert('Erro ao ativar a conta!');</script>";
