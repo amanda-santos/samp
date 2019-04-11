@@ -47,10 +47,11 @@
                   </div>
                   <form method="post" action="login.php" id="formlogin" name="formlogin" >
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" name="usuario" placeholder="Usuário"> <!--troquei id por nome-->
+                      <input required type="text"  pattern="^[_A-z0-9]{1,}$" maxlength="15" class="form-control form-control-user" name="usuario" placeholder="Nome de usuário" data-error="Seu nome de usuário só pode conter letras, números e '_'.">
+                      <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" name="senha" placeholder="Senha"> <!--troquei id por nome-->
+                      <input required type="password" class="form-control form-control-user" name="senha" placeholder="Senha">
                     </div>
                     <div class="form-group">
                       <!--<div class="custom-control custom-checkbox small">
@@ -97,6 +98,8 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
+
+  <script src="js/validator.min.js"></script>
 
 </body>
 
