@@ -10668,6 +10668,26 @@ a:focus {
   }
 }
 
+.btn-primary {
+  background-color: #18BC9C;
+  border-color: #18BC9C;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  background-color: #128f76;
+  border-color: #128f76;
+}
+
+.btn-secondary {
+  background-color: #2C3E50;
+  border-color: #2C3E50;
+}
+
+.btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
+  background-color: #1a252f;
+  border-color: #1a252f;
+}
+
 .animated--fade-in {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
@@ -10678,9 +10698,16 @@ a:focus {
 }
 
 .bg-gradient-primary {
-  background-color: #4e73df;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #4e73df), to(#224abe));
-  background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
+  background-color: #18BC9C;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #18BC9C), to(#18BC9C));
+  background-image: linear-gradient(180deg, #18BC9C 10%, #18BC9C 100%);
+  background-size: cover;
+}
+
+.bg-gradient-secondary {
+  background-color: #2C3E50;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #2C3E50), to(#2C3E50));
+  background-image: linear-gradient(180deg, #2C3E50 10%, #2C3E50 100%);
   background-size: cover;
 }
 
@@ -11191,7 +11218,7 @@ a:focus {
 .sidebar .sidebar-brand {
   height: 4.375rem;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 30px;
   font-weight: 800;
   padding: 1.5rem 1rem;
   text-align: center;
@@ -11589,15 +11616,17 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800");
+  background: url("../img/project-art-1.jpg");
   background-position: center;
-  background-size: cover;
+  background-size: 509px;
+  background-repeat: no-repeat;
 }
 
 .bg-register-image {
-  background: url("https://source.unsplash.com/Mv9hjnEUHR4/600x800");
+  background: url("../img/project-art-3.jpg");
   background-position: center;
-  background-size: cover;
+  background-size: 509px;
+  background-repeat: no-repeat;
 }
 
 .bg-password-image {

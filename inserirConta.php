@@ -23,12 +23,12 @@
 				$senha = base64_encode($senhaDigitada); //codifica a senha
 
 				//define o comando sql para inserção do nome da imagem no banco de dados
-				$SQL = "INSERT INTO tb_usuario (usuario, senha, nome, sobrenome, email, ativo) VALUES ('".$usuario."','".$senha."','".$nome."','".$sobrenome."','" . $email."',1)";
+				$SQL = "INSERT INTO tb_usuario (usuario, senha, nome, sobrenome, email, ativo) VALUES ('".$usuario."','".$senha."','".$nome."','".$sobrenome."','" . $email."',0)";
 
 				if ($conn->query($SQL) === TRUE){
 					//verifica se o comando foi executado com sucesso
-					echo "<script>alert('Sua conta foi criada com sucesso! Faça a ativação para começar a usar a ferramenta.');</script>";
-					echo "<script>window.location = 'enviarEmailAtivacao.php?email='" . $email . "';</script>";
+					echo "<script>window.location = 'enviarEmailAtivacao.php?email=$email';</script>";
+					//echo "<script>alert('Sua conta foi criada com sucesso! Faça a ativação para começar a usar a ferramenta.');</script>";
 
 				}else{
 					//mensagem exibida caso ocorra algum erro na execução do comando sql

@@ -22,7 +22,7 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="css/sb-admin-2.css" rel="stylesheet">
 
 </head>
 
@@ -33,7 +33,7 @@
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
-      <div class="col-xl-10 col-lg-12 col-md-9">
+      <div class="col-xl-12 col-lg-14 col-md-11">
 
         <div class="card o-hidden border-0 shadow-lg my-5">
           <div class="card-body p-0">
@@ -43,35 +43,35 @@
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Login</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Faça seu Login</h1>
                   </div>
                   <form method="post" action="login.php" id="formlogin" name="formlogin" >
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" name="usuario" placeholder="Entre com o Usuario"> <!--troquei id por nome-->
+                      <input type="text" class="form-control form-control-user" name="usuario" placeholder="Usuário"> <!--troquei id por nome-->
                     </div>
                     <div class="form-group">
                       <input type="password" class="form-control form-control-user" name="senha" placeholder="Senha"> <!--troquei id por nome-->
                     </div>
                     <div class="form-group">
-                      <div class="custom-control custom-checkbox small">
+                      <!--<div class="custom-control custom-checkbox small">
                         <input type="checkbox" class="custom-control-input" id="customCheck">
                         <label class="custom-control-label" for="customCheck">Relembrar</label>
-                      </div>
+                      </div>-->
                     </div>
                     <p>
                   <input type="submit" class="btn btn-primary btn-user btn-block" name="entrar" value="Entrar"> <!--sempre adicione o name dos buttons e inputs, quando vc envia pra outra página é isso que o POST consegue pegar-->
                 </p>
-                    <hr>
+                    <!--<hr>
                     <a href="index.php" class="btn btn-google btn-user btn-block">
                       <i class="fab fa-google fa-fw"></i> Login com Google
                     </a>
                     <a href="index.php" class="btn btn-facebook btn-user btn-block">
                       <i class="fab fa-facebook-f fa-fw"></i> Login com Facebook
-                    </a>
+                    </a>-->
                   </form>
                   <hr>
                   <div class="text-center">
-                    <a class="small" href="forgot-password.html">Esqueceu sua senha?</a>
+                    <a class="small" href="recuperarSenha.php">Esqueceu sua senha?</a>
                   </div>
                   <div class="text-center">
                     <a class="small" href="criarConta.php">Crie sua conta!</a>
