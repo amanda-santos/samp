@@ -4,20 +4,20 @@
 	
 		public static function persistirUsuario($nome, $sobrenome, $usuario, $email, $senha){
 			include 'conexao/conecta.php';
-			$sql = "SELECT * FROM tb_usuario WHERE usuario = '".$usuario."';";
+			$sql = "SELECT * FROM usuario WHERE usuario = '".$usuario."';";
 			$result = $conn->query($sql);
 			if ($result->num_rows > 0) { // se achar algum registro
 				echo "<script>alert('Esse nome de usuário já existe.');</script>";
 				echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
 			}else{
-				$SQL = "SELECT * FROM tb_usuario WHERE email = '". $email . "';";
+				$SQL = "SELECT * FROM usuario WHERE email = '". $email . "';";
 				$result = $conn->query($SQL);
 				if ($result->num_rows > 0) { // se achar algum registro
 					echo "<script>alert('Já existe uma conta cadastrada com esse e-mail.');</script>";
 					echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
 				} else {
 				//define o comando sql para inserção
-					$SQL = "INSERT INTO tb_usuario (usuario, senha, nome, sobrenome, email, ativo) VALUES ('".$usuario."','".$senha."','".$nome."','".$sobrenome."','".$email."',0)";
+					$SQL = "INSERT INTO usuario (usuario, senha, nome, sobrenome, email, ativo) VALUES ('".$usuario."','".$senha."','".$nome."','".$sobrenome."','".$email."',0)";
 
 					if ($conn->query($SQL) === TRUE){
 						//verifica se o comando foi executado com sucesso
@@ -36,7 +36,7 @@
 
 		public function ativarUsuario($usuario){
 			include 'conexao/conecta.php';
-			$sql = "UPDATE tb_usuario SET ativo = 1 WHERE usuario = '".$usuario."';";
+			$sql = "UPDATE usuario SET ativo = 1 WHERE usuario = '".$usuario."';";
 			$result = $conn->query($sql);
 
 			if ($conn->query($sql) === TRUE){

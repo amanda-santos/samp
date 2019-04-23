@@ -1,5 +1,5 @@
 <?php 
-  include("conexao/conecta.php"); //incluir arquivo com conexão ao banco de dados
+  include("../model/conexao/conecta.php"); //incluir arquivo com conexão ao banco de dados
 ?>
 
 <!DOCTYPE html>
@@ -60,16 +60,10 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="projetos.php">
           <i class="fas fa-bars"></i>
           <span>Projetos</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="projetos.php">Meus projetos</a>
-            <a class="collapse-item" href="criarProjeto.php">Crie um novo projeto</a>
-          </div>
-        </div>
       </li>
 
       <?php /* 
