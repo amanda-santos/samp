@@ -18,7 +18,6 @@
 				} else {
 				//define o comando sql para inserção
 					$SQL = "INSERT INTO usuario (usuario, senha, nome, sobrenome, email, ativo) VALUES ('".$usuario."','".$senha."','".$nome."','".$sobrenome."','".$email."',0)";
-
 					if ($conn->query($SQL) === TRUE){
 						//verifica se o comando foi executado com sucesso
 						//$_SESSION['usuario'] = $this->$usuario;

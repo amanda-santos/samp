@@ -6,7 +6,7 @@ include("conexao/conecta.php"); //incluir arquivo com conexão ao banco de dados
 
 $email = utf8_decode (strip_tags(trim($_GET['email'])));
 
-$sql = "SELECT * FROM tb_usuario WHERE email='$email'";
+$sql = "SELECT * FROM usuario WHERE email='$email'";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) { // Exibindo cada linha retornada com a consulta
 	while ($exibir = $result->fetch_assoc()){

@@ -1,5 +1,5 @@
 <?php
-include "/usuarioModel.php";
+include "usuarioModel.php";
 	class Usuario{
 		private $nome, $sobrenome, $usuario, $email, $senha, $ativo;
 
