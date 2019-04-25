@@ -8,7 +8,8 @@ if (isset($_POST["entrar"])){
 		$senhaCrip = base64_encode($senha);
 		
 		$usuario = new Usuario();
-		$usuario->validaLogin($usuario, $senhaCrip);
+		$usuario->validaLogin($_POST['usuario'], $senhaCrip);
+
 		/* Encaminha os dados a Model para que seja realizado a validação 
 		$model = new Model();
 		$validacao = $model->validaLogin($usuario,$senhaCrip);
