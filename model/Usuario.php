@@ -60,7 +60,7 @@ include "usuarioModel.php";
 		}
 
 		public function editarConta($usuarioAntigo, $emailAntigo){
-			usuarioModel::editarConta($this->usuario, $this->nome, $this->sobrenome, $this->email, $this->senha, $usuarioAntigo, $emailAntigo);
+			usuarioModel::editarConta($this->usuario, $this->nome, $this->sobrenome, $this->email, $usuarioAntigo, $emailAntigo);
 		}
 		public function inativarUsuario($usuario){
 			usuarioModel::inativarUsuario($usuario);
@@ -68,6 +68,10 @@ include "usuarioModel.php";
 		
 		public function validaLogin($usuario, $senhaCrip){
 			usuarioModel::validaLogin($usuario, $senhaCrip);
+		}
+
+		public function altSenha($atual, $nova){
+			usuarioModel::altSenha($atual, $nova);
 		}
 	}
 ?>
