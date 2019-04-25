@@ -65,5 +65,9 @@ include "usuarioModel.php";
 		public function inativarUsuario($usuario){
 			usuarioModel::inativarUsuario($usuario);
 		}
+		
+		public function validaLogin($usuario, $senhaCrip){
+			usuarioModel::validaLogin($usuario, $senhaCrip);
+		}
 	}
 ?>
