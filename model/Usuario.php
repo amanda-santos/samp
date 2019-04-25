@@ -58,5 +58,12 @@ include "usuarioModel.php";
 		public function ativarUsuario($usuario){
 			usuarioModel::ativarUsuario($usuario);
 		}
+
+		public function editarConta($usuarioAntigo, $emailAntigo){
+			usuarioModel::editarConta($this->usuario, $this->nome, $this->sobrenome, $this->email, $this->senha, $usuarioAntigo, $emailAntigo);
+		}
+		public function inativarUsuario($usuario){
+			usuarioModel::inativarUsuario($usuario);
+		}
 	}
 ?>
