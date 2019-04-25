@@ -34,11 +34,11 @@
 
     <!-- início do post -->
     <div class = "post">
-      <form class="form-horizontal" method="POST" action="editarConta.php" enctype="multipart/form-data" data-toggle="validator">
+      <form class="form-horizontal" method="POST" action="../controller/editarConta.php" enctype="multipart/form-data" data-toggle="validator">
 
-<input type="hidden" value="<?php echo $usuario;?> name="usuarioAntigo">
+        <input type="hidden" value="<?php echo $usuario;?>" name="usuarioAntigo">
 
-<input type="hidden" value="<?php echo $email;?> name="emailAntigo">
+        <input type="hidden" value="<?php echo $email;?>" name="emailAntigo">
 
       <!--início do campo do formulário-->
         <div class="form-group required">
