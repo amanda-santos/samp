@@ -1,146 +1,38 @@
 <?php
 
-	class usuarioModel{
+	class projetoModel{
 	
-		public static function persistirUsuario($nome, $sobrenome, $usuario, $email, $senha){
+		public static function persistirProjeto($nome, $descricao, $id){
 			include 'conexao/conecta.php';
-			$sql = "SELECT * FROM usuario WHERE usuario = '".$usuario."';";
-			$result = $conn->query($sql);
-			if ($result->num_rows > 0) { // se achar algum registro
-				echo "<script>alert('Esse nome de usuário já existe.');</script>";
-				echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
-			}else{
-				$SQL = "SELECT * FROM usuario WHERE email = '". $email . "';";
-				$result = $conn->query($SQL);
-				if ($result->num_rows > 0) { // se achar algum registro
-					echo "<script>alert('Já existe uma conta cadastrada com esse e-mail.');</script>";
-					echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
-				} else {
-				//define o comando sql para inserção
-					$SQL = "INSERT INTO usuario (usuario, senha, nome, sobrenome, email, ativo) VALUES ('".$usuario."','".$senha."','".$nome."','".$sobrenome."','".$email."',0)";
-					if ($conn->query($SQL) === TRUE){
-						//verifica se o comando foi executado com sucesso
-						//$_SESSION['usuario'] = $this->$usuario;
-						//$_SESSION['nome'] = $this->$nome;
-						echo "<script>window.location = '../model/enviarEmailAtivacao.php?email=$email';</script>";
-					}else{
-						//mensagem exibida caso ocorra algum erro na execução do comando sql
-						echo "<script>alert('Erro ao criar a conta!');</script>";
-						echo "Erro: ". $SQL. "<br>" . $conn->error;
-					}
+			//define o comando sql para inserção
+			$SQL = "INSERT INTO projeto (nome, descricao, id) VALUES ('".$nome."','".$descricao."','".$id."');";
+			if ($conn->query($SQL) === TRUE){
+				//verifica se o comando foi executado com sucesso
+				$SQL = "INSERT INTO usuario_projeto (scrum_master, usuario_usuario, projeto_id) VALUES (1,'". $_SESSION['usuario'] ."','".$id."');";
+				if ($conn->query($SQL) === TRUE){
+					echo "<script>alert('Projeto cadastrado com sucesso! Código do projeto: $id');</script>";
+					echo "<script>window.location = '../view/projetos.php';</script>";
 				}
+			}else{
+				//mensagem exibida caso ocorra algum erro na execução do comando sql
+				echo "<script>alert('Erro ao cadastrar projeto!');</script>";
+				echo "Erro: ". $SQL. "<br>" . $conn->error;
 			}
 			$conn->close();
 		}
-
-		public function ativarUsuario($usuario){
-			include 'conexao/conecta.php';
-			$sql = "UPDATE usuario SET ativo = 1 WHERE usuario = '".$usuario."';";
-			$result = $conn->query($sql);
-
-			if ($conn->query($sql) === TRUE){
-				//verifica se o comando foi executado com sucesso
-				echo "<script>alert('Sua conta foi ativada com sucesso!');</script>";
-				echo "<script>window.location = '../entrar.php';</script>";
-			}else{
-				//mensagem exibida caso ocorra algum erro na execução do comando sql
-				echo "<script>alert('Erro ao ativar a conta!');</script>";
-				echo "Erro: ". $sql. "<br>" . $conn->error;
-			}
-		}
-
-		public function editarConta($usuario, $nome, $sobrenome, $email, $senha, $usuarioAntigo, $emailAntigo){
-			if ($usuarioAntigo != $usuario) {
-		  	$sql = "SELECT * FROM usuario WHERE usuario='".$usuario."'";
-		  	$result = $conn->query($sql);
-		  		if ($result->num_rows > 0) { // se achar algum registro
-		    	echo "<script>alert('Esse nome de usuário já existe.');</script>";
-		    	echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
-		    	exit;
-		  		}
-			}
-
-			if ( $emailAntigo != $email) {
-		  	$SQL = "SELECT * FROM usuario WHERE email='".$email."'";
-		  	$result = $conn->query($SQL);
-		  		if ($result->num_rows > 0) { // se achar algum registro
-		    	echo "<script>alert('Já existe uma conta cadastrada com esse e-mail.');</script>";
-		    	echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
-		    	exit;
-		  		}
-			}
-		    
-		    $sql = "UPDATE usuario SET usuario= '".$usuario."', nome= '".$nome."', sobrenome= '".$sobrenome."', email = '".$email."', senha= '".$senha."' WHERE usuario = '".$usuario."'";
-		    //echo "<script>alert(".$sql.");</script>";
-		    if ($conn->query($sql) === TRUE) {
-		   	  $_SESSION["usuario"] = $usuario;
-		      $_SESSION["nome"] = $nome;
-		      //$('.modal').modal('show')myModal
-		      //echo '<script>$("#myModal").modal("show");</script>';
-		      //echo "<script>$('#myModal').modal('show');</script>";
-		      //echo '<script>alert("'.$sql.'");</script>';
-		      //echo $sql;
-		      echo "<script>alert('Sua conta foi atualizada com sucesso!');</script>";
-		      echo "<script>window.location = '../dashboard.php';</script>";
-		    } else {
-		      echo "Erro: " . $sql . "<br>" . $conn->error;
-		    }
-		    $conn->close();
-		  
-		}
-
-		public function inativarUsuario($usuario){
-					$sql = "UPDATE usuario SET ativo = 0 WHERE usuario = '".$usuario."'";
-
-		if ($conn->query($sql) === TRUE) { //se o comando funcionou
-			echo "<script>alert('Sua conta foi desativada com sucesso.');</script>";
-			echo "<script>window.location = 'index.php';</script>";
-			session_destroy();
-		}
-		else{ //se o comando não funcionou
-			echo "<script>alert('Erro ao desativar a conta!');</script>";
-			//echo "<script>window.location = 'editarConta.php';</script>";
-			echo "Erro: ". $SQL. "<br>" . $conn->error;
-		}
-			}
-		}
-
-		
-		public function validaLogin($usuario, $senhaCrip){   
-            
-            include("conexao/conecta.php");
-            $sql = "SELECT * FROM usuario WHERE usuario = '" . $usuario . "' AND senha = '" . $senhaCrip. "';";
-            $resultado = $conn->query($sql);
-
-            if ($resultado->num_rows > 0) { //SE O USUÁRIO E SENHA FOREM VÁLIDOS
-
-                $linha = $resultado->fetch_assoc();
-                $ativo = $linha["ativo"];
-
-                if($ativo == 1){ //se o status do usuário for ativo
-                    $_SESSION['usuario'] = $usuario;
-                    $_SESSION['nome'] = $nome;
-                    $_SESSION['sobrenome'] = $sobrenome;
-                    $_SESSION['email'] = $email;
-                    $_SESSION['senha'] = $senha;
-                    header('location:../view/dashboard.php');
-
-                }else{
-                    //REDIRECIONA PARA A PAGINA INICIAL REPORTANDO O ERRO
-                    $_SESSION['erro']='Erro';
-                    echo "<script>alert('Erro no login. Tente novamente.');</script>";
-                    echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
-                }
-
-            }else{
-
-                unset ($_SESSION['login']);
-                unset ($_SESSION['senha']);
-                echo "<script>alert('Erro no login. Tente novamente.');</script>";
-                echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
-            }
+	function carregar_projeto(){
+		$banco = new mysqli("nome","descricao");
+		$sql="Select * From projeto";
+		$resultadoConsulta=$banco->query($sql);
+		$projeto = array();
+		$i=0;
+        while (!empty($resultadoConsulta[$i])) {
+            $row = $resultadoConsulta[$i]=
+            $projeto[] = $row;
+            $i++;
         }
 
-	}
+		return $resultadoConsulta;
+}
 	}
 ?>
