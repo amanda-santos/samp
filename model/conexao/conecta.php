@@ -1,9 +1,9 @@
-﻿<?php
+<?php
 	session_start();
 	//Parâmetros de conexão
-	$servername = "127.0.0.1";
-	$username = "root";
-	$password = "";
+	$servername = "200.18.128.51";
+	$username = "samp";
+	$password = "samp2019";
 	$dbname = "samp";
 	// Cria a conexão
 	$conn = new mysqli($servername, $username, $password, $dbname);

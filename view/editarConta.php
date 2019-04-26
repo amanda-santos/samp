@@ -6,7 +6,7 @@
   //echo $usuario;
   
   //selecionando dados do banco para exibição nos campos de edição
-  $sql = "SELECT * FROM tb_usuario WHERE usuario='$usuario'";
+  $sql = "SELECT * FROM usuario WHERE usuario='$usuario'";
   $result = $conn->query($sql);
   if ($result->num_rows > 0) { // Exibindo cada linha retornada com a consulta
     while ($exibir = $result->fetch_assoc()){
@@ -21,51 +21,7 @@
     echo "Não há dados cadastrados com o usuário informado.";
     exit;
   }
-  //SE ATUALIZAR POST
-  if (isset($_POST["atualizar"])) {
-    if ($_POST["usuario"] != $usuario) {
-      $sql = "SELECT * FROM tb_usuario WHERE usuario='".$_POST["usuario"]."'";
-      $result = $conn->query($sql);
-      if ($result->num_rows > 0) { // se achar algum registro
-        echo "<script>alert('Esse nome de usuário já existe.');</script>";
-        echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
-        exit;
-      }
-    }
-    if ($_POST["email"] != $email) {
-      $SQL = "SELECT * FROM tb_usuario WHERE email='".$_POST["email"]."'";
-      $result = $conn->query($SQL);
-      if ($result->num_rows > 0) { // se achar algum registro
-        echo "<script>alert('Já existe uma conta cadastrada com esse e-mail.');</script>";
-        echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
-        exit;
-      }
-    }
-        
-        $nome = $_POST["nome"];
-        $sobrenome = $_POST["sobrenome"];
-        $email = $_POST["email"];
-        $usuario = $_POST["usuario"];
-
-        $sql = "UPDATE tb_usuario SET usuario= '".$usuario."', nome= '".$nome."', sobrenome= '".$sobrenome."', email = '".$email."', senha= '".$senha."' WHERE usuario = '".$_SESSION["usuario"]."'";
-        //echo "<script>alert(".$sql.");</script>";
-        if ($conn->query($sql) === TRUE) {
-          $_SESSION['usuario'] = $usuario;
-          $_SESSION['nome'] = $nome;
-          //$('.modal').modal('show')myModal
-          //echo '<script>$("#myModal").modal("show");</script>';
-          //echo "<script>$('#myModal').modal('show');</script>";
-          //echo '<script>alert("'.$sql.'");</script>';
-          //echo $sql;
-          echo "<script>alert('Sua conta foi atualizada com sucesso!');</script>";
-          echo "<script>window.location = 'editarConta.php';</script>";
-        } else {
-          echo "Erro: " . $sql . "<br>" . $conn->error;
-        }
-        $conn->close();
-      
-  } //fim se atualizar perfil
-?>
+  ?>
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -78,7 +34,11 @@
 
     <!-- início do post -->
     <div class = "post">
-      <form class="form-horizontal" method="POST" action="editarConta.php" enctype="multipart/form-data" data-toggle="validator">
+      <form class="form-horizontal" method="POST" action="../controller/editarConta.php" enctype="multipart/form-data" data-toggle="validator">
+
+        <input type="hidden" value="<?php echo $usuario;?>" name="usuarioAntigo">
+
+        <input type="hidden" value="<?php echo $email;?>" name="emailAntigo">
 
       <!--início do campo do formulário-->
         <div class="form-group required">
@@ -129,7 +89,7 @@
           </a>
         </p>
       </div>
-      
+    
       <br>
       <div class="col-sm-8">
         <input type="submit" class="btn btn-success" name="atualizar" value="Atualizar"></input>
@@ -143,7 +103,7 @@
                 <script type="text/javascript">
                   function apagar(usuario) {
                     if (window.confirm('Deseja realmente desativar sua conta @' + usuario + '? Essa ação não poderá ser desfeita.')) {
-                      window.location = 'inativarUsuario.php?usuario=' + usuario;
+                      window.location = '../controller/inativarUsuario.php?usuario=' + usuario;
                     }
                   }
 

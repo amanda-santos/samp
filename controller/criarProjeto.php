@@ -18,6 +18,10 @@
     $id = uniqueAlfa();
     $projeto = new Projeto($_POST['nome'], $_POST['descricao'], $id);
     $projeto->cadastrarProjeto();
-
+    function exibir_projeto(){
+	$model= new Model();
+	$projeto = $model->carregar_projeto(); 
+	$this->load->view("projeto.html", $projeto);  
+	}
   }
 ?>

@@ -20,5 +20,19 @@
 			}
 			$conn->close();
 		}
+	function carregar_projeto(){
+		$banco = new mysqli("nome","descricao");
+		$sql="Select * From projeto";
+		$resultadoConsulta=$banco->query($sql);
+		$projeto = array();
+		$i=0;
+        while (!empty($resultadoConsulta[$i])) {
+            $row = $resultadoConsulta[$i]=
+            $projeto[] = $row;
+            $i++;
+        }
+
+		return $resultadoConsulta;
+}
 	}
 ?>
