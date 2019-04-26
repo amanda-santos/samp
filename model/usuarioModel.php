@@ -41,7 +41,7 @@
 			if ($conn->query($sql) === TRUE){
 				//verifica se o comando foi executado com sucesso
 				echo "<script>alert('Sua conta foi ativada com sucesso!');</script>";
-				echo "<script>window.location = '../entrar.php';</script>";
+				echo "<script>window.location = '../view/telaLogin.html';</script>";
 			}else{
 				//mensagem exibida caso ocorra algum erro na execução do comando sql
 				echo "<script>alert('Erro ao ativar a conta!');</script>";
