@@ -4,10 +4,11 @@
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <h1 class="h3 mb-0 text-gray-800">Participar de um projeto</h1>
+  <h1 class="h3 mb-0 text-gray-800">Participar de um Projeto</h1>
 </div>
 
 <!-- Content Row -->
+<div class="col-md-8"> 
 <div class="row">
 
   	<div class = "post">
@@ -15,21 +16,21 @@
 
       <!--início do campo do formulário-->
         <div class="form-group required">
-        <label class="control-label col-sm-20" for="nome">Codigo do Projeto:</label>
+        <label class="control-label col-sm-20" for="nome">Código do Projeto:</label>
         <div class="col-sm-30">
           <input type="text" class="form-control" id="nome" name="nome" value="" required>
         </div> <!--fim col-sm-5-->
         </div> <!--fim form-group-->
       <!--fim do campo do formulário-->
       
-      <div class="col-sm-8">
+      <div>
         <input type="submit" class="btn btn-success" name="entrar_projeto" value="Entrar"></input>
       </div> <!--fim col-sm-8-->
 
       </form>
     </div> <!-- fim da div post -->
     <!-- fim do post -->  
-
+</div>
 </div>
 
 <?php 

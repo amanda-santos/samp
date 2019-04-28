@@ -61,7 +61,7 @@
 		  		}
 			}
 
-			if ( $emailAntigo != $email) {
+			if ($emailAntigo != $email) {
 		  	$SQL = "SELECT * FROM usuario WHERE email='".$email."'";
 		  	$result = $conn->query($SQL);
 		  		if ($result->num_rows > 0) { // se achar algum registro
@@ -71,16 +71,13 @@
 		  		}
 			}
 		    
-		    $sql = "UPDATE usuario SET usuario= '".$usuario."', nome= '".$nome."', sobrenome= '".$sobrenome."', email = '".$email."' WHERE usuario = '".$usuario."'";
+		    $sql = "UPDATE usuario SET usuario= '".$usuario."', nome= '".$nome."', sobrenome= '".$sobrenome."', email = '".$email."' WHERE usuario = '".$usuarioAntigo."'";
 		    //echo "<script>alert(".$sql.");</script>";
 		    if ($conn->query($sql) === TRUE) {
-		   	  $_SESSION["usuario"] = $usuario;
-		      $_SESSION["nome"] = $nome;
-		      //$('.modal').modal('show')myModal
-		      //echo '<script>$("#myModal").modal("show");</script>';
-		      //echo "<script>$('#myModal').modal('show');</script>";
-		      //echo '<script>alert("'.$sql.'");</script>';
-		      //echo $sql;
+		   	  $_SESSION['usuario'] = $usuario;
+              $_SESSION['nome'] = $nome;
+              $_SESSION['sobrenome'] = $sobrenome;
+              $_SESSION['email'] = $email;
 		      echo "<script>alert('Sua conta foi atualizada com sucesso!');</script>";
 		      echo "<script>window.location = '../view/editarConta.php';</script>";
 		    } else {
@@ -91,11 +88,12 @@
 		}
 
 		public function inativarUsuario($usuario){
+			include("conexao/conecta.php");
 			$sql = "UPDATE usuario SET ativo = 0 WHERE usuario = '".$usuario."'";
 
 			if ($conn->query($sql) === TRUE) { //se o comando funcionou
 				echo "<script>alert('Sua conta foi desativada com sucesso.');</script>";
-				echo "<script>window.location = 'index.php';</script>";
+				echo "<script>window.location = '../view/index.html.php';</script>";
 				session_destroy();
 			}
 			else{ //se o comando não funcionou
@@ -107,10 +105,7 @@
 
 		
 		public static function validaLogin($usuario, $senhaCrip){   
-            
             include("conexao/conecta.php");
-            echo $usuario;
-            echo $senhaCrip;
             $sql = "SELECT * FROM usuario WHERE usuario = '" . $usuario . "' AND senha = '" . $senhaCrip. "';";
             $resultado = $conn->query($sql);
 
@@ -120,11 +115,11 @@
                 $ativo = $linha["ativo"];
 
                 if($ativo == 1){ //se o status do usuário for ativo
-                    $_SESSION['usuario'] = $usuario;
-                    $_SESSION['nome'] = $nome;
-                    $_SESSION['sobrenome'] = $sobrenome;
-                    $_SESSION['email'] = $email;
-                    $_SESSION['senha'] = $senha;
+                    $_SESSION['usuario'] = $linha["usuario"];
+                    $_SESSION['nome'] = $linha["nome"];
+                    $_SESSION['sobrenome'] = $linha["sobrenome"];
+                    $_SESSION['email'] = $linha["email"];
+                    $_SESSION['senha'] = $linha["senha"];
                     header('location:../view/dashboard.php');
 
                 }else{
@@ -135,9 +130,8 @@
                 }
 
             }else{
-
-                unset ($_SESSION['login']);
-                unset ($_SESSION['senha']);
+                unset($_SESSION['usuario']);
+                unset($_SESSION['senha']);
                 echo "<script>alert('Erro no login. Tente novamente.');</script>";
                 echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
             }
@@ -145,6 +139,7 @@
 
 
         public function altSenha($atual, $nova){
+        	include("conexao/conecta.php");
         	$sql = "SELECT senha FROM usuario WHERE usuario = '" . $_SESSION['usuario'] . "';";
             $resultado = $conn->query($sql);
             if ($resultado->num_rows > 0) { //SE O USUÁRIO E SENHA FOREM VÁLIDOS
@@ -163,6 +158,7 @@
 		      		$conn->close();
 			    } else { //senão, o usuário não digitou a senha antiga correta e a senha não pode ser alterada
 			      echo "<script>alert('Sua senha está incorreta!');</script>";
+			      echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
 			    }
 			}
 		}

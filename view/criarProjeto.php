@@ -8,6 +8,7 @@
 </div>
 
 <!-- Content Row -->
+<div class="col-md-8"> 
 <div class="row">
 
   	<div class = "post">
@@ -24,20 +25,22 @@
       
       <!--início do campo do formulário-->
         <div class="form-group required">
-        <label class="control-label col-sm-3" for="descricao">Descrição:</label>
-        <textarea rows="4" cols="50" class="form-control" id="descricao" name="descricao" required>
-		</textarea>
+          <label class="control-label" for="descricao">Descrição:</label>
+          <div class="col-sm-30">
+            <textarea rows="4" cols="50" class="form-control" id="descricao" name="descricao" required>
+    		    </textarea>
+          </div>
         </div> <!--fim form-group-->
       <!--fim do campo do formulário-->
 
-      <div class="col-sm-8">
+      <div>
         <input type="submit" class="btn btn-success" name="criar_projeto" value="Criar Projeto"></input>
       </div> <!--fim col-sm-8-->
 
       </form>
     </div> <!-- fim da div post -->
     <!-- fim do post -->  
-
+</div>
 </div>
 
 <?php 

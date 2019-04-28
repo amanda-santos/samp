@@ -1,27 +1,26 @@
 <?php
   include("include/header.php"); //incluir arquivo com conexão ao banco de dados
   if (isset($_SESSION["usuario"])) { //SE EXISTIR AUTENTICAÇÃO
-  $usuario = $_SESSION["usuario"]; //usuário definido pela sessão atual
+    $usuario = $_SESSION["usuario"]; //usuário definido pela sessão atual
 
-  //echo $usuario;
-  
-  //selecionando dados do banco para exibição nos campos de edição
-  $sql = "SELECT * FROM usuario WHERE usuario='$usuario'";
-  $result = $conn->query($sql);
-  if ($result->num_rows > 0) { // Exibindo cada linha retornada com a consulta
-    while ($exibir = $result->fetch_assoc()){
-      $nome = $exibir["nome"];
-      $sobrenome = $exibir["sobrenome"];
-      $email = $exibir["email"];
-      $usuario = $exibir["usuario"];
-      $senha = $exibir["senha"];
-
-    } // fim while
-  } else { //se não achar nenhum registro
-    echo "Não há dados cadastrados com o usuário informado.";
-    exit;
-  }
-  ?>
+    //echo $usuario;
+    
+    //selecionando dados do banco para exibição nos campos de edição
+    $sql = "SELECT * FROM usuario WHERE usuario='$usuario'";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) { // Exibindo cada linha retornada com a consulta
+      while ($exibir = $result->fetch_assoc()){
+        $nome = $exibir["nome"];
+        $sobrenome = $exibir["sobrenome"];
+        $email = $exibir["email"];
+        $usuario = $exibir["usuario"];
+        $senha = $exibir["senha"];
+      } // fim while
+    } else { //se não achar nenhum registro
+      echo "Não há dados cadastrados com o usuário informado.";
+      exit;
+    }
+?>
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -81,16 +80,15 @@
       
       <div class="col-sm-9">
         <p>
-          <a href="#" onclick="apagar('<?php echo $usuario; ?>');" id="admButtons" class="btn btn-sm btn-danger" style="font-size: 14px;">
-            <span class="glyphicon glyphicon-remove"></span> Desativar conta
-          </a>
           <a href="altSenha.php"  id="admButtons" class="btn btn-sm btn-success" style="font-size: 14px;">
             <span class="glyphicon glyphicon-edit"></span> Alterar senha
+          </a>
+          <a href="#" onclick="apagar('<?php echo $usuario; ?>');" id="admButtons" class="btn btn-sm btn-danger" style="font-size: 14px;">
+            <span class="glyphicon glyphicon-remove"></span> Desativar conta
           </a>
         </p>
       </div>
     
-      <br>
       <div class="col-sm-8">
         <input type="submit" class="btn btn-success" name="atualizar" value="Atualizar"></input>
         <!--<input type="button" data-toggle="modal" data-target="#confirm-submit" class="btn btn-success" name="atualizar" value="Atualizar" id="myBtn"></input>-->
@@ -99,21 +97,16 @@
       </div> <!--fim col-sm-8-->
       
       
-        <!--início função apagar usuário-->
-                <script type="text/javascript">
-                  function apagar(usuario) {
-                    if (window.confirm('Deseja realmente desativar sua conta @' + usuario + '? Essa ação não poderá ser desfeita.')) {
-                      window.location = '../controller/inativarUsuario.php?usuario=' + usuario;
-                    }
-                  }
+      <!--início função apagar usuário-->
+      <script type="text/javascript">
+        function apagar(usuario) {
+          if (window.confirm('Deseja realmente desativar sua conta @' + usuario + '? Essa ação não poderá ser desfeita.')) {
+            window.location = '../controller/inativarUsuario.php?usuario=' + usuario;
+          }
+        }
 
-                </script>
+      </script>
 
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
-          <div class="modal-dialog">
-          
-      
       </form>
       
     </div> <!-- fim da div post -->
@@ -124,9 +117,7 @@
 
 <?php 
   include("include/footer.php"); //incluir arquivo com conexão ao banco de dados
-?>
-<?php
   } else {
-    echo "<script>window.location = 'index.php';</script>";
+    echo "<script>window.location = 'index.html';</script>";
   }
 ?>  
