@@ -33,5 +33,9 @@ include "projetoModel.php";
 			projetoModel::persistirProjeto($this->nome, $this->descricao, $this->id);
 			
 		}
+		public function entrarProjeto($projeto_id){
+			projetoModel::entrar_projeto($this->projeto_id);
+			
+		}
 	}
 ?>

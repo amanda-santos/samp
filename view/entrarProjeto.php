@@ -12,7 +12,7 @@
 <div class="row">
 
   	<div class = "post">
-      <form class="form-horizontal" method="POST" action="../controller/criarProjeto.php" enctype="multipart/form-data" data-toggle="validator">
+      <form class="form-horizontal" method="POST" action="../controller/entrarProjeto.php" enctype="multipart/form-data" data-toggle="validator">
 
       <!--início do campo do formulário-->
         <div class="form-group required">
