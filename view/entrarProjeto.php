@@ -12,13 +12,13 @@
 <div class="row">
 
   	<div class = "post">
-      <form class="form-horizontal" method="POST" action="../controller/criarProjeto.php" enctype="multipart/form-data" data-toggle="validator">
+      <form class="form-horizontal" method="POST" action="../controller/entrarProjeto.php" enctype="multipart/form-data" data-toggle="validator">
 
       <!--início do campo do formulário-->
         <div class="form-group required">
         <label class="control-label col-sm-20" for="nome">Código do Projeto:</label>
         <div class="col-sm-30">
-          <input type="text" class="form-control" id="nome" name="nome" value="" required>
+          <input type="text" class="form-control" id="nome" name="projeto_id" required>
         </div> <!--fim col-sm-5-->
         </div> <!--fim form-group-->
       <!--fim do campo do formulário-->
