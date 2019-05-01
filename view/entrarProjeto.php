@@ -18,7 +18,7 @@
         <div class="form-group required">
         <label class="control-label col-sm-20" for="nome">Código do Projeto:</label>
         <div class="col-sm-30">
-          <input type="text" class="form-control" id="nome" name="nome" value="" required>
+          <input type="text" class="form-control" id="nome" name="projeto_id" required>
         </div> <!--fim col-sm-5-->
         </div> <!--fim form-group-->
       <!--fim do campo do formulário-->

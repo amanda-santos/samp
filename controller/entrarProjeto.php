@@ -1,15 +1,10 @@
-
 <?php
-if (isset($_POST["entrar_projeto"])){
-	
-	$projetoId = $_POST['Projeto_id'];
-    $verifica_id = mysql_query("SELECT * FROM usuario_projeto WHERE Projeto_id = '$projetoId'");
+  require_once '../model/Projeto.php';
+  //Criando e Instanciando o objeto
+  if (isset($_POST["entrar_projeto"])){
+    
+    $projeto = new Projeto(); 
 
-	if(mysql_num_rows($verifica_id) == 1){    
- 		echo "ID errado";
-	}
-	else{
- 		echo "id correto";
-	}
-}
+    $projeto->entrarProjeto($_POST['projeto_id']);
+  }
 ?>

@@ -3,7 +3,7 @@ include "projetoModel.php";
 	class Projeto{
 		private $nome, $descricao, $id;
 
-		public function __construct($paramNome='', $paramDesc='', $paramId){
+		public function __construct($paramNome='', $paramDesc='', $paramId=''){
 		    $this->nome = $paramNome;
 		    $this->descricao = $paramDesc;
 		    $this->id = $paramId;
@@ -34,7 +34,7 @@ include "projetoModel.php";
 			
 		}
 		public function entrarProjeto($projeto_id){
-			projetoModel::entrar_projeto($this->projeto_id);
+			projetoModel::entrar_projeto($projeto_id);
 			
 		}
 	}
