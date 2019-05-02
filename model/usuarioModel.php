@@ -162,5 +162,10 @@
 			    }
 			}
 		}
+		
+		public function recuperacaoSenha($email){
+			include 'conexao/conecta.php';
+			echo "<script>window.location = '../model/enviarEmailRecuperacao.php?email=$email';</script>";
+		}
 	}
 ?>

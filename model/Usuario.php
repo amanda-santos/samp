@@ -73,5 +73,10 @@ include "usuarioModel.php";
 		public function altSenha($atual, $nova){
 			usuarioModel::altSenha($atual, $nova);
 		}
+
+		public function recuperacaoSenha($email){
+			usuarioModel::recuperacaoSenha($email);
+		}
 	}
+	
 ?>

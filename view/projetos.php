@@ -53,6 +53,10 @@
 									<div class="modal-body">
 										<p><?php echo $rows_projeto['descricao']; ?></p>
 									</div>
+									<div class="modal-footer">
+										<button class="btn btn-secondary" type="button" data-dismiss="modal">Fechar</button>
+										<a class="btn btn-primary" href="productBacklog.php?id=<?php echo $rows_projeto['id']; ?>">Ir para o Projeto</a>
+									</div>
 								</div>
 							</div>
 						</div>
