@@ -37,5 +37,9 @@ include "projetoModel.php";
 			projetoModel::entrar_projeto($projeto_id);
 			
 		}
+
+		public function excluirProjeto($projeto){
+			projetoModel::excluirProjeto($projeto);
+		}
 	}
 ?>
