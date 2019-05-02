@@ -1,7 +1,13 @@
 <?php 
   include("include/header.php"); //incluir arquivo com conexão ao banco de dados
-  $result_estoria = "SELECT * FROM estoria";
+  $result_estoria = "SELECT * FROM estoria WHERE Projeto_id = '".$_GET['id']."';";
   $resultado_estoria = mysqli_query($conn, $result_estoria);
+
+  $result_scrum_master = "SELECT scrum_master FROM usuario_projeto WHERE Projeto_id = '".(strip_tags(trim($_GET['id'])))."';";
+  $resultado_scrum_master = mysqli_query($conn, $result_scrum_master);
+  while($rows_scrum_master = mysqli_fetch_assoc($resultado_scrum_master)){ 
+  	$scrumMaster = $rows_scrum_master['scrum_master'];
+  }
 ?>
 
 <!-- Page Heading -->
@@ -13,9 +19,18 @@
 <div class="col-md-8"> 
 <div class="row">
 
-  	<div>
-      <a href="cadastrarEstoria.php?id=<?php echo utf8_decode (strip_tags(trim($_GET['id']))) ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-align-justify"></i> Cadastrar Estória</a>
-    </div>
+	<?php
+		if ($scrumMaster == 1) {
+	?>
+
+	  	<div>
+	      <a href="cadastrarEstoria.php?id=<?php echo utf8_decode (strip_tags(trim($_GET['id']))) ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-align-justify"></i> Cadastrar Estória</a>
+	    </div>
+
+    <?php
+		}
+	?>
+
   </div>
   	<br>
 	  <div class="row">
@@ -23,7 +38,6 @@
 			  <table class="table">
 				  <thead>
 					  <tr>
-						<th>#</th>
 						<th>Nome da Estória</th>
 						<th>Id Projeto</th>
 						<th>Ação</th>
@@ -32,7 +46,6 @@
 				<tbody>
 					<?php while($rows_estoria = mysqli_fetch_assoc($resultado_estoria)){ ?>
 						<tr>
-							<td><?php echo $rows_estoria['id']; ?></td>
 							<td><?php echo $rows_estoria['nome']; ?></td>
 							<td><?php echo $rows_estoria['Projeto_id']; ?></td>
 							<td>
