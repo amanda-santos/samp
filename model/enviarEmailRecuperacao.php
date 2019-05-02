@@ -5,14 +5,13 @@ header('Content-Type: text/html; charset=utf-8');
 include("conexao/conecta.php"); //incluir arquivo com conexão ao banco de dados
 
 $email = utf8_decode (strip_tags(trim($_GET['email'])));
-$senha = base64_encode($senhaCrip);
 $sql = "SELECT * FROM usuario WHERE email='$email'";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) { // Exibindo cada linha retornada com a consulta
 	while ($exibir = $result->fetch_assoc()){
 		$nome = $exibir["nome"];
 		$usuario = $exibir["usuario"];
-		$senha = $exibir["senha"];
+		$senha = base64_decode($exibir["senha"]);
 	} // fim while
 } else { //se não achar nenhum registro
 	echo "<script>alert('Não existe nenhuma conta cadastrada com o e-mail informado.');</script>";
@@ -39,7 +38,9 @@ $mailer->AddAddress($email,$nome);
 $mailer->Subject = 'Recupere sua conta no SAMP';
 $mailer->Body = 'Prezado (a) ' . $nome . ',
 
-entre com a senha informada para acessar sua conta na ferramenta SAMP, 
+entre com o usuario e a senha abaixo para acessar sua conta na ferramenta SAMP:
+
+Usuario: ' . $usuario . '
 Senha: ' . $senha . '
 
 Atenciosamente,
@@ -49,7 +50,7 @@ Equipe SAMP';
 if(!$mailer->Send()){
     echo "Mailer Error: " . $mailer->ErrorInfo;
 } else {
-    echo "<script>alert('Acesse seu e-mail e verifique a sua conta para começar a usar o SAMP.');</script>";
-	echo "<script>window.location = '../view/index.html';</script>";
+    echo "<script>alert('Acesse seu e-mail para recuperar a sua senha.');</script>";
+	echo "<script>window.location = '../view/telaLogin.html';</script>";
 }
 ?>

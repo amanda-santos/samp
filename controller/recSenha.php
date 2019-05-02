@@ -1,11 +1,11 @@
 <?php
 //SE ATUALIZAR POST
-  if (isset($_POST["email"])) {
+  if (isset($_POST["resetarSenha"])) {
     require_once '../model/Usuario.php';
-    echo (ok );
+    //echo (ok );
     $usuario = new Usuario();
 
-    $usuario->recuperacaoSenha($_GET["email"]);
+    $usuario->recuperacaoSenha($_POST["email"]);
     
   }
   ?>
