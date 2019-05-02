@@ -36,7 +36,17 @@
 				<tbody>
 					<?php while($rows_projeto = mysqli_fetch_assoc($resultado_projeto)){ ?>
 						<tr>
-							<td><?php echo $rows_projeto['id']; ?></td>
+							<?php
+							if ($rows_projeto['scrum_master'] == 1) {
+							?>
+								<td><?php echo $rows_projeto['id']; ?></td>
+							<?php
+							}else{
+							?>
+								<td></td>
+							<?php
+							}
+							?>
 							<td><?php echo $rows_projeto['nome']; ?></td>
 							<td>
 								<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal<?php echo $rows_projeto['id']; ?>">Visualizar</button>
