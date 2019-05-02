@@ -39,7 +39,6 @@
 				  <thead>
 					  <tr>
 						<th>Nome da Estória</th>
-						<th>Id Projeto</th>
 						<th>Ação</th>
 					</tr>
 				</thead>
@@ -47,7 +46,6 @@
 					<?php while($rows_estoria = mysqli_fetch_assoc($resultado_estoria)){ ?>
 						<tr>
 							<td><?php echo $rows_estoria['nome']; ?></td>
-							<td><?php echo $rows_estoria['Projeto_id']; ?></td>
 							<td>
 							<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal<?php echo $rows_estoria['id']; ?>">Visualizar</button>
 							</td>
