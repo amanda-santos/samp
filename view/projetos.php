@@ -30,6 +30,7 @@
 						<th>#</th>
 						<th>Nome do Projeto</th>
 						<th>Ação</th>
+						<th>Excluir</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -40,6 +41,24 @@
 							<td>
 								<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal<?php echo $rows_projeto['id']; ?>">Visualizar</button>
 							</td>
+
+							<?php
+							if ($rows_projeto['scrum_master'] == 1) {
+							?>
+							<td>
+								<button onclick="apagar('<?php echo $rows_projeto['id']; ?>');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+								<script type="text/javascript">
+							        function apagar(projeto) {
+							          if (window.confirm('Deseja realmente apagar este projeto? Essa ação não poderá ser desfeita.')) {
+							            window.location = '../controller/excluirProjeto.php?projeto=' + projeto;
+							          }
+							        }
+
+								</script>
+							</td>
+							<?php
+							}
+							?>
 						</tr>
 						<!-- Inicio Modal -->
 						<div class="modal fade" id="myModal<?php echo $rows_projeto['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -57,6 +76,7 @@
 										<button class="btn btn-secondary" type="button" data-dismiss="modal">Fechar</button>
 										<a class="btn btn-primary" href="productBacklog.php?id=<?php echo $rows_projeto['id']; ?>">Ir para o Projeto</a>
 									</div>
+
 								</div>
 							</div>
 						</div>
