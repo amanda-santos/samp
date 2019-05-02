@@ -54,5 +54,19 @@
 	    		echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
 	  		}
 		}
+
+		function excluirProjeto($projeto){
+			include("conexao/conecta.php");
+			$sql = " DELETE FROM projeto WHERE id = '".$projeto."';";
+ 			if ($conn->query($sql) === TRUE) { //se o comando funcionou
+				echo "<script>alert('Seu projeto foi excluído com sucesso.');</script>";
+				echo "<script>window.location = '../view/projetos.php';</script>";
+			}
+			else{ //se o comando não funcionou
+				echo "<script>alert('Erro ao excluir projeto!');</script>";
+				//echo "<script>window.location = 'editarConta.php';</script>";
+				echo "Erro: ". $SQL. "<br>" . $conn->error;
+			}
+		}
 	}
 ?>
