@@ -11630,9 +11630,10 @@ a:focus {
 }
 
 .bg-password-image {
-  background: url("https://source.unsplash.com/oWTW-jNGl9I/600x800");
+  background: url("../img/project-art-2.jpg");
   background-position: center;
-  background-size: cover;
+  background-size: 509px;
+  background-size: no-repeat;
 }
 
 form.user .custom-checkbox.small label {

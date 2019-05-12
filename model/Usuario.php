@@ -1,5 +1,4 @@
 <?php
-include "usuarioModel.php";
 	class Usuario{
 		private $nome, $sobrenome, $usuario, $email, $senha, $ativo;
 
@@ -48,34 +47,6 @@ include "usuarioModel.php";
 		}
 		public function getAtivo(){
 			return $this->ativo;
-		}
-
-		public function inserirUsuario(){
-			usuarioModel::persistirUsuario($this->nome, $this->sobrenome, $this->usuario, $this->email, $this->senha);
-			
-		}
-
-		public function ativarUsuario($usuario){
-			usuarioModel::ativarUsuario($usuario);
-		}
-
-		public function editarConta($usuarioAntigo, $emailAntigo){
-			usuarioModel::editarConta($this->usuario, $this->nome, $this->sobrenome, $this->email, $usuarioAntigo, $emailAntigo);
-		}
-		public function inativarUsuario($usuario){
-			usuarioModel::inativarUsuario($usuario);
-		}
-		
-		public function validaLogin($usuario, $senhaCrip){
-			usuarioModel::validaLogin($usuario, $senhaCrip);
-		}
-
-		public function altSenha($atual, $nova){
-			usuarioModel::altSenha($atual, $nova);
-		}
-
-		public function recuperacaoSenha($email){
-			usuarioModel::recuperacaoSenha($email);
 		}
 	}
 	

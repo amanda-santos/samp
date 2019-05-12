@@ -1,5 +1,5 @@
 <?php
-	session_start();
+	//session_start();
 	//Parâmetros de conexão
 	$servername = "200.18.128.51";
 	$username = "samp";

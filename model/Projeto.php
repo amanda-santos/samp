@@ -1,12 +1,12 @@
 <?php
-include "projetoModel.php";
 	class Projeto{
-		private $nome, $descricao, $id;
+		private $nome, $descricao, $id, $scrum_master;
 
-		public function __construct($paramNome='', $paramDesc='', $paramId=''){
+		public function __construct($paramNome='', $paramDesc='', $paramId='', $paramScrumMaster=''){
 		    $this->nome = $paramNome;
 		    $this->descricao = $paramDesc;
 		    $this->id = $paramId;
+		    $this->scrum_master = $paramScrumMaster;
 		}
 
 		public function setNome($nome){
@@ -19,6 +19,10 @@ include "projetoModel.php";
 			$this->id=$id;
 		}
 
+		public function setScrumMaster($scrum_master){
+			$this->scrum_master=$scrum_master;
+		}
+
 		public function getNome(){
 			return $this->nome;
 		}
@@ -28,18 +32,8 @@ include "projetoModel.php";
 		public function getId(){
 			return $this->id;
 		}
-
-		public function cadastrarProjeto(){
-			projetoModel::persistirProjeto($this->nome, $this->descricao, $this->id);
-			
-		}
-		public function entrarProjeto($projeto_id){
-			projetoModel::entrar_projeto($projeto_id);
-			
-		}
-
-		public function excluirProjeto($projeto){
-			projetoModel::excluirProjeto($projeto);
+		public function getScrumMaster(){
+			return $this->scrum_master;
 		}
 	}
 ?>
