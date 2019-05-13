@@ -7,7 +7,7 @@
 		    $this->descricao = $paramDesc;
 		    $this->id = $paramId;
 		    $this->scrum_master = $paramScrumMaster;
-		    this->product_backlog = $paramProductBacklog;
+		    $this->product_backlog = $paramProductBacklog;
 		}
 
 		public function setNome($nome){
