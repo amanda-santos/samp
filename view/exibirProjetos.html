@@ -42,12 +42,8 @@
 								
 								{if $projeto->getScrumMaster() == 1}
 								
-									<button onclick="editar('{$projeto->getId()}');" type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button>
-										<script type="text/javascript">
-											function editar(projeto) {												
-												window.location = '../controller/editarProjeto.php?projeto=' + projeto;											
-											}
-										</script>
+									<button  type="button" class="btn btn-warning" href="../controller/editarProjeto.php?id={$projeto->getId()}"><i class="fas fa-pencil-alt"></i></button>
+										
 
 									<button onclick="apagar('{$projeto->getId()}');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
 									<script type="text/javascript">

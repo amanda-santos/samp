@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-15 16:24:56
+/* Smarty version 3.1.33, created on 2019-05-15 21:42:18
   from 'C:\xampp\htdocs\samp\view\exibirProjetos.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cdc2138cfad36_33654766',
+  'unifunc' => 'content_5cdc6b9a7f7f37_02301899',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '445cebdfc5650f4a8ce70c166bb1f6cad95b43b9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\exibirProjetos.html',
-      1 => 1557930192,
+      1 => 1557949336,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cdc2138cfad36_33654766 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cdc6b9a7f7f37_02301899 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -76,15 +76,9 @@ foreach ($_from as $_smarty_tpl->tpl_vars['projeto']->value) {
 								
 								<?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
 								
-									<button onclick="editar('<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
-');" type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button>
-										<?php echo '<script'; ?>
- type="text/javascript">
-											function editar(projeto) {												
-												window.location = '../controller/editarProjeto.php?projeto=' + projeto;											
-											}
-										<?php echo '</script'; ?>
->
+									<button  type="button" class="btn btn-warning" href="../controller/editarProjeto.php?id=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+"><i class="fas fa-pencil-alt"></i></button>
+										
 
 									<button onclick="apagar('<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 ');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>

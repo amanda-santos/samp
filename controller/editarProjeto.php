@@ -4,13 +4,12 @@
 	if (isset($_SESSION["usuario"])) { //SE EXISTIR AUTENTICAÇÃO
 		require '../libs/Smarty.class.php';
 		$smarty = new Smarty;
-
-		if (isset($_POST["atualizar"])){
+		$id = $_GET["id"];
 		$projetoDAO = new projetoDAO();
-		$projetos = $projetoDAO->editarProjeto($_POST['nome'], $_POST['descricao']);
-		}
-		$smarty->assign("projetos", $projetos);
+		$projeto = $projetoDAO->selecionarProjetos($id);
 
+		
+		$smarty->assign("projeto", $projeto);
 		$smarty->display('../view/editarProjeto.html');
 	} 
 	else {
