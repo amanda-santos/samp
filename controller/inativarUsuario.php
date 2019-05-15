@@ -1,10 +1,10 @@
 <?php
-	require_once '../model/Usuario.php';
-	require_once '../model/conexao/conecta.php';
+    session_start();
+	require_once '../model/usuarioDAO.php';
 
 	if (isset($_SESSION["usuario"])) { //SE EXISTIR AUTENTICAÇÃO
-		$usuario = new Usuario();
-		$usuario->inativarUsuario($_GET['usuario']);
+		$usuarioDAO = new usuarioDAO();
+		$usuarioDAO->inativarUsuario($_GET['usuario']);
 	} else {
 		echo "<script>window.location = '../view/index.html';</script>";
 	}

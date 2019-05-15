@@ -1,11 +1,12 @@
 <?php
-	require_once '../model/projetos.php';
-	require_once '../model/conexao/conecta.php';
+    session_start();
+	require_once '../model/projetoDAO.php';
 
 	if (isset($_SESSION["usuario"])) { //SE EXISTIR AUTENTICAÇÃO
-		$projeto = new Projeto();
-		$projeto->excluirProjeto($_GET['projeto']);
+		$projetoDAO = new projetoDAO();
+		$projetoDAO->excluirProjeto($_GET['projeto']);
 	} else {
 		echo "<script>window.location = '../view/index.html';</script>";
 	}
 ?>
+

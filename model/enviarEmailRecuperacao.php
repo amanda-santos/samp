@@ -51,6 +51,6 @@ if(!$mailer->Send()){
     echo "Mailer Error: " . $mailer->ErrorInfo;
 } else {
     echo "<script>alert('Acesse seu e-mail para recuperar a sua senha.');</script>";
-	echo "<script>window.location = '../view/telaLogin.html';</script>";
+	echo "<script>window.location = '../view/login.html';</script>";
 }
 ?>

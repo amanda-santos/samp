@@ -1,10 +1,11 @@
 <?php
-  require_once '../model/Projeto.php';
-  //Criando e Instanciando o objeto
-  if (isset($_POST["entrar_projeto"])){
-    
-    $projeto = new Projeto(); 
+	session_start();
+	if (isset($_SESSION["usuario"])) { //SE EXISTIR AUTENTICAÇÃO
+		require '../libs/Smarty.class.php';
+		$smarty = new Smarty;
 
-    $projeto->entrarProjeto($_POST['projeto_id']);
-  }
+		$smarty->display('../view/entrarProjeto.html');
+	} else {
+		echo "<script>window.location = '../view/index.html';</script>";
+	}
 ?>

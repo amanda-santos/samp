@@ -1,0 +1,88 @@
+{include file="../view/header.html" title=foo}
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Projetos</h1>
+</div> 
+
+<div class="container theme-showcase" role="main">
+
+	<!-- Content Row -->
+	<div class="row">
+
+	  <div>
+	    <a href="../controller/criarProjeto.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus-circle"></i> Criar Projeto</a>
+	    <a href="../controller/entrarProjeto.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-sign-in-alt"></i> Participar de um Projeto</a>
+	  </div>
+	  
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Nome do Projeto</th>
+						<th>Ações</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					{foreach name=laco1 item=projeto from=$projetos}
+						<tr>
+							{if $projeto->getScrumMaster() == 1}
+								<td>{$projeto->getId()}</td>
+							{else}
+								<td></td>
+							{/if}
+							<td>{$projeto->getNome()}</td>
+							<td>
+									<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal{$projeto->getId()}"><i class="fas fa-eye"></i></button>
+								
+								{if $projeto->getScrumMaster() == 1}
+								
+									<button  type="button" class="btn btn-warning" href="../controller/editarProjeto.php?id={$projeto->getId()}"><i class="fas fa-pencil-alt"></i></button>
+										
+
+									<button onclick="apagar('{$projeto->getId()}');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+									<script type="text/javascript">
+												function apagar(projeto) {
+													if (window.confirm('Deseja realmente apagar este projeto? Essa ação não poderá ser desfeita.')) {
+														window.location = '../controller/excluirProjeto.php?projeto=' + projeto;
+													}
+												}
+
+									</script>
+							</td>
+							{/if}
+						</tr>
+						<!-- Inicio Modal -->
+						<div class="modal fade" id="myModal{$projeto->getId()}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class= "modal-header">
+									<h4 class="modal-title text-center" id="myModalLabel">{$projeto->getNome()}</h4>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span></button>
+									</div>
+									<div class="modal-body">
+										<p>{$projeto->getDesc()}</p>
+									</div>
+									<div class="modal-footer">
+										<button class="btn btn-secondary" type="button" data-dismiss="modal">Fechar</button>
+										<a class="btn btn-primary" href="../controller/exibirProductBacklog.php?id={$projeto->getId()}">Ir para o Projeto</a>
+									</div> 
+
+								</div>
+							</div>
+						</div>
+						<!-- Fim Modal -->
+					{/foreach}
+				</tbody>
+			 </table>
+		</div>
+	</div>		
+</div>
+
+{include file="../view/footer.html" title=foo}
