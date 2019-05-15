@@ -108,5 +108,24 @@
 				echo "Erro: ". $SQL. "<br>" . $conn->error;
 			}
 		}
+
+		public function editarProjeto($nome,$descricao){
+			include 'conexao/conecta.php';
+		    
+		    $sql = "UPDATE projeto SET nome= '".$nome."', descricao = '".$descricao."' WHERE id = '".$projeto."'";
+		    //echo "<script>alert(".$sql.");</script>";
+		    if ($conn->query($sql) === TRUE) {
+		      
+              $_SESSION['nome'] = $nome;
+			  $_SESSION['descricao'] = $descricao;
+			  
+		      echo "<script>alert('Seu projeto foi atualizado com sucesso!');</script>";
+		      echo "<script>window.location = '../controller/exibirProjeto.php';</script>";
+		    } else {
+		      echo "Erro: " . $sql . "<br>" . $conn->error;
+		    }
+		    $conn->close();
+		  
+		}
 	}
 ?>

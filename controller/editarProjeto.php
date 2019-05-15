@@ -5,13 +5,15 @@
 		require '../libs/Smarty.class.php';
 		$smarty = new Smarty;
 
+		if (isset($_POST["atualizar"])){
 		$projetoDAO = new projetoDAO();
-		$projetos = $projetoDAO->selecionarProjetos();
-		
+		$projetos = $projetoDAO->editarProjeto($_POST['nome'], $_POST['descricao']);
+		}
 		$smarty->assign("projetos", $projetos);
 
 		$smarty->display('../view/editarProjeto.html');
-	} else {
+	} 
+	else {
 		echo "<script>window.location = '../view/index.html';</script>";
 	}
 ?>

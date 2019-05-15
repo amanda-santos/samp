@@ -38,29 +38,26 @@
 							{/if}
 							<td>{$projeto->getNome()}</td>
 							<td>
-								<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal{$projeto->getId()}">Visualizar</button>
-							
+									<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal{$projeto->getId()}"><i class="fas fa-eye"></i></button>
+								
 								{if $projeto->getScrumMaster() == 1}
-							
-								<button onclick="editar('{$projeto->getId()}');" type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button>
+								
+									<button onclick="editar('{$projeto->getId()}');" type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button>
+										<script type="text/javascript">
+											function editar(projeto) {												
+												window.location = '../controller/editarProjeto.php?projeto=' + projeto;											
+											}
+										</script>
+
+									<button onclick="apagar('{$projeto->getId()}');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
 									<script type="text/javascript">
-										function editar(projeto) {
-											
-												window.location = '../controller/editarProjeto.php?projeto=' + projeto;
-											
-										}
+												function apagar(projeto) {
+													if (window.confirm('Deseja realmente apagar este projeto? Essa ação não poderá ser desfeita.')) {
+														window.location = '../controller/excluirProjeto.php?projeto=' + projeto;
+													}
+												}
 
 									</script>
-
-								<button onclick="apagar('{$projeto->getId()}');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-								<script type="text/javascript">
-							        function apagar(projeto) {
-							          if (window.confirm('Deseja realmente apagar este projeto? Essa ação não poderá ser desfeita.')) {
-							            window.location = '../controller/excluirProjeto.php?projeto=' + projeto;
-							          }
-							        }
-
-								</script>
 							</td>
 							{/if}
 						</tr>

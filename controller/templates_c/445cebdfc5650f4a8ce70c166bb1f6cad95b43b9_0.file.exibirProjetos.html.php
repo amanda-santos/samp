@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-15 15:45:24
+/* Smarty version 3.1.33, created on 2019-05-15 16:24:56
   from 'C:\xampp\htdocs\samp\view\exibirProjetos.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cdc17f4510b46_30913590',
+  'unifunc' => 'content_5cdc2138cfad36_33654766',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '445cebdfc5650f4a8ce70c166bb1f6cad95b43b9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\exibirProjetos.html',
-      1 => 1557927921,
+      1 => 1557930192,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cdc17f4510b46_30913590 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cdc2138cfad36_33654766 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -71,35 +71,32 @@ foreach ($_from as $_smarty_tpl->tpl_vars['projeto']->value) {
 							<td><?php echo $_smarty_tpl->tpl_vars['projeto']->value->getNome();?>
 </td>
 							<td>
-								<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
-">Visualizar</button>
-							
+									<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+"><i class="fas fa-eye"></i></button>
+								
 								<?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
-							
-								<button onclick="editar('<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+								
+									<button onclick="editar('<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 ');" type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button>
-									<?php echo '<script'; ?>
+										<?php echo '<script'; ?>
  type="text/javascript">
-										function editar(projeto) {
-											
-												window.location = '../controller/editarProjeto.php?projeto=' + projeto;
-											
-										}
-
-									<?php echo '</script'; ?>
+											function editar(projeto) {												
+												window.location = '../controller/editarProjeto.php?projeto=' + projeto;											
+											}
+										<?php echo '</script'; ?>
 >
 
-								<button onclick="apagar('<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+									<button onclick="apagar('<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 ');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-								<?php echo '<script'; ?>
+									<?php echo '<script'; ?>
  type="text/javascript">
-							        function apagar(projeto) {
-							          if (window.confirm('Deseja realmente apagar este projeto? Essa ação não poderá ser desfeita.')) {
-							            window.location = '../controller/excluirProjeto.php?projeto=' + projeto;
-							          }
-							        }
+												function apagar(projeto) {
+													if (window.confirm('Deseja realmente apagar este projeto? Essa ação não poderá ser desfeita.')) {
+														window.location = '../controller/excluirProjeto.php?projeto=' + projeto;
+													}
+												}
 
-								<?php echo '</script'; ?>
+									<?php echo '</script'; ?>
 >
 							</td>
 							<?php }?>
