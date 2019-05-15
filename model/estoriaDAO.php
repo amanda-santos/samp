@@ -20,14 +20,14 @@
 		public static function persistirEstoriaSprintBacklog($id_estoria, $nivel_dificuldade, $duracao){
 			include 'conexao/conecta.php';
 			//define o comando sql para inserção
-			$SQL = "UPDATE estoria SET duracao = ".$duracao.", niveldificuldade_id = ".$nivel_dificuldade.", situacao_id = 1, sprint_backlog = 1 WHERE id = ".$id_estoria.";";
+			$SQL = "UPDATE estoria SET duracao = '".$duracao."', niveldificuldade_id = ".$nivel_dificuldade.", situacao_id = 1, sprint_backlog = 1 WHERE id = ".$id_estoria.";";
 			if ($conn->query($SQL) === TRUE){
 				//verifica se o comando foi executado com sucesso
 				echo "<script>alert('Estória cadastrada no Sprint Backlog com sucesso!');</script>";
 				echo "<script>window.location = '../controller/exibirSprintBacklog.php?id=$projeto_id';</script>";
 			}else{
 				//mensagem exibida caso ocorra algum erro na execução do comando sql
-				echo "<script>alert('Erro ao cadastrar estória no Sprint Backlog!');</script>";
+				//echo "<script>alert('". $SQL. "<br>" . $conn->error.");</script>";
 				echo "Erro: ". $SQL. "<br>" . $conn->error;
 			}
 			$conn->close();
@@ -47,7 +47,7 @@
 					echo "<script>window.location = '../controller/exibirSprintBacklog.php?id=$projeto_id';</script>";
 				}else{
 					//mensagem exibida caso ocorra algum erro na execução do comando sql
-					echo "<script>alert('Erro ao cadastrar estória no Sprint Backlog!');</script>";
+					//echo "<script>alert('Erro ao cadastrar estória no Sprint Backlog!');</script>";
 					echo "Erro: ". $SQL. "<br>" . $conn->error;
 				}
 			}
