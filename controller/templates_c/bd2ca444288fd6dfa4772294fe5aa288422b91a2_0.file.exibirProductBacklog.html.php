@@ -1,18 +1,30 @@
 <?php
+<<<<<<< HEAD
 /* Smarty version 3.1.33, created on 2019-05-16 01:14:15
+=======
+/* Smarty version 3.1.33, created on 2019-05-16 01:17:27
+>>>>>>> master
   from 'C:\xampp\htdocs\samp\view\exibirProductBacklog.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
+<<<<<<< HEAD
   'unifunc' => 'content_5cdc9d4727d5d9_16186161',
+=======
+  'unifunc' => 'content_5cdc9e07879582_23726789',
+>>>>>>> master
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bd2ca444288fd6dfa4772294fe5aa288422b91a2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\exibirProductBacklog.html',
+<<<<<<< HEAD
       1 => 1557962049,
+=======
+      1 => 1557961769,
+>>>>>>> master
       2 => 'file',
     ),
   ),
@@ -22,9 +34,18 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
+<<<<<<< HEAD
 function content_5cdc9d4727d5d9_16186161 (Smarty_Internal_Template $_smarty_tpl) {
+=======
+function content_5cdc9e07879582_23726789 (Smarty_Internal_Template $_smarty_tpl) {
+>>>>>>> master
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
+
+<div>
+	<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"></i> Product Backlog </a>
+	<a href="../controller/exibirSprintBacklog.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"></i> Sprint Backlog</a>
+</div>
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -79,13 +100,18 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 
 									<?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
 
-									<button onclick="apagar('<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
-');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+									<button onclick="apagar" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
 									<?php echo '<script'; ?>
  type="text/javascript">
+<<<<<<< HEAD
 												function apagar(estoria) {
 													if (window.confirm('Deseja realmente apagar esta estoria? Essa ação não poderá ser desfeita.')) {
 														window.location = '../controller/excluirEstoria.php';
+=======
+												function apagar() {
+													if (window.confirm('Deseja realmente apagar esta estoria? Essa ação não poderá ser desfeita.')) {
+														window.location = '../controller/.php?projeto=' + estoria;
+>>>>>>> master
 													}
 												}
 
