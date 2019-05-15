@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-16 00:43:15
+/* Smarty version 3.1.33, created on 2019-05-16 01:39:03
   from 'C:\xampp\htdocs\samp\view\criarEstoriaSprintBacklog.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cdc9603a0fd11_97320284',
+  'unifunc' => 'content_5cdca317226d11_48238278',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5c68dbed7144ab2dbbb4a7a8fd8b37f82e623b02' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\criarEstoriaSprintBacklog.html',
-      1 => 1557960097,
+      1 => 1557963532,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cdc9603a0fd11_97320284 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cdca317226d11_48238278 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -51,10 +51,10 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
       <div class="form-group required">
         <label class="control-label" for="nivel_dificuldade">Selecione o nível de dificuldade:</label>
           <select id=nivel_dificuldade name="nivel_dificuldade">
-            <option name="1">Baixo</option>
-            <option name="2">Médio</option>
-            <option name="3">Alto</option>
-            <option name="4">Muito Alto</option>
+            <option value="1">Baixo</option>
+            <option value="2">Médio</option>
+            <option value="3">Alto</option>
+            <option value="4">Muito Alto</option>
           </select>
       </div>
 
@@ -62,7 +62,7 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
         <div class="form-group required">
         <label class="control-label col-sm-20" for="nome">Informe a duração da estória:</label>
         <div class="col-sm-30">
-          <input type="text" class="form-control" id="duracao" name="duracao" value="X horas" required>
+          <input type="text" class="form-control" id="duracao" name="duracao" placeholder="Em horas" required>
         </div> <!--fim col-sm-5-->
         </div> <!--fim form-group-->
       <!--fim do campo do formulário-->
