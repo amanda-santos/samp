@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-15 14:59:17
-  from 'C:\xampp\htdocs\samp\view\criarProjeto.html' */
+/* Smarty version 3.1.33, created on 2019-05-15 15:52:08
+  from 'C:\xampp\htdocs\samp\view\editarProjeto.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cdc0d258816f6_19762898',
+  'unifunc' => 'content_5cdc1988f1dba9_84697784',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '9aa804aede58632970870885dce8524540d6f2ea' => 
+    'fe3bfbe4372e26d19580a07e429a8d7e91afb38b' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\samp\\view\\criarProjeto.html',
-      1 => 1557879151,
+      0 => 'C:\\xampp\\htdocs\\samp\\view\\editarProjeto.html',
+      1 => 1557928318,
       2 => 'file',
     ),
   ),
@@ -22,13 +22,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cdc0d258816f6_19762898 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cdc1988f1dba9_84697784 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <h1 class="h3 mb-0 text-gray-800">Criar Projeto</h1>
+  <h1 class="h3 mb-0 text-gray-800">Editar Projeto</h1>
 </div>
 
 <!-- Content Row -->
@@ -36,7 +36,7 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
 <div class="row">
 
   	<div class = "post">
-      <form class="form-horizontal" method="POST" action="../controller/cadastrarProjeto.php" enctype="multipart/form-data" data-toggle="validator">
+      <form class="form-horizontal" method="POST" action="../controller/editarProjeto.php" enctype="multipart/form-data" data-toggle="validator">
 
       <!--início do campo do formulário-->
         <div class="form-group required">
@@ -58,7 +58,7 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
       <!--fim do campo do formulário-->
 
       <div>
-        <input type="submit" class="btn btn-success" name="criar_projeto" value="Criar Projeto"></input>
+        <input type="submit" class="btn btn-success" name="editar_projeto" value="Editar Projeto"></input>
       </div> <!--fim col-sm-8-->
 
       </form>
