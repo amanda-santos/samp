@@ -1,0 +1,38 @@
+{include file="../view/header.html" title=foo}
+
+<div>
+	<a href="../controller/exibirProductBacklog.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"></i> Product Backlog </a>
+	<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"></i> Sprint Backlog</a>
+</div>
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Sprint Backlog</h1>
+</div>
+
+<!-- Content Row -->
+<div class="col-md-8"> 
+<div class="row">
+
+	<div>
+	    <a href="../controller/criarEstoriaSprintBacklog.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-align-justify"></i> Cadastrar Estória</a>
+	</div>
+
+	<!--{if ($projeto->getScrumMaster())}-
+
+	  	<div>
+	      <a href="../controller/criarEstoria.php?id={$projeto->getId()}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-align-justify"></i> Cadastrar Estória</a>
+	    </div>
+
+    <!--{/if}-->
+
+  
+</div>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+</div>
+</div>
+
+{include file="../view/footer.html" title=foo}

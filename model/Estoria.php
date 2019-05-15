@@ -1,12 +1,15 @@
 <?php
 	require_once '../model/ProductBacklog.php';
 	class Estoria{
-		private $id, $nome, $descricao;
+		private $id, $nome, $descricao, $duracao, $nivel_dificuldade, $situacao;
 
-		public function __construct($paramId='', $paramNome='', $paramDesc=''){
+		public function __construct($paramId='', $paramNome='', $paramDesc='', $paramDuracao='', $paramNivelDificuldade='', $paramSituacao=''){
 			$this->id = $paramId;
 		    $this->nome = $paramNome;
 		    $this->descricao = $paramDesc;
+		    $this->duracao = $duracao;
+		    $this->nivel_dificuldade = $nivel_dificuldade;
+		    $this->situacao = $situacao;
 		}
 
 		public function setId($id){
@@ -18,6 +21,15 @@
 		public function setDesc($descricao){
 			$this->descricao=$descricao;
 		}
+		public function setDuracao($duracao){
+			$this->duracao=$duracao;
+		}
+		public function setNivelDificuldade($nivel_dificuldade){
+			$this->nivel_dificuldade=$nivel_dificuldade;
+		}
+		public function setSituacao($situacao){
+			$this->situacao=$situacao;
+		}
 
 		public function getId(){
 			return $this->id;
@@ -27,6 +39,15 @@
 		}
 		public function getDesc(){
 			return $this->descricao;
+		}
+		public function getDuracao(){
+			return $this->duracao;
+		}
+		public function getNivelDificuldade(){
+			return $this->nivel_dificuldade;
+		}
+		public function getSituacao(){
+			return $this->situacao;
 		}
 	}
 ?>
