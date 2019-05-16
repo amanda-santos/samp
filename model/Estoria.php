@@ -7,9 +7,9 @@
 			$this->id = $paramId;
 		    $this->nome = $paramNome;
 		    $this->descricao = $paramDesc;
-		    $this->duracao = $duracao;
-		    $this->nivel_dificuldade = $nivel_dificuldade;
-		    $this->situacao = $situacao;
+		    $this->duracao = $paramDuracao;
+		    $this->nivel_dificuldade = $paramNivelDificuldade;
+		    $this->situacao = $paramSituacao;
 		}
 
 		public function setId($id){

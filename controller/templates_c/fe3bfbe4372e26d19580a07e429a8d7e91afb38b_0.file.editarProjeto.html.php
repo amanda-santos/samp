@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-16 02:23:11
+/* Smarty version 3.1.33, created on 2019-05-16 02:23:50
   from 'C:\xampp\htdocs\samp\view\editarProjeto.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cdcad6faaf210_33810624',
+  'unifunc' => 'content_5cdcad96c8ab44_46339495',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fe3bfbe4372e26d19580a07e429a8d7e91afb38b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\editarProjeto.html',
-      1 => 1557966086,
+      1 => 1557966216,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cdcad6faaf210_33810624 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cdcad96c8ab44_46339495 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -37,16 +37,6 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
 
   	<div class = "post">
       <form class="form-horizontal" method="POST" action="../controller/editarProjeto.php" enctype="multipart/form-data" data-toggle="validator">
-
-<<<<<<< HEAD
-=======
-        <input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getNome();?>
-" name="nome">
-
-        <input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getDesc();?>
-" name="descricao">
-
->>>>>>> 3a665524c5ac94d1a3186a4294c7b5b2f9dbd05d
       <!--início do campo do formulário-->
         <div class="form-group required">
         <label class="control-label col-sm-20" for="nome">Nome do Projeto:</label>
