@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-15 21:27:44
+/* Smarty version 3.1.33, created on 2019-05-16 02:20:19
   from 'C:\xampp\htdocs\samp\view\editarProjeto.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cdc68301ca2f4_60996655',
+  'unifunc' => 'content_5cdcacc3a9df41_83273855',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fe3bfbe4372e26d19580a07e429a8d7e91afb38b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\editarProjeto.html',
-      1 => 1557948355,
+      1 => 1557966016,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cdc68301ca2f4_60996655 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cdcacc3a9df41_83273855 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -36,13 +36,7 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
 <div class="row">
 
   	<div class = "post">
-      <form class="form-horizontal" method="POST" action="../controller/editarUsuario.php" enctype="multipart/form-data" data-toggle="validator">
-
-        <input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getName();?>
-" name="nome">
-
-        <input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getDesc();?>
-" name="descricao">
+      <form class="form-horizontal" method="POST" action="../controller/editarProjeto.php" enctype="multipart/form-data" data-toggle="validator">
 
       <!--início do campo do formulário-->
         <div class="form-group required">
@@ -58,8 +52,9 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
         <div class="form-group required">
           <label class="control-label" for="descricao">Descrição:</label>
           <div class="col-sm-30">
-            <textarea rows="4" cols="50" class="form-control" id="descricao" name="descricao" required value="<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getDesc();?>
-" required>
+            <textarea rows="4" cols="50" class="form-control" id="descricao" name="descricao" required>
+              <?php echo $_smarty_tpl->tpl_vars['projeto']->value->getDesc();?>
+
     		    </textarea>
           </div>
         </div> <!--fim form-group-->

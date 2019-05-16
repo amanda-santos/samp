@@ -6,7 +6,7 @@
 		$smarty = new Smarty;
 		$id = $_GET["id"];
 		$projetoDAO = new projetoDAO();
-		$projeto = $projetoDAO->selecionarProjetos($id);
+		$projeto = $projetoDAO->selecionarProjeto($id);
 
 		
 		$smarty->assign("projeto", $projeto);

@@ -12,10 +12,6 @@
   	<div class = "post">
       <form class="form-horizontal" method="POST" action="../controller/editarProjeto.php" enctype="multipart/form-data" data-toggle="validator">
 
-        <input type="hidden" value="{$projeto->getName()}" name="nome">
-
-        <input type="hidden" value="{$projeto->getDesc()}" name="descricao">
-
       <!--início do campo do formulário-->
         <div class="form-group required">
         <label class="control-label col-sm-20" for="nome">Nome do Projeto:</label>
@@ -29,7 +25,8 @@
         <div class="form-group required">
           <label class="control-label" for="descricao">Descrição:</label>
           <div class="col-sm-30">
-            <textarea rows="4" cols="50" class="form-control" id="descricao" name="descricao" required value="{$projeto->getDesc()}" required>
+            <textarea rows="4" cols="50" class="form-control" id="descricao" name="descricao" required>
+              {$projeto->getDesc()}
     		    </textarea>
           </div>
         </div> <!--fim form-group-->
