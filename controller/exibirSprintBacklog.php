@@ -5,7 +5,13 @@
 
 		require '../libs/Smarty.class.php';
 		$smarty = new Smarty;
+		
+		$idProjeto = $_GET["id"];
 
+		$sprintBacklogDAO = new sprintBacklogDAO();
+		$sprintBacklog = $sprintBacklogDAO->selecionarSprintBacklog($idProjeto);
+	
+		$smarty->assign("sprintBacklog", $sprintBacklog);
 		$smarty->display('../view/exibirSprintBacklog.html');
 
 	} else {
