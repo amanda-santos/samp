@@ -20,7 +20,7 @@
 				  <tr>
 					<th>Nome da Estória</th>
 					<th>Situação</th>
-					<th>Níveis de dificuldade</th>
+					<th>Nível de dificuldade</th>
 					<th>Ações</th>
 				</tr>
 			</thead>
@@ -34,21 +34,20 @@
 								<td>{$estoria->getNivelDificuldade()}</td>
 								<td>
 									<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal{$estoria->getId()}"><i class="fas fa-eye"></i></button>
-									<a href="editarEstoria.php?id={$estoria->getId()}"><button onclick="editar" type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a>
+									{if $projeto->getScrumMaster() == 1}
+										<a href="editarEstoria.php?id={$estoria->getId()}"><button onclick="editar" type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a>
 
-								{if $projeto->getScrumMaster() == 1}
+										<button onclick="apagar('{$estoria->getId()}','{$projeto->getId()}');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+										<script type="text/javascript">
+													function apagar(estoria, idProjeto) {
+														if (window.confirm('Deseja realmente excluir esta estória do Sprint Backlog?')) {
+															window.location = '../controller/excluirEstoriaSprintBacklog.php?idEstoria=' + estoria + '&idProjeto=' + idProjeto;
+														}
+													}
 
-								<button onclick="apagar('{$estoria->getId()}','{$projeto->getId()}');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-								<script type="text/javascript">
-											function apagar(estoria, idProjeto) {
-												if (window.confirm('Deseja realmente excluir esta estória do Sprint Backlog?')) {
-													window.location = '../controller/excluirEstoriaSprintBacklog.php?idEstoria=' + estoria + '&idProjeto=' + idProjeto;
-												}
-											}
-
-								</script>
+										</script>
+									{/if}
 								</td>
-								{/if}
 							</tr>
 							<!-- Inicio Modal -->
 							<div class="modal fade" id="myModal{$estoria->getId()}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

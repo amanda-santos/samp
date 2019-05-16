@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-16 04:19:51
+/* Smarty version 3.1.33, created on 2019-05-16 16:37:54
   from 'C:\xampp\htdocs\samp\view\exibirSprintBacklog.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cdcc8c743cd55_65432219',
+  'unifunc' => 'content_5cdd75c2bf1431_53571584',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e451f95e9092079be8ae64e69932a691c14b8288' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\exibirSprintBacklog.html',
-      1 => 1557973188,
+      1 => 1558017471,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cdcc8c743cd55_65432219 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cdd75c2bf1431_53571584 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -46,7 +46,7 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
 				  <tr>
 					<th>Nome da Estória</th>
 					<th>Situação</th>
-					<th>Níveis de dificuldade</th>
+					<th>Nível de dificuldade</th>
 					<th>Ações</th>
 				</tr>
 			</thead>
@@ -68,25 +68,25 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 								<td>
 									<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 "><i class="fas fa-eye"></i></button>
-									<a href="editarEstoria.php?id=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+									<?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
+										<a href="editarEstoria.php?id=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 "><button onclick="editar" type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a>
 
-								<?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
-
-								<button onclick="apagar('<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+										<button onclick="apagar('<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+','<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 ');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-								<?php echo '<script'; ?>
+										<?php echo '<script'; ?>
  type="text/javascript">
-											function apagar(estoria) {
-												if (window.confirm('Deseja realmente excluir esta estória do Sprint Backlog?')) {
-													window.location = '../controller/excluirEstoriaSprintBacklog.php?id=' + estoria;
-												}
-											}
+													function apagar(estoria, idProjeto) {
+														if (window.confirm('Deseja realmente excluir esta estória do Sprint Backlog?')) {
+															window.location = '../controller/excluirEstoriaSprintBacklog.php?idEstoria=' + estoria + '&idProjeto=' + idProjeto;
+														}
+													}
 
-								<?php echo '</script'; ?>
+										<?php echo '</script'; ?>
 >
+									<?php }?>
 								</td>
-								<?php }?>
 							</tr>
 							<!-- Inicio Modal -->
 							<div class="modal fade" id="myModal<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>

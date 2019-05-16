@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-16 16:05:59
+/* Smarty version 3.1.33, created on 2019-05-16 16:42:40
   from 'C:\xampp\htdocs\samp\view\exibirProductBacklog.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cdd6e47387970_59853336',
+  'unifunc' => 'content_5cdd76e00a00f1_09489027',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bd2ca444288fd6dfa4772294fe5aa288422b91a2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\exibirProductBacklog.html',
-      1 => 1558015507,
+      1 => 1558017757,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cdd6e47387970_59853336 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cdd76e00a00f1_09489027 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -39,7 +39,7 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
 
 	  	<div>
 	      <a href="../controller/criarEstoria.php?id=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
-" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-align-justify"></i> Cadastrar Estória</a>
+" class="d-none d-sm-inline-block btn btn-primary shadow-sm"><i class="fas fa-plus"></i> Cadastrar Estória</a>
 	    </div>
 
     <?php }?>
@@ -51,6 +51,7 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
 			  <table class="table">
 				  <thead>
 					  <tr>
+					  	<th>Código</th>
 						<th>Nome da Estória</th>
 						<th>Ações</th>
 					</tr>
@@ -63,39 +64,39 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 ?>
 								<tr>
+									<td><?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+</td>
 									<td><?php echo $_smarty_tpl->tpl_vars['estoria']->value->getNome();?>
 </td>
 									<td>
 										<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 "><i class="fas fa-eye"></i></button>
-										<button onclick="editar('<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+										<?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
+											<button onclick="editar('<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 ','<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 ')" type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button>
-										<?php echo '<script'; ?>
+											<?php echo '<script'; ?>
  type="text/javascript">
-											function editar(estoria,projeto) {												
-												window.location = '../controller/exibirEstoria.php?idEstoria=' + estoria + '&idProjeto=' + projeto;	
-											}
-										<?php echo '</script'; ?>
+												function editar(estoria,projeto) {												
+													window.location = '../controller/exibirEstoria.php?idEstoria=' + estoria + '&idProjeto=' + projeto;	
+												}
+											<?php echo '</script'; ?>
 >		
 
-									<?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
-
-									<button onclick="apagar('<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+											<button onclick="apagar('<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 ','<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 ');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-									<?php echo '<script'; ?>
+											<?php echo '<script'; ?>
  type="text/javascript">
-												function apagar(estoria,projeto) {
-													if (window.confirm('Deseja realmente apagar esta estória? Essa ação não poderá ser desfeita.')) {
-														window.location = '../controller/excluirEstoria.php?idEstoria=' + estoria + '&idProjeto=' + projeto;
-													}
-												}
-
-									<?php echo '</script'; ?>
+														function apagar(estoria,projeto) {
+															if (window.confirm('Deseja realmente apagar esta estória? Essa ação não poderá ser desfeita.')) {
+																window.location = '../controller/excluirEstoria.php?idEstoria=' + estoria + '&idProjeto=' + projeto;
+															}
+														}
+											<?php echo '</script'; ?>
 >
+										<?php }?>
 									</td>
-									<?php }?>
 								</tr>
 								<!-- Inicio Modal -->
 								<div class="modal fade" id="myModal<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
@@ -127,10 +128,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 				</tbody>
 			 </table>
 
-			 <div>
-			<a href="../controller/exibirSprintBacklog.php?id=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+			<div>
+				<a href="../controller/exibirSprintBacklog.php?id=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 " class="d-none d-sm-inline-block btn btn-primary shadow-sm"></i> Sprint Backlog</a>
-</div>
+			</div>
+
 		</div>
 </div>
 </div>

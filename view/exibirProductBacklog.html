@@ -12,7 +12,7 @@
 	{if ($projeto->getScrumMaster())}
 
 	  	<div>
-	      <a href="../controller/criarEstoria.php?id={$projeto->getId()}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-align-justify"></i> Cadastrar Estória</a>
+	      <a href="../controller/criarEstoria.php?id={$projeto->getId()}" class="d-none d-sm-inline-block btn btn-primary shadow-sm"><i class="fas fa-plus"></i> Cadastrar Estória</a>
 	    </div>
 
     {/if}
@@ -24,6 +24,7 @@
 			  <table class="table">
 				  <thead>
 					  <tr>
+					  	<th>Código</th>
 						<th>Nome da Estória</th>
 						<th>Ações</th>
 					</tr>
@@ -32,29 +33,28 @@
 					{if $productBacklog->getEstorias() != null}
 						{foreach item=estoria from=$productBacklog->getEstorias()}
 								<tr>
-								
+									<td>{$estoria->getId()}</td>
 									<td>{$estoria->getNome()}</td>
 									<td>
 										<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal{$estoria->getId()}"><i class="fas fa-eye"></i></button>
-										<button onclick="editar('{$estoria->getId()}','{$projeto->getId()}')" type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button>
-										<script type="text/javascript">
-											function editar(estoria,projeto) {												
-												window.location = '../controller/exibirEstoria.php?idEstoria=' + estoria + '&idProjeto=' + projeto;	
-											}
-										</script>		
-
-									{if $projeto->getScrumMaster() == 1}
-
-									<button onclick="apagar('{$estoria->getId()}','{$projeto->getId()}');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-									<script type="text/javascript">
-												function apagar(estoria,projeto) {
-													if (window.confirm('Deseja realmente apagar esta estória? Essa ação não poderá ser desfeita.')) {
-														window.location = '../controller/excluirEstoria.php?idEstoria=' + estoria + '&idProjeto=' + projeto;
-													}
+										{if $projeto->getScrumMaster() == 1}
+											<button onclick="editar('{$estoria->getId()}','{$projeto->getId()}')" type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button>
+											<script type="text/javascript">
+												function editar(estoria,projeto) {												
+													window.location = '../controller/exibirEstoria.php?idEstoria=' + estoria + '&idProjeto=' + projeto;	
 												}
-									</script>
+											</script>		
+
+											<button onclick="apagar('{$estoria->getId()}','{$projeto->getId()}');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+											<script type="text/javascript">
+														function apagar(estoria,projeto) {
+															if (window.confirm('Deseja realmente apagar esta estória? Essa ação não poderá ser desfeita.')) {
+																window.location = '../controller/excluirEstoria.php?idEstoria=' + estoria + '&idProjeto=' + projeto;
+															}
+														}
+											</script>
+										{/if}
 									</td>
-									{/if}
 								</tr>
 								<!-- Inicio Modal -->
 								<div class="modal fade" id="myModal{$estoria->getId()}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -79,6 +79,11 @@
 					{/if}
 				</tbody>
 			 </table>
+
+			<div>
+				<a href="../controller/exibirSprintBacklog.php?id={$projeto->getId()}" class="d-none d-sm-inline-block btn btn-primary shadow-sm"></i> Sprint Backlog</a>
+			</div>
+
 		</div>
 </div>
 </div>

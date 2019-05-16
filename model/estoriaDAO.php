@@ -20,7 +20,7 @@
 		function selecionarEstoria($id){
 			include 'conexao/conecta.php';
 			//define o comando sql para inserção
-			$SQL = "SELECT * FROM estoria AS e JOIN usuario_estoria AS ue ON e.id = ue.Estoria_id WHERE e.id = " . $id;
+			$SQL = "SELECT * FROM estoria AS e WHERE e.id = " . $id;
 			$result = $conn->query($SQL);
     		if ($result->num_rows > 0) { // Exibindo cada linha retornada com a consulta
 				while ($exibir = $result->fetch_assoc()){
@@ -121,6 +121,19 @@
 			else{ //se o comando não funcionou
 				echo "<script>alert('Erro ao excluir estória!');</script>";
 				echo "Erro: ". $sql. "<br>" . $conn->error;
+			}
+		}
+
+		function excluirEstoriaSprintBacklog($id_estoria,$projeto_id){
+			include("conexao/conecta.php");
+			$sql = "UPDATE estoria SET sprint_backlog = 0 WHERE id = ".$id_estoria.";";
+			if ($conn->query($sql) === TRUE) { //se o comando funcionou
+				echo "<script>alert('Sua estória foi excluída com sucesso.');</script>";
+				echo "<script>window.location = '../controller/exibirSprintBacklog.php?id=$projeto_id';</script>";
+			}
+			else{ //se o comando não funcionou
+				echo "<script>alert('Erro ao excluir estória!');</script>";
+				echo "Erro: ". $SQL. "<br>" . $conn->error;
 			}
 		}
 	}
