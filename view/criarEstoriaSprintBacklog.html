@@ -10,16 +10,7 @@
 <div class="row">
 
   	<div class = "post">
-      <form class="form-horizontal" method="POST" action="../controller/cadastrarEstoriaSprintBacklog.php?idProjeto={$idProjeto}" enctype="multipart/form-data" data-toggle="validator">
-
-      <!--início do campo do formulário-->
-        <div class="form-group required">
-        <label class="control-label col-sm-20" for="nome">Informe o código da estória já cadastrada no <i>Product Backlog</i>:</label>
-        <div class="col-sm-30">
-          <input type="text" class="form-control" id="id_estoria_cadastrada" name="id_estoria_cadastrada" value="" required>
-        </div> <!--fim col-sm-5-->
-        </div> <!--fim form-group-->
-      <!--fim do campo do formulário-->
+      <form class="form-horizontal" method="POST" action="../controller/cadastrarEstoriaSprintBacklog.php?idProjeto={$idProjeto}&id_estoria={$estoria}" enctype="multipart/form-data" data-toggle="validator">
 
       <div class="form-group required">
         <label class="control-label" for="nivel_dificuldade">Selecione o nível de dificuldade:</label>
