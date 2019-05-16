@@ -32,6 +32,7 @@
 					{if $productBacklog->getEstorias() != null}
 						{foreach item=estoria from=$productBacklog->getEstorias()}
 								<tr>
+								
 									<td>{$estoria->getNome()}</td>
 									<td>
 										<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal{$estoria->getId()}"><i class="fas fa-eye"></i></button>
@@ -51,7 +52,6 @@
 														window.location = '../controller/excluirEstoria.php?idEstoria=' + estoria + '&idProjeto=' + projeto;
 													}
 												}
-
 									</script>
 									</td>
 									{/if}
@@ -79,10 +79,6 @@
 					{/if}
 				</tbody>
 			 </table>
-
-			 <div>
-			<a href="../controller/exibirSprintBacklog.php?id={$projeto->getId()}" class="d-none d-sm-inline-block btn btn-primary shadow-sm"></i> Sprint Backlog</a>
-</div>
 		</div>
 </div>
 </div>
