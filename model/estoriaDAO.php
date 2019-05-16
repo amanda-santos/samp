@@ -66,5 +66,18 @@
 				echo "Erro: ". $SQL. "<br>" . $conn->error;
 			}
 		}
+
+		function excluirEstoriaSprintBacklog($estoria,$projeto_id,$id_estoria){
+		include("conexao/conecta.php");
+		$sql = "UPDATE estoria SET sprint_backlog = 0 WHERE id = '".$id_estoria."'";
+			 if ($conn->query($sql) === TRUE) { //se o comando funcionou
+				echo "<script>alert('Sua estoria foi excluída com sucesso.');</script>";
+				echo "<script>window.location = '../controller/exibirSprintBacklog.php?id=$projeto_id';</script>";
+			}
+			else{ //se o comando não funcionou
+				echo "<script>alert('Erro ao excluir estoria!');</script>";
+				echo "Erro: ". $SQL. "<br>" . $conn->error;
+			}
+		}
 	}
 ?>

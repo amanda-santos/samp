@@ -19,6 +19,8 @@
 			  <thead>
 				  <tr>
 					<th>Nome da Estória</th>
+					<th>Situação</th>
+					<th>Níveis de dificuldade</th>
 					<th>Ações</th>
 				</tr>
 			</thead>
@@ -26,7 +28,10 @@
 				{if $sprintBacklog->getEstorias() != null}
 					{foreach item=estoria from=$sprintBacklog->getEstorias()}
 							<tr>
+
 								<td>{$estoria->getNome()}</td>
+								<td>{$estoria->getSituacao()}</td>
+								<td>{$estoria->getNivelDificuldade()}</td>
 								<td>
 									<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal{$estoria->getId()}"><i class="fas fa-eye"></i></button>
 									<a href="editarEstoria.php?id={$estoria->getId()}"><button onclick="editar" type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a>

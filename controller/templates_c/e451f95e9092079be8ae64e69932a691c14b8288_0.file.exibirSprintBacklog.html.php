@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-16 04:04:46
+/* Smarty version 3.1.33, created on 2019-05-16 04:19:51
   from 'C:\xampp\htdocs\samp\view\exibirSprintBacklog.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cdcc53e4ca2b5_15317153',
+  'unifunc' => 'content_5cdcc8c743cd55_65432219',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e451f95e9092079be8ae64e69932a691c14b8288' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\exibirSprintBacklog.html',
-      1 => 1557972049,
+      1 => 1557973188,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cdcc53e4ca2b5_15317153 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cdcc8c743cd55_65432219 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -45,6 +45,8 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
 			  <thead>
 				  <tr>
 					<th>Nome da Estória</th>
+					<th>Situação</th>
+					<th>Níveis de dificuldade</th>
 					<th>Ações</th>
 				</tr>
 			</thead>
@@ -56,7 +58,12 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 ?>
 							<tr>
+
 								<td><?php echo $_smarty_tpl->tpl_vars['estoria']->value->getNome();?>
+</td>
+								<td><?php echo $_smarty_tpl->tpl_vars['estoria']->value->getSituacao();?>
+</td>
+								<td><?php echo $_smarty_tpl->tpl_vars['estoria']->value->getNivelDificuldade();?>
 </td>
 								<td>
 									<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
