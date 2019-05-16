@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-16 19:20:05
+/* Smarty version 3.1.33, created on 2019-05-16 19:42:06
   from 'C:\xampp\htdocs\samp\view\exibirSprintBacklog.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cdd9bc5403ca0_85956245',
+  'unifunc' => 'content_5cdda0ee447d04_81972490',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e451f95e9092079be8ae64e69932a691c14b8288' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\exibirSprintBacklog.html',
-      1 => 1558027202,
+      1 => 1558027962,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cdd9bc5403ca0_85956245 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cdda0ee447d04_81972490 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -47,6 +47,7 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
 					<th>Nome da Estória</th>
 					<th>Situação</th>
 					<th>Nível de dificuldade</th>
+					<th>Duração (Em horas)</th>
 					<th>Ações</th>
 				</tr>
 			</thead>
@@ -64,6 +65,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 								<td><?php echo $_smarty_tpl->tpl_vars['estoria']->value->getSituacao();?>
 </td>
 								<td><?php echo $_smarty_tpl->tpl_vars['estoria']->value->getNivelDificuldade();?>
+</td>
+								<td><?php echo $_smarty_tpl->tpl_vars['estoria']->value->getDuracao();?>
 </td>
 								<td>
 									<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
@@ -116,7 +119,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 				<?php }?>
 			</tbody>
 		 </table>
-		</div>
 		</div>
 </div>
 </div>
