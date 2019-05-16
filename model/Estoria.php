@@ -1,4 +1,4 @@
-<?php
+ <?php
 	require_once '../model/ProductBacklog.php';
 	class Estoria{
 		private $id, $nome, $descricao, $duracao, $nivel_dificuldade, $situacao;
