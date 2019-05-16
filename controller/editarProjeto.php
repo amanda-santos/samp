@@ -5,7 +5,7 @@
   //Criando e Instanciando o objeto
   if (isset($_POST["editar_projeto"])){
     $projetoDAO = new projetoDAO();
-    $projetoDAO->editarProjeto($_POST['nome'], $_POST['descricao'], $_POST['projeto']);
+    $projetoDAO->editarProjeto($_POST['nome'], $_POST['descricao'], $_GET['id']);
   }
 
 ?> 

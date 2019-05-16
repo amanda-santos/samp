@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-16 05:31:04
+/* Smarty version 3.1.33, created on 2019-05-16 14:53:46
   from 'C:\xampp\htdocs\samp\view\editarProjeto.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cdcd978ed7b25_55645584',
+  'unifunc' => 'content_5cdd5d5a6ca896_14081763',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fe3bfbe4372e26d19580a07e429a8d7e91afb38b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\editarProjeto.html',
-      1 => 1557977411,
+      1 => 1558011196,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cdcd978ed7b25_55645584 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cdd5d5a6ca896_14081763 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -37,7 +37,8 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
 
   	<div class = "post"><!-- inicio da div post -->
       
-      <form class="form-horizontal" method="POST" action="../controller/editarProjeto.php" enctype="multipart/form-data" data-toggle="validator">
+      <form class="form-horizontal" method="POST" action="../controller/editarProjeto.php?id=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+" enctype="multipart/form-data" data-toggle="validator">
       <!--início do campo do formulário-->
         <div class="form-group required">
         <label class="control-label col-sm-20" for="nome">Nome do Projeto:</label>

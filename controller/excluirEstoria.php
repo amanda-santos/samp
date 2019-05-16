@@ -4,7 +4,7 @@
 
 	if (isset($_SESSION["usuario"])) { //SE EXISTIR AUTENTICAÇÃO
 		$estoriaDAO = new estoriaDAO();
-		$estoriaDAO->excluirEstoria($_GET['estoria']);
+		$estoriaDAO->excluirEstoria($_GET['estoria'],$_GET['projeto_id']);
 	} else {
 		echo "<script>window.location = '../view/index.html';</script>";
 	}
