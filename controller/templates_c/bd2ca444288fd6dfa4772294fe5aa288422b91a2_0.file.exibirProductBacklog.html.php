@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-16 16:42:40
+/* Smarty version 3.1.33, created on 2019-05-16 19:18:09
   from 'C:\xampp\htdocs\samp\view\exibirProductBacklog.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cdd76e00a00f1_09489027',
+  'unifunc' => 'content_5cdd9b51d21634_93464052',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bd2ca444288fd6dfa4772294fe5aa288422b91a2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\exibirProductBacklog.html',
-      1 => 1558017757,
+      1 => 1558027078,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cdd76e00a00f1_09489027 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cdd9b51d21634_93464052 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -96,6 +96,11 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 											<?php echo '</script'; ?>
 >
 										<?php }?>
+										<?php if (($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1)) {?>
+			    								<a href="../controller/criarEstoriaSprintBacklog.php?id=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+&id_estoria=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+" title="Cadastrar Estória no Sprint Backlog"class="d-none d-sm-inline-block btn btn-primary shadow-sm"><i class="fas fa-plus"></i></i></a>
+		    							<?php }?>
 									</td>
 								</tr>
 								<!-- Inicio Modal -->
@@ -133,6 +138,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 " class="d-none d-sm-inline-block btn btn-primary shadow-sm"></i> Sprint Backlog</a>
 			</div>
 
+		</div>
+		</div>
 		</div>
 </div>
 </div>

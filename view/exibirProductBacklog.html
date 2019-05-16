@@ -54,6 +54,9 @@
 														}
 											</script>
 										{/if}
+										{if ($projeto->getScrumMaster() == 1)}
+			    								<a href="../controller/criarEstoriaSprintBacklog.php?id={$projeto->getId()}&id_estoria={$estoria->getId()}" title="Cadastrar Estória no Sprint Backlog"class="d-none d-sm-inline-block btn btn-primary shadow-sm"><i class="fas fa-plus"></i></i></a>
+		    							{/if}
 									</td>
 								</tr>
 								<!-- Inicio Modal -->
@@ -84,6 +87,8 @@
 				<a href="../controller/exibirSprintBacklog.php?id={$projeto->getId()}" class="d-none d-sm-inline-block btn btn-primary shadow-sm"></i> Sprint Backlog</a>
 			</div>
 
+		</div>
+		</div>
 		</div>
 </div>
 </div>

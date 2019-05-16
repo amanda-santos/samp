@@ -70,7 +70,7 @@
 				echo "<script>window.location = '../controller/exibirSprintBacklog.php?id=$projeto_id';</script>";
 			}else{
 				//mensagem exibida caso ocorra algum erro na execução do comando sql
-				//echo "<script>alert('". $SQL. "<br>" . $conn->error.");</script>";
+				echo "<script>alert('". $SQL. "<br>" . $conn->error.");</script>";
 				echo "Erro: ". $SQL. "<br>" . $conn->error;
 			}
 			$conn->close();
@@ -81,15 +81,15 @@
 			$result = $conn->query($sql);
 			if ($result->num_rows > 0) { // se achar algum registro
 				echo "<script>alert('Esse usuário já é responsável por essa estória!.');</script>";
-				echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
+				//echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
 			}else{
 				$SQL = "INSERT INTO usuario_estoria VALUES ('".$id_usuario."','".$id_estoria."')";
 				if ($conn->query($SQL) === TRUE){
 					//verifica se o comando foi executado com sucesso
-					echo "<script>window.location = '../controller/exibirSprintBacklog.php?id=$projeto_id';</script>";
+					//echo "<script>window.location = '../controller/exibirSprintBacklog.php?id=$projeto_id';</script>";
 				}else{
 					//mensagem exibida caso ocorra algum erro na execução do comando sql
-					//echo "<script>alert('Erro ao cadastrar estória no Sprint Backlog!');</script>";
+					echo "<script>alert('Erro ao cadastrar estória no Sprint Backlog!');</script>";
 					echo "Erro: ". $SQL. "<br>" . $conn->error;
 				}
 			}

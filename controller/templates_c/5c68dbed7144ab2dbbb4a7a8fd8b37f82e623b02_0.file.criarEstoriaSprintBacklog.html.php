@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-16 16:43:23
+/* Smarty version 3.1.33, created on 2019-05-16 19:13:41
   from 'C:\xampp\htdocs\samp\view\criarEstoriaSprintBacklog.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cdd770b2825a1_63532098',
+  'unifunc' => 'content_5cdd9a45ce38f5_75944966',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5c68dbed7144ab2dbbb4a7a8fd8b37f82e623b02' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\criarEstoriaSprintBacklog.html',
-      1 => 1558017799,
+      1 => 1558026820,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cdd770b2825a1_63532098 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cdd9a45ce38f5_75944966 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -34,19 +34,11 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
 <!-- Content Row -->
 <div class="col-md-8"> 
 <div class="row">
-
+  
   	<div class = "post">
       <form class="form-horizontal" method="POST" action="../controller/cadastrarEstoriaSprintBacklog.php?idProjeto=<?php echo $_smarty_tpl->tpl_vars['idProjeto']->value;?>
+&id_estoria=<?php echo $_smarty_tpl->tpl_vars['estoria']->value;?>
 " enctype="multipart/form-data" data-toggle="validator">
-
-      <!--início do campo do formulário-->
-        <div class="form-group required">
-        <label class="control-label col-sm-20" for="nome">Informe o código da estória já cadastrada no <i>Product Backlog</i>:</label>
-        <div class="col-sm-30">
-          <input type="text" class="form-control" id="id_estoria_cadastrada" name="id_estoria_cadastrada" value="" required>
-        </div> <!--fim col-sm-5-->
-        </div> <!--fim form-group-->
-      <!--fim do campo do formulário-->
 
       <div class="form-group required">
         <label class="control-label" for="nivel_dificuldade">Selecione o nível de dificuldade:</label>
