@@ -35,20 +35,20 @@
 									<td>{$estoria->getNome()}</td>
 									<td>
 										<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal{$estoria->getId()}"><i class="fas fa-eye"></i></button>
-										<button onclick="editar" type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button>
+										<button onclick="editar('{$estoria->getId()}','{$projeto->getId()}')" type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button>
 										<script type="text/javascript">
-											function editar(projeto) {												
-												window.location = '../controller/.php?projeto=' + estoria;											
+											function editar(estoria,projeto) {												
+												window.location = '../controller/exibirEstoria.php?idEstoria=' + estoria + '&idProjeto=' + projeto;	
 											}
 										</script>		
 
 									{if $projeto->getScrumMaster() == 1}
 
-									<button onclick="apagar('{$estoria->getId()}');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+									<button onclick="apagar('{$estoria->getId()}','{$projeto->getId()}');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
 									<script type="text/javascript">
-												function apagar(estoria) {
-													if (window.confirm('Deseja realmente apagar esta estoria? Essa ação não poderá ser desfeita.')) {
-														window.location = '../controller/excluirEstoria.php';
+												function apagar(estoria,projeto) {
+													if (window.confirm('Deseja realmente apagar esta estória? Essa ação não poderá ser desfeita.')) {
+														window.location = '../controller/excluirEstoria.php?idEstoria=' + estoria + '&idProjeto=' + projeto;
 													}
 												}
 

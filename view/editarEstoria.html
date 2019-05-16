@@ -12,11 +12,7 @@
 	<!-- início do post -->
 	
   	<div class = "post">
-      <form class="form-horizontal" method="POST" action="../controller/editarEstoria.php" enctype="multipart/form-data" data-toggle="validator">
-	  
-		<input type="hidden" value="{$estoria->getNome()}" name="nome">
-
-        <input type="hidden" value="{$estoria->getDescricao()}" name="descricao">
+      <form class="form-horizontal" method="POST" action="../controller/editarEstoria.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}" enctype="multipart/form-data" data-toggle="validator">
 		
       <!--início do campo do formulário-->
         <div class="form-group required">
@@ -31,7 +27,8 @@
         <div class="form-group required">
           <label class="control-label" for="descricao">Descrição:</label>
           <div class="col-sm-30">
-            <textarea rows="4" cols="50" class="form-control" id="descricao" name="descricao" required value="{$estoria->getDesc()}" required>
+            <textarea rows="4" cols="50" class="form-control" id="descricao" name="descricao" required>
+              {$estoria->getDesc()}
     		    </textarea>
           </div>
         </div> <!--fim form-group-->

@@ -1,4 +1,5 @@
 <?php
+	require_once 'Estoria.php';
 	class estoriaDAO{
 		public static function persistirEstoria($nome, $descricao, $projeto_id){
 			include 'conexao/conecta.php';
@@ -95,18 +96,14 @@
 			$conn->close();
 		}
 		
-		public function editarEstoria($nome,$descricao){
+		public function editarEstoria($nome,$descricao,$estoria_id,$projeto_id){
 			include 'conexao/conecta.php';
 		    
-		    $sql = "UPDATE estoria SET nome= '".$nome."', descricao = '".$descricao."' WHERE id = '".$id."'";
+		    $sql = "UPDATE estoria SET nome= '".$nome."', descricao = '".$descricao."' WHERE id = '".$estoria_id."'";
 		    //echo "<script>alert(".$sql.");</script>";
 		    if ($conn->query($sql) === TRUE) {
-		      
-              $_SESSION['nome'] = $nome;
-			  $_SESSION['descricao'] = $descricao;
-			  
-		      echo "<script>alert('Sua estoria foi atualizada com sucesso!');</script>";
-		      echo "<script>window.location = '../controller/exibirProductBacklog.php';</script>";
+		      echo "<script>alert('A estória foi atualizada com sucesso!');</script>";
+		      echo "<script>window.location = '../controller/exibirProductBacklog.php?id=".$projeto_id."';</script>";
 		    } else {
 		      echo "Erro: " . $sql . "<br>" . $conn->error;
 		    }
@@ -116,14 +113,14 @@
 		
 		function excluirEstoria($estoria,$projeto_id){
 			include("conexao/conecta.php");
-			$sql = " DELETE FROM estoria WHERE id = '".$estoria."';";
+			$sql = " DELETE FROM estoria WHERE id = ".$estoria.";";
  			if ($conn->query($sql) === TRUE) { //se o comando funcionou
-				echo "<script>alert('Sua estoria foi excluída com sucesso.');</script>";
+				echo "<script>alert('A estória foi excluída com sucesso.');</script>";
 				echo "<script>window.location = '../controller/exibirProductBacklog.php?id=$projeto_id';</script>";
 			}
 			else{ //se o comando não funcionou
-				echo "<script>alert('Erro ao excluir estoria!');</script>";
-				echo "Erro: ". $SQL. "<br>" . $conn->error;
+				echo "<script>alert('Erro ao excluir estória!');</script>";
+				echo "Erro: ". $sql. "<br>" . $conn->error;
 			}
 		}
 	}
