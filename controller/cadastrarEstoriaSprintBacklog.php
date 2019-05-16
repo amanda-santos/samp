@@ -10,8 +10,7 @@
     $estoriaDAO = new estoriaDAO();
     $nivel_dificuldade = $_POST['nivel_dificuldade'];
 
-    $estoriaDAO->persistirEstoriaSprintBacklog($idProjeto, $idEstoria, $nivel_dificuldade, $_POST['duracao']);
-    $estoriaDAO->persistirEstoriaUsuario($idProjeto, $_POST['id_responsavel'], $idEstoria);
+    $estoriaDAO->persistirEstoriaSprintBacklog($_POST['id_responsavel'], $idProjeto, $idEstoria, $nivel_dificuldade, $_POST['duracao']);
     exit;
   }
 ?>
