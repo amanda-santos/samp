@@ -60,7 +60,7 @@
 			$conn->close();
 		}
 		
-		public static function persistirEstoriaSprintBacklog(($id_usuario, $projeto_id, $id_estoria, $nivel_dificuldade, $duracao){
+		public static function persistirEstoriaSprintBacklog($id_usuario, $projeto_id, $id_estoria, $nivel_dificuldade, $duracao){
 			include 'conexao/conecta.php';
 			$sql = "SELECT * FROM usuario_estoria WHERE usuario_usuario = '".$id_usuario."' and estoria_id = '".$id_estoria."';";
 			$result = $conn->query($sql);
