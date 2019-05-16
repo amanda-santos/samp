@@ -1,6 +1,5 @@
 <?php
 	class estoriaDAO{
-
 		public static function persistirEstoria($nome, $descricao, $projeto_id){
 			include 'conexao/conecta.php';
 			//define o comando sql para inserção
@@ -16,7 +15,50 @@
 			}
 			$conn->close();
 		}
-
+		
+		function selecionarEstoria($id){
+			include 'conexao/conecta.php';
+			//define o comando sql para inserção
+			$SQL = "SELECT * FROM estoria AS e JOIN usuario_estoria AS ue ON e.id = ue.Estoria_id WHERE e.id = " . $id;
+			$result = $conn->query($SQL);
+    		if ($result->num_rows > 0) { // Exibindo cada linha retornada com a consulta
+				while ($exibir = $result->fetch_assoc()){
+					$estoria = new Estoria();
+					$estoria->setNome($exibir["nome"]);
+					$estoria->setDesc($exibir["descricao"]);
+					$estoria->setId($exibir["id"]);
+					return $estoria;
+				}
+			}else{
+				//mensagem exibida caso ocorra algum erro na execução do comando sql
+				echo "<script>alert('Erro ao selecionar estoria!');</script>";
+				echo "Erro: ". $SQL. "<br>" . $conn->error;
+			}
+			$conn->close();
+		}
+		
+		function selecionarEstorias(){
+			include 'conexao/conecta.php';
+			//define o comando sql para inserção
+			$SQL = "SELECT * FROM estoria AS e JOIN usuario_estoria AS ue ON e.id = ue.Estoria_id WHERE e.id = " . $id;
+			$result = $conn->query($SQL);
+    		if ($result->num_rows > 0) { // Exibindo cada linha retornada com a consulta
+				$estorias = new ArrayObject();
+				//verifica se o comando foi executado com sucesso
+				while ($exibir = $result->fetch_assoc()){
+					$estoria = new Estoria();
+					$estoria->setNome($exibir["nome"]);
+					$estoria->setDesc($exibir["descricao"]);
+					$estorias -> append($estoria);
+				}
+				return $estorias;
+			}else{
+				$estorias = new ArrayObject();
+				return $estorias;
+			}
+			$conn->close();
+		}
+		
 		public static function persistirEstoriaSprintBacklog($projeto_id, $id_estoria, $nivel_dificuldade, $duracao){
 			include 'conexao/conecta.php';
 			//define o comando sql para inserção
@@ -32,7 +74,6 @@
 			}
 			$conn->close();
 		}
-
 		public static function persistirEstoriaUsuario($projeto_id, $id_usuario, $id_estoria){
 			include 'conexao/conecta.php';
 			$sql = "SELECT * FROM usuario_estoria WHERE usuario_usuario = '".$id_usuario."' and estoria_id = '".$id_estoria."';";
@@ -53,32 +94,37 @@
 			}
 			$conn->close();
 		}
-
+		
+		public function editarEstoria($nome,$descricao){
+			include 'conexao/conecta.php';
+		    
+		    $sql = "UPDATE estoria SET nome= '".$nome."', descricao = '".$descricao."' WHERE id = '".$id."'";
+		    //echo "<script>alert(".$sql.");</script>";
+		    if ($conn->query($sql) === TRUE) {
+		      
+              $_SESSION['nome'] = $nome;
+			  $_SESSION['descricao'] = $descricao;
+			  
+		      echo "<script>alert('Sua estoria foi atualizada com sucesso!');</script>";
+		      echo "<script>window.location = '../controller/exibirProductBacklog.php';</script>";
+		    } else {
+		      echo "Erro: " . $sql . "<br>" . $conn->error;
+		    }
+		    $conn->close();
+		  
+		}
+		
 		function excluirEstoria($estoria,$projeto_id){
 			include("conexao/conecta.php");
 			$sql = " DELETE FROM estoria WHERE id = '".$estoria."';";
  			if ($conn->query($sql) === TRUE) { //se o comando funcionou
-				echo "<script>alert('Sua estória foi excluída com sucesso.');</script>";
+				echo "<script>alert('Sua estoria foi excluída com sucesso.');</script>";
 				echo "<script>window.location = '../controller/exibirProductBacklog.php?id=$projeto_id';</script>";
 			}
 			else{ //se o comando não funcionou
-				echo "<script>alert('Erro ao excluir estória!');</script>";
-				echo "Erro: ". $SQL. "<br>" . $conn->error;
-			}
-		}
-
-		function excluirEstoriaSprintBacklog($id_estoria,$projeto_id){
-		include("conexao/conecta.php");
-		$sql = "UPDATE estoria SET sprint_backlog = 0 WHERE id = ".$id_estoria.";";
-			 if ($conn->query($sql) === TRUE) { //se o comando funcionou
-				echo "<script>alert('Sua estória foi excluída com sucesso.');</script>";
-				echo "<script>window.location = '../controller/exibirSprintBacklog.php?id=$projeto_id';</script>";
-			}
-			else{ //se o comando não funcionou
-				echo "<script>alert('Erro ao excluir estória!');</script>";
+				echo "<script>alert('Erro ao excluir estoria!');</script>";
 				echo "Erro: ". $SQL. "<br>" . $conn->error;
 			}
 		}
 	}
 ?>
-
