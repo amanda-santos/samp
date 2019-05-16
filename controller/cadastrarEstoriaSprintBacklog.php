@@ -3,7 +3,6 @@
   require_once '../model/estoriaDAO.php';
   //Criando e Instanciando o objeto
   if (isset($_POST["cadastrar_estoria"])){
-  	$id = utf8_decode (strip_tags(trim($_GET['id'])));
     $estoriaDAO = new estoriaDAO();
     $nivel_dificuldade = $_POST['nivel_dificuldade'];
 

@@ -1,9 +1,9 @@
 {include file="../view/header.html" title=foo}
 
-<div>
+<!--<div>
 	<a href="../controller/exibirProductBacklog.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"></i> Product Backlog </a>
 	<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"></i> Sprint Backlog</a>
-</div>
+</div>-->
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -14,19 +14,78 @@
 <div class="col-md-8"> 
 <div class="row">
 
-	<div>
+	<!--<div>
 	    <a href="../controller/criarEstoriaSprintBacklog.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-align-justify"></i> Cadastrar Estória</a>
 	</div>
 
-	<!--{if ($projeto->getScrumMaster())}-
+	{if ($projeto->getScrumMaster())}-
 
 	  	<div>
 	      <a href="../controller/criarEstoria.php?id={$projeto->getId()}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-align-justify"></i> Cadastrar Estória</a>
 	    </div>
 
-    <!--{/if}-->
+    {/if}-->
 
-  
+    <div class="col-md-12">
+		  <table class="table">
+			  <thead>
+				  <tr>
+					<th>Nome da Estória</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				{if $productBacklog->getEstorias() != null}
+					{foreach item=estoria from=$productBacklog->getEstorias()}
+							<tr>
+								<td>{$estoria->getNome()}</td>
+								<td>
+									<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal{$estoria->getId()}"><i class="fas fa-eye"></i></button>
+									<button onclick="editar" type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button>
+									<script type="text/javascript">
+										function editar(projeto) {												
+											window.location = '../controller/.php?projeto=' + estoria;											
+										}
+									</script>		
+
+								{if $projeto->getScrumMaster() == 1}
+
+								<button onclick="apagar('{$estoria->getId()}');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+								<script type="text/javascript">
+											function apagar(estoria) {
+												if (window.confirm('Deseja realmente apagar esta estoria? Essa ação não poderá ser desfeita.')) {
+													window.location = '../controller/excluirEstoria.php';
+												}
+											}
+
+								</script>
+								</td>
+								{/if}
+							</tr>
+							<!-- Inicio Modal -->
+							<div class="modal fade" id="myModal{$estoria->getId()}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class= "modal-header">
+										<h4 class="modal-title text-center" id="myModalLabel">{$estoria->getNome()}</h4>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span></button>
+										</div>
+										<div class="modal-body">
+											<p>{$estoria->getDesc()}</p>
+										</div>
+										<div class="modal-footer">
+											<button class="btn btn-secondary" type="button" data-dismiss="modal">Fechar</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Fim Modal -->
+					{/foreach}
+				{/if}
+			</tbody>
+		 </table>
+		</div>
 </div>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

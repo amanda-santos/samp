@@ -49,11 +49,11 @@
 
 									{if $projeto->getScrumMaster() == 1}
 
-									<button onclick="apagar" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+									<button onclick="apagar('{$estoria->getId()}');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
 									<script type="text/javascript">
-												function apagar() {
+												function apagar(estoria) {
 													if (window.confirm('Deseja realmente apagar esta estoria? Essa ação não poderá ser desfeita.')) {
-														window.location = '../controller/.php?projeto=' + estoria;
+														window.location = '../controller/excluirEstoria.php';
 													}
 												}
 

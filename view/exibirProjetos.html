@@ -42,7 +42,7 @@
 								
 								{if $projeto->getScrumMaster() == 1}
 								
-									<button  type="button" class="btn btn-warning" href="../controller/editarProjeto.php?id={$projeto->getId()}"><i class="fas fa-pencil-alt"></i></button>
+									<a href="../controller/exibirProjeto.php?id={$projeto->getId()}"><button  type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a>
 										
 
 									<button onclick="apagar('{$projeto->getId()}');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>

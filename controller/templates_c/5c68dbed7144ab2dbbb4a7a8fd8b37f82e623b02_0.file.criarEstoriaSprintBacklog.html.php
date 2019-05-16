@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-16 01:39:03
+/* Smarty version 3.1.33, created on 2019-05-16 02:04:12
   from 'C:\xampp\htdocs\samp\view\criarEstoriaSprintBacklog.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cdca317226d11_48238278',
+  'unifunc' => 'content_5cdca8fc6c82a5_90199959',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5c68dbed7144ab2dbbb4a7a8fd8b37f82e623b02' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\criarEstoriaSprintBacklog.html',
-      1 => 1557963532,
+      1 => 1557965045,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cdca317226d11_48238278 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cdca8fc6c82a5_90199959 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -36,8 +36,7 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
 <div class="row">
 
   	<div class = "post">
-      <form class="form-horizontal" method="POST" action="../controller/cadastrarEstoriaSprintBacklog.php?id=<?php echo $_smarty_tpl->tpl_vars['idProjeto']->value;?>
-" enctype="multipart/form-data" data-toggle="validator">
+      <form class="form-horizontal" method="POST" action="../controller/cadastrarEstoriaSprintBacklog.php" enctype="multipart/form-data" data-toggle="validator">
 
       <!--início do campo do formulário-->
         <div class="form-group required">

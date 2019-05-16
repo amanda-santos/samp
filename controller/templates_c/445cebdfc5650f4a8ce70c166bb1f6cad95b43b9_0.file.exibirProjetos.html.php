@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-16 01:16:54
+/* Smarty version 3.1.33, created on 2019-05-16 02:19:20
   from 'C:\xampp\htdocs\samp\view\exibirProjetos.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cdc9de63b95a8_32783675',
+  'unifunc' => 'content_5cdcac889ebfd2_41020133',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '445cebdfc5650f4a8ce70c166bb1f6cad95b43b9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\exibirProjetos.html',
-      1 => 1557961769,
+      1 => 1557965930,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cdc9de63b95a8_32783675 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cdcac889ebfd2_41020133 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -76,8 +76,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['projeto']->value) {
 								
 								<?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
 								
-									<button  type="button" class="btn btn-warning" href="../controller/editarProjeto.php?id=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
-"><i class="fas fa-pencil-alt"></i></button>
+									<a href="../controller/exibirProjeto.php?id=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+"><button  type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a>
 										
 
 									<button onclick="apagar('<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
