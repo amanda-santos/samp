@@ -38,11 +38,11 @@
 
 								{if $projeto->getScrumMaster() == 1}
 
-								<button onclick="apagar('{$estoria->getId()}');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+								<button onclick="apagar('{$estoria->getId()}','{$projeto->getId()}');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
 								<script type="text/javascript">
-											function apagar(estoria) {
+											function apagar(estoria, idProjeto) {
 												if (window.confirm('Deseja realmente excluir esta estória do Sprint Backlog?')) {
-													window.location = '../controller/excluirEstoriaSprintBacklog.php?id=' + estoria;
+													window.location = '../controller/excluirEstoriaSprintBacklog.php?idEstoria=' + estoria + '&idProjeto=' + idProjeto;
 												}
 											}
 
