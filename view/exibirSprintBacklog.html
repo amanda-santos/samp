@@ -21,6 +21,7 @@
 					<th>Nome da Estória</th>
 					<th>Situação</th>
 					<th>Nível de dificuldade</th>
+					<th>Duração (Em horas)</th>
 					<th>Ações</th>
 				</tr>
 			</thead>
@@ -32,6 +33,7 @@
 								<td>{$estoria->getNome()}</td>
 								<td>{$estoria->getSituacao()}</td>
 								<td>{$estoria->getNivelDificuldade()}</td>
+								<td>{$estoria->getDuracao()}</td>
 								<td>
 									<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal{$estoria->getId()}"><i class="fas fa-eye"></i></button>
 									{if $projeto->getScrumMaster() == 1}
