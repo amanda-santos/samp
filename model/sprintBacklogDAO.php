@@ -16,6 +16,7 @@
 					$estoria = new Estoria();
 					$estoria->setId($exibir["id"]);
 					$estoria->setNome($exibir["nome"]);
+					$estoria->setDesc($exibir["descricao"]);
 					$estoria->setDuracao($exibir["duracao"]);
 					$estoria->setNivelDificuldade($exibir["nivel_dificuldade"]);
 					$estoria->setSituacao($exibir["situacao"]);

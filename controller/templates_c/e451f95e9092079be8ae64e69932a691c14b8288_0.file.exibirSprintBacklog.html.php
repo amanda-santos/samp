@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-16 02:47:42
+/* Smarty version 3.1.33, created on 2019-05-16 03:26:31
   from 'C:\xampp\htdocs\samp\view\exibirSprintBacklog.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cdcb32e82f111_72148974',
+  'unifunc' => 'content_5cdcbc473ec059_03653196',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e451f95e9092079be8ae64e69932a691c14b8288' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\exibirSprintBacklog.html',
-      1 => 1557967651,
+      1 => 1557969966,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cdcb32e82f111_72148974 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cdcbc473ec059_03653196 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -62,9 +62,9 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
 				</tr>
 			</thead>
 			<tbody>
-				<?php if ($_smarty_tpl->tpl_vars['productBacklog']->value->getEstorias() != null) {?>
+				<?php if ($_smarty_tpl->tpl_vars['sprintBacklog']->value->getEstorias() != null) {?>
 					<?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['productBacklog']->value->getEstorias(), 'estoria');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['sprintBacklog']->value->getEstorias(), 'estoria');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 ?>
@@ -74,14 +74,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 								<td>
 									<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 "><i class="fas fa-eye"></i></button>
-									<button onclick="editar" type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button>
-									<?php echo '<script'; ?>
- type="text/javascript">
-										function editar(projeto) {												
-											window.location = '../controller/.php?projeto=' + estoria;											
-										}
-									<?php echo '</script'; ?>
->		
+									<a href="editarEstoria.php?id=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+"><button onclick="editar" type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a>
 
 								<?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
 
@@ -90,8 +84,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 								<?php echo '<script'; ?>
  type="text/javascript">
 											function apagar(estoria) {
-												if (window.confirm('Deseja realmente apagar esta estoria? Essa ação não poderá ser desfeita.')) {
-													window.location = '../controller/excluirEstoria.php';
+												if (window.confirm('Deseja realmente excluir esta estória do Sprint Backlog?')) {
+													window.location = '../controller/excluirEstoriaSprintBacklog.php?id=' + estoria;
 												}
 											}
 
