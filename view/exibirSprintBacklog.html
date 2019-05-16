@@ -14,18 +14,6 @@
 <div class="col-md-8"> 
 <div class="row">
 
-	<!--<div>
-	    <a href="../controller/criarEstoriaSprintBacklog.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-align-justify"></i> Cadastrar Estória</a>
-	</div>
-
-	{if ($projeto->getScrumMaster())}-
-
-	  	<div>
-	      <a href="../controller/criarEstoria.php?id={$projeto->getId()}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-align-justify"></i> Cadastrar Estória</a>
-	    </div>
-
-    {/if}-->
-
     <div class="col-md-12">
 		  <table class="table">
 			  <thead>
@@ -80,6 +68,13 @@
 				{/if}
 			</tbody>
 		 </table>
+
+		{if ($projeto->getScrumMaster() == 1)}
+		  	<div>
+		    	<a href="../controller/criarEstoriaSprintBacklog.php?id={$projeto->getId()}" class="d-none d-sm-inline-block btn btn-primary shadow-sm"><i class="fas fa-plus"></i> Cadastrar nova estória no <i>Sprint Backlog</i></a>
+			</div>
+	    {/if}
+
 		</div>
 </div>
 </div>
