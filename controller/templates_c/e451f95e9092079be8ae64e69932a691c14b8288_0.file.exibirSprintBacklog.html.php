@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-16 19:51:49
+/* Smarty version 3.1.33, created on 2019-05-22 18:32:49
   from 'C:\xampp\htdocs\samp\view\exibirSprintBacklog.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cdda3359b5e93_89527582',
+  'unifunc' => 'content_5ce579b10839d1_44614627',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e451f95e9092079be8ae64e69932a691c14b8288' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\exibirSprintBacklog.html',
-      1 => 1558029107,
+      1 => 1558542763,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cdda3359b5e93_89527582 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ce579b10839d1_44614627 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -59,7 +59,6 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 ?>
 							<tr>
-
 								<td><?php echo $_smarty_tpl->tpl_vars['estoria']->value->getNome();?>
 </td>
 								<td><?php echo $_smarty_tpl->tpl_vars['estoria']->value->getSituacao();?>
@@ -74,7 +73,6 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 									<?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
 										<a href="editarEstoria.php?id=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 "><button onclick="editar" type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a>
-
 										<button onclick="apagar('<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 ','<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 ');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
@@ -85,10 +83,15 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 															window.location = '../controller/excluirEstoriaSprintBacklog.php?idEstoria=' + estoria + '&idProjeto=' + idProjeto;
 														}
 													}
-
 										<?php echo '</script'; ?>
 >
+										<a href="../controller/visualizarResponsaveis.php?id=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+"title="Visualizar Responsáveis" data-toggle="modal" data-target="#myModal<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+"class="d-none d-sm-inline-block btn btn-primary shadow-sm"><i class="fas fa-user-friends"></i></i></a>
 									<?php }?>
+									<!--<?php if ($_smarty_tpl->tpl_vars['responsaveis']->value) {?>
+									<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#ModalCadastrarSubtarefa"><i class="fas fa-tasks"></i></button>
+									<?php }?>-->
 								</td>
 							</tr>
 							<!-- Inicio Modal -->
@@ -112,6 +115,30 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 									</div>
 								</div>
 							</div>
+
+							<div class="modal fade" id="ModalCadastrarSubtarefa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class= "modal-header">
+										<h4 class="modal-title text-center" id="myModalLabel">Informe o nome da subtarefa</h4>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span></button>
+										</div>
+										<div class="modal-body">
+											<form>
+									          <div class="form-group">
+									            <input type="text" class="form-control" id="recipient-name">
+									          </div>
+									        </form>
+										</div>
+										<div class="modal-footer">
+											<button class="btn btn-secondary" type="button" data-dismiss="modal">
+											Fechar</button>
+											<button type="button" class="btn btn-primary">Cadastrar Subtarefa</button>
+										</div>
+									</div>
+								</div>
+							</div>
 							<!-- Fim Modal -->
 					<?php
 }
@@ -119,9 +146,9 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 				<?php }?>
 			</tbody>
-		 </table>
+		 	</table>
 		</div>
-</div>
+	</div>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <?php echo '<script'; ?>
@@ -130,6 +157,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 </div>
 </div>
+
 
 <?php $_smarty_tpl->_subTemplateRender("file:../view/footer.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 }

@@ -95,7 +95,6 @@
 		
 		public function editarEstoria($nome,$descricao,$estoria_id,$projeto_id){
 			include 'conexao/conecta.php';
-		    
 		    $sql = "UPDATE estoria SET nome= '".$nome."', descricao = '".$descricao."' WHERE id = '".$estoria_id."'";
 		    //echo "<script>alert(".$sql.");</script>";
 		    if ($conn->query($sql) === TRUE) {
@@ -132,6 +131,26 @@
 				echo "<script>alert('Erro ao excluir estória!');</script>";
 				echo "Erro: ". $SQL. "<br>" . $conn->error;
 			}
+		}
+
+		function visualizarResponsaveis($id_estoria){
+			include 'conexao/conecta.php';
+		    $sql = "SELECT * FROM usuario_estoria WHERE Estoria_id = '".$id_estoria."'";
+		    $result = $conn->query($sql);
+			if ($result->num_rows > 0) { // Exibindo cada linha retornada com a consulta
+				$responsaveis = new ArrayObject();
+				//verifica se o comando foi executado com sucesso
+				while ($exibir = $result->fetch_assoc()){
+					$responsavel = new Usuario();
+					$responsavel->setNome($exibir["Usuario_usuario"]);
+					$responsaveis -> append($responsavel);
+				}
+				return $responsaveis;
+			}else{
+				$responsaveis = new ArrayObject();
+				return $responsaveis;
+			}
+		    $conn->close();
 		}
 	}
 ?>

@@ -29,7 +29,6 @@
 				{if $sprintBacklog->getEstorias() != null}
 					{foreach item=estoria from=$sprintBacklog->getEstorias()}
 							<tr>
-
 								<td>{$estoria->getNome()}</td>
 								<td>{$estoria->getSituacao()}</td>
 								<td>{$estoria->getNivelDificuldade()}</td>
@@ -38,7 +37,6 @@
 									<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal{$estoria->getId()}"><i class="fas fa-eye"></i></button>
 									{if $projeto->getScrumMaster() == 1}
 										<a href="editarEstoria.php?id={$estoria->getId()}"><button onclick="editar" type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a>
-
 										<button onclick="apagar('{$estoria->getId()}','{$projeto->getId()}');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
 										<script type="text/javascript">
 													function apagar(estoria, idProjeto) {
@@ -46,9 +44,12 @@
 															window.location = '../controller/excluirEstoriaSprintBacklog.php?idEstoria=' + estoria + '&idProjeto=' + idProjeto;
 														}
 													}
-
 										</script>
+										<a href="exibirSprintBacklog.php?idEstoria={$estoria->getId()}&id={projeto->getId}" title="Visualizar Responsáveis" data-toggle="modal" data-target="#visualizarResponsaveis{$responsaveis}"class="d-none d-sm-inline-block btn btn-primary shadow-sm"><i class="fas fa-user-friends"></i></i></a>
 									{/if}
+									<!--{if $responsaveis}
+									<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#ModalCadastrarSubtarefa"><i class="fas fa-tasks"></i></button>
+									{/if}-->
 								</td>
 							</tr>
 							<!-- Inicio Modal -->
@@ -69,18 +70,61 @@
 									</div>
 								</div>
 							</div>
+
+							<div class="modal fade" id="ModalCadastrarSubtarefa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class= "modal-header">
+										<h4 class="modal-title text-center" id="myModalLabel">Informe o nome da subtarefa</h4>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span></button>
+										</div>
+										<div class="modal-body">
+											<form>
+									          <div class="form-group">
+									            <input type="text" class="form-control" id="recipient-name">
+									          </div>
+									        </form>
+										</div>
+										<div class="modal-footer">
+											<button class="btn btn-secondary" type="button" data-dismiss="modal">
+											Fechar</button>
+											<button type="button" class="btn btn-primary">Cadastrar Subtarefa</button>
+										</div>
+									</div>
+								</div>
+							</div>
 							<!-- Fim Modal -->
+
+							<div class="modal fade" id="visualizarResponsaveis{$responsaveis}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class= "modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span></button>
+										</div>
+										<div class="modal-body">
+											{foreach item=responsavel from=$responsaveis->getNome()}
+											<p>{$responsavel}</p>
+										</div>
+										<div class="modal-footer">
+											<button class="btn btn-secondary" type="button" data-dismiss="modal">Fechar</button>
+										</div>
+									</div>
+								</div>
+							</div>
 					{/foreach}
 				{/if}
 			</tbody>
-		 </table>
+		 	</table>
 		</div>
-</div>
+	</div>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 </div>
 </div>
+
 
 {include file="../view/footer.html" title=foo}
