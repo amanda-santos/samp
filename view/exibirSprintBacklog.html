@@ -16,43 +16,59 @@
 
     <div class="col-md-12">
 		  <table class="table col-md-15">
-			  <thead>
-				  <tr>
-					<th>Nome da Estória</th>
-					<th>Situação</th>
-					<th>Nível de dificuldade</th>
-					<th>Duração (Em horas)</th>
-					<th>Ações</th>
-				</tr>
-			</thead>
-			<tbody>
-				{if $sprintBacklog->getEstorias() != null}
-					{foreach item=estoria from=$sprintBacklog->getEstorias()}
+			  	<thead>
+				  	<tr>
+						<th>Nome da Estória</th>
+						<th>Situação</th>
+						<th>Nível de dificuldade</th>
+						<th>Duração (Em horas)</th>
+						<th>Responsáveis</th>
+						<th>Ações</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					{if $sprintBacklog->getEstorias() != null}
+						{foreach item=estoria from=$sprintBacklog->getEstorias()}
 							<tr>
 								<td>{$estoria->getNome()}</td>
 								<td>{$estoria->getSituacao()}</td>
 								<td>{$estoria->getNivelDificuldade()}</td>
 								<td>{$estoria->getDuracao()}</td>
 								<td>
+									{foreach item=responsavel from=$estoria->getResponsaveis()}
+										{$responsavel}
+									{/foreach}
+								</td>
+								<td>
 									<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal{$estoria->getId()}"><i class="fas fa-eye"></i></button>
+
+									<!--<i class="fas fa-user-friends"></i></button>-->
+
+									<!--{if $estoria->getResponsaveis() != null}
+										{foreach item=responsavel from=$estoria->getResponsaveis()}
+											{if $responsavel == $usuario->getNome()}
+												<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#ModalCadastrarSubtarefa"><i class="fas fa-tasks"></i></button>
+												{break}
+											{/if}
+										{/foreach}
+									{/if}-->
+
 									{if $projeto->getScrumMaster() == 1}
 										<a href="editarEstoria.php?id={$estoria->getId()}"><button onclick="editar" type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a>
+
 										<button onclick="apagar('{$estoria->getId()}','{$projeto->getId()}');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
 										<script type="text/javascript">
-													function apagar(estoria, idProjeto) {
-														if (window.confirm('Deseja realmente excluir esta estória do Sprint Backlog?')) {
-															window.location = '../controller/excluirEstoriaSprintBacklog.php?idEstoria=' + estoria + '&idProjeto=' + idProjeto;
-														}
-													}
+											function apagar(estoria, idProjeto) {
+												if (window.confirm('Deseja realmente excluir esta estória do Sprint Backlog?')) {
+													window.location = '../controller/excluirEstoriaSprintBacklog.php?idEstoria=' + estoria + '&idProjeto=' + idProjeto;
+												}
+											}
 										</script>
-										<a href="exibirSprintBacklog.php?idEstoria={$estoria->getId()}&id={projeto->getId}" title="Visualizar Responsáveis" data-toggle="modal" data-target="#visualizarResponsaveis{$responsaveis}"class="d-none d-sm-inline-block btn btn-primary shadow-sm"><i class="fas fa-user-friends"></i></i></a>
 									{/if}
-									<!--{if $responsaveis}
-									<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#ModalCadastrarSubtarefa"><i class="fas fa-tasks"></i></button>
-									{/if}-->
 								</td>
 							</tr>
-							<!-- Inicio Modal -->
+
 							<div class="modal fade" id="myModal{$estoria->getId()}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
@@ -71,7 +87,7 @@
 								</div>
 							</div>
 
-							<div class="modal fade" id="ModalCadastrarSubtarefa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							<!--<div class="modal fade" id="ModalCadastrarSubtarefa" tabindex="-1" role="dialog" aria-labelledby="ModalCadastrarSubtarefaLabel">
 								<div class="modal-dialog modal-dialog-centered" role="document">
 									<div class="modal-content">
 										<div class= "modal-header">
@@ -93,29 +109,10 @@
 										</div>
 									</div>
 								</div>
-							</div>
-							<!-- Fim Modal -->
-
-							<div class="modal fade" id="visualizarResponsaveis{$responsaveis}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class= "modal-header">
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span></button>
-										</div>
-										<div class="modal-body">
-											{foreach item=responsavel from=$responsaveis->getNome()}
-											<p>{$responsavel}</p>
-										</div>
-										<div class="modal-footer">
-											<button class="btn btn-secondary" type="button" data-dismiss="modal">Fechar</button>
-										</div>
-									</div>
-								</div>
-							</div>
-					{/foreach}
-				{/if}
-			</tbody>
+							</div>-->
+						{/foreach}
+					{/if}
+				</tbody>
 		 	</table>
 		</div>
 	</div>

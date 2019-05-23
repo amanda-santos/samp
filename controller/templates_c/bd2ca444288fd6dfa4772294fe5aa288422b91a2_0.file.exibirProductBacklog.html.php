@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-22 18:38:30
+/* Smarty version 3.1.33, created on 2019-05-23 16:23:43
   from 'C:\xampp\htdocs\samp\view\exibirProductBacklog.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5ce57b0656e1c8_90387530',
+  'unifunc' => 'content_5ce6acef8e9e90_65240076',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bd2ca444288fd6dfa4772294fe5aa288422b91a2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\exibirProductBacklog.html',
-      1 => 1558543108,
+      1 => 1558621421,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5ce57b0656e1c8_90387530 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ce6acef8e9e90_65240076 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -141,8 +141,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"><?php echo '</script'; ?>
 >
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-</div>
-</div>
 
 <?php $_smarty_tpl->_subTemplateRender("file:../view/footer.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 }

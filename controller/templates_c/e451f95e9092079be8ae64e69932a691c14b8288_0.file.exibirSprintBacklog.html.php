@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-22 18:32:49
+/* Smarty version 3.1.33, created on 2019-05-23 17:09:22
   from 'C:\xampp\htdocs\samp\view\exibirSprintBacklog.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5ce579b10839d1_44614627',
+  'unifunc' => 'content_5ce6b7a2c23843_31380001',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e451f95e9092079be8ae64e69932a691c14b8288' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\exibirSprintBacklog.html',
-      1 => 1558542763,
+      1 => 1558624149,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5ce579b10839d1_44614627 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ce6b7a2c23843_31380001 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -42,18 +42,20 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
 
     <div class="col-md-12">
 		  <table class="table col-md-15">
-			  <thead>
-				  <tr>
-					<th>Nome da Estória</th>
-					<th>Situação</th>
-					<th>Nível de dificuldade</th>
-					<th>Duração (Em horas)</th>
-					<th>Ações</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php if ($_smarty_tpl->tpl_vars['sprintBacklog']->value->getEstorias() != null) {?>
-					<?php
+			  	<thead>
+				  	<tr>
+						<th>Nome da Estória</th>
+						<th>Situação</th>
+						<th>Nível de dificuldade</th>
+						<th>Duração (Em horas)</th>
+						<th>Responsáveis</th>
+						<th>Ações</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<?php if ($_smarty_tpl->tpl_vars['sprintBacklog']->value->getEstorias() != null) {?>
+						<?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['sprintBacklog']->value->getEstorias(), 'estoria');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
@@ -68,33 +70,60 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 								<td><?php echo $_smarty_tpl->tpl_vars['estoria']->value->getDuracao();?>
 </td>
 								<td>
+									<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['estoria']->value->getResponsaveis(), 'responsavel');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['responsavel']->value) {
+?>
+										<?php echo $_smarty_tpl->tpl_vars['responsavel']->value;?>
+
+									<?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+								</td>
+								<td>
 									<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 "><i class="fas fa-eye"></i></button>
+
+									<!--<i class="fas fa-user-friends"></i></button>-->
+
+									<!--<?php if ($_smarty_tpl->tpl_vars['estoria']->value->getResponsaveis() != null) {?>
+										<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['estoria']->value->getResponsaveis(), 'responsavel');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['responsavel']->value) {
+?>
+											<?php if ($_smarty_tpl->tpl_vars['responsavel']->value == $_smarty_tpl->tpl_vars['usuario']->value->getNome()) {?>
+												<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#ModalCadastrarSubtarefa"><i class="fas fa-tasks"></i></button>
+												<?php break 1;?>
+											<?php }?>
+										<?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+									<?php }?>-->
+
 									<?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
 										<a href="editarEstoria.php?id=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 "><button onclick="editar" type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a>
+
 										<button onclick="apagar('<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 ','<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 ');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
 										<?php echo '<script'; ?>
  type="text/javascript">
-													function apagar(estoria, idProjeto) {
-														if (window.confirm('Deseja realmente excluir esta estória do Sprint Backlog?')) {
-															window.location = '../controller/excluirEstoriaSprintBacklog.php?idEstoria=' + estoria + '&idProjeto=' + idProjeto;
-														}
-													}
+											function apagar(estoria, idProjeto) {
+												if (window.confirm('Deseja realmente excluir esta estória do Sprint Backlog?')) {
+													window.location = '../controller/excluirEstoriaSprintBacklog.php?idEstoria=' + estoria + '&idProjeto=' + idProjeto;
+												}
+											}
 										<?php echo '</script'; ?>
 >
-										<a href="../controller/visualizarResponsaveis.php?id=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
-"title="Visualizar Responsáveis" data-toggle="modal" data-target="#myModal<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
-"class="d-none d-sm-inline-block btn btn-primary shadow-sm"><i class="fas fa-user-friends"></i></i></a>
 									<?php }?>
-									<!--<?php if ($_smarty_tpl->tpl_vars['responsaveis']->value) {?>
-									<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#ModalCadastrarSubtarefa"><i class="fas fa-tasks"></i></button>
-									<?php }?>-->
 								</td>
 							</tr>
-							<!-- Inicio Modal -->
+
 							<div class="modal fade" id="myModal<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 " tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 								<div class="modal-dialog" role="document">
@@ -116,7 +145,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 								</div>
 							</div>
 
-							<div class="modal fade" id="ModalCadastrarSubtarefa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							<!--<div class="modal fade" id="ModalCadastrarSubtarefa" tabindex="-1" role="dialog" aria-labelledby="ModalCadastrarSubtarefaLabel">
 								<div class="modal-dialog modal-dialog-centered" role="document">
 									<div class="modal-content">
 										<div class= "modal-header">
@@ -138,14 +167,13 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 										</div>
 									</div>
 								</div>
-							</div>
-							<!-- Fim Modal -->
-					<?php
+							</div>-->
+						<?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-				<?php }?>
-			</tbody>
+					<?php }?>
+				</tbody>
 		 	</table>
 		</div>
 	</div>
