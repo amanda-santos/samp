@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-18 20:59:47
+/* Smarty version 3.1.33, created on 2019-05-23 18:04:25
   from 'C:\xampp\htdocs\samp\view\exibirProjetos.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5ce056234c11d3_44880818',
+  'unifunc' => 'content_5ce6c489e00385_28857114',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '445cebdfc5650f4a8ce70c166bb1f6cad95b43b9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\exibirProjetos.html',
-      1 => 1558064480,
+      1 => 1558627458,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5ce056234c11d3_44880818 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ce6c489e00385_28857114 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -44,91 +44,96 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
 	</div>
 	<br>
 	<div class="row">
-		<div class="col-md-12">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Nome do Projeto</th>
-						<th>Ações</th>
-						
-					</tr>
-				</thead>
-				<tbody>
-					<?php
+
+	<?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['projetos']->value, 'projeto', false, NULL, 'laco1', array (
 ));
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['projeto']->value) {
 ?>
-						<tr>
-							<?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
-								<td><?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
-</td>
-							<?php } else { ?>
-								<td></td>
-							<?php }?>
-							<td><?php echo $_smarty_tpl->tpl_vars['projeto']->value->getNome();?>
-</td>
-							<td>
-									<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+
+		<!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">
+                  	<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getNome();?>
+
+                  </div>
+                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                  	<?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
+                  		#<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+
+                  	<?php }?>
+                  </div>
+
+                  <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 "><i class="fas fa-eye"></i></button>
-								
-								<?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
-								
-									<a href="../controller/exibirProjeto.php?id=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
-"><button  type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a>
-										
 
-									<button onclick="apagar('<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
-');" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-									<?php echo '<script'; ?>
- type="text/javascript">
-												function apagar(projeto) {
-													if (window.confirm('Deseja realmente apagar este projeto? Essa ação não poderá ser desfeita.')) {
-														window.location = '../controller/excluirProjeto.php?projeto=' + projeto;
-													}
-												}
-
-									<?php echo '</script'; ?>
->
-							</td>
-							<?php }?>
-						</tr>
-						<!-- Inicio Modal -->
-						<div class="modal fade" id="myModal<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+                  	<!-- Inicio Modal -->
+					<div class="modal fade" id="myModal<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 " tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class= "modal-header">
-									<h4 class="modal-title text-center" id="myModalLabel"><?php echo $_smarty_tpl->tpl_vars['projeto']->value->getNome();?>
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class= "modal-header">
+								<h4 class="modal-title text-center" id="myModalLabel"><?php echo $_smarty_tpl->tpl_vars['projeto']->value->getNome();?>
 </h4>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span></button>
-									</div>
-									<div class="modal-body">
-										<p><?php echo $_smarty_tpl->tpl_vars['projeto']->value->getDesc();?>
-</p>
-									</div>
-									<div class="modal-footer">
-										<button class="btn btn-secondary" type="button" data-dismiss="modal">Fechar</button>
-										<a class="btn btn-primary" href="../controller/exibirProductBacklog.php?id=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
-">Ir para o Projeto</a>
-									</div> 
-
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span></button>
 								</div>
+								<div class="modal-body">
+									<p><?php echo $_smarty_tpl->tpl_vars['projeto']->value->getDesc();?>
+</p>
+								</div>
+								<div class="modal-footer">
+									<button class="btn btn-secondary" type="button" data-dismiss="modal">Fechar</button>
+									<a class="btn btn-primary" href="../controller/dashboardProjeto.php?id=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+">Ir para o Projeto</a>
+								</div> 
+
 							</div>
 						</div>
-						<!-- Fim Modal -->
-					<?php
+					</div>
+					<!-- Fim Modal -->
+								
+		      	  <?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
+					
+					<a href="../controller/exibirProjeto.php?id=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+"><button type="button" class="btn-sm btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a>
+
+					<button onclick="apagar('<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+');" type="button" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+
+					<?php echo '<script'; ?>
+ type="text/javascript">
+						function apagar(projeto) {
+							if (window.confirm('Deseja realmente apagar este projeto? Essa ação não poderá ser desfeita.')) {
+								window.location = '../controller/excluirProjeto.php?projeto=' + projeto;
+							}
+						}
+					<?php echo '</script'; ?>
+>
+
+				  <?php }?>
+
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-2x text-gray-300 fa-folder"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-				</tbody>
-			 </table>
-		</div>
-	</div>		
-</div>
+	</div> <!--row-->	
+</div> <!--container-->	
 
 <?php $_smarty_tpl->_subTemplateRender("file:../view/footer.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 }

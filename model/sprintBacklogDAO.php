@@ -22,15 +22,17 @@
 					$estoria->setNivelDificuldade($exibir["nivel_dificuldade"]);
 					$estoria->setSituacao($exibir["situacao"]);
 					
-					$SQL2 = "SELECT * FROM usuario_estoria where Estoria_id = ".$exibir["id"].";";
+					$SQL2 = "SELECT nome, sobrenome FROM usuario_estoria JOIN usuario ON usuario = Usuario_usuario where Estoria_id = ".$exibir["id"].";";
 					$result_responsaveis = $conn->query($SQL2);
 					if ($result_responsaveis->num_rows > 0){
 						while ($exibir_responsaveis = $result_responsaveis->fetch_assoc()){
-							$estoria->setResponsaveis($exibir_responsaveis["Usuario_usuario"]);
+							$estoria->setResponsaveis($exibir_responsaveis["nome"] . " " . $exibir_responsaveis["sobrenome"] );
 						}
 					}
+
 					$estorias ->append($estoria);
 				}
+				
 				$sprintBacklog = new sprintBacklog($estorias);
 				return $sprintBacklog;
 			}else{

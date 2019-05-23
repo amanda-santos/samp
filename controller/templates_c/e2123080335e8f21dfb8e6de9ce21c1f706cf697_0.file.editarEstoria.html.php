@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-22 16:11:28
+/* Smarty version 3.1.33, created on 2019-05-23 15:46:25
   from 'C:\xampp\htdocs\samp\view\editarEstoria.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5ce55890b73b52_89793631',
+  'unifunc' => 'content_5ce6a4316ff3d7_88875991',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e2123080335e8f21dfb8e6de9ce21c1f706cf697' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\editarEstoria.html',
-      1 => 1558064480,
+      1 => 1558619180,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5ce55890b73b52_89793631 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ce6a4316ff3d7_88875991 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -56,7 +56,7 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
         <div class="form-group required">
           <label class="control-label" for="descricao">Descrição:</label>
           <div class="col-sm-30">
-            <textarea rows="4" cols="50" class="form-control" id="descricao" name="descricao" required>
+            <textarea rows="4" cols="50" maxlength="300" class="form-control" id="descricao" name="descricao" required>
               <?php echo $_smarty_tpl->tpl_vars['estoria']->value->getDesc();?>
 
     		    </textarea>

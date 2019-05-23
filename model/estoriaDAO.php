@@ -8,7 +8,7 @@
 			if ($conn->query($SQL) === TRUE){
 				//verifica se o comando foi executado com sucesso
 				echo "<script>alert('Estória cadastrada com sucesso!');</script>";
-				echo "<script>window.location = '../controller/exibirProductBacklog.php?id=$projeto_id';</script>";
+				echo "<script>window.location = '../controller/dashboardProjeto.php?id=$projeto_id';</script>";
 			}else{
 				//mensagem exibida caso ocorra algum erro na execução do comando sql
 				echo "<script>alert('Erro ao cadastrar estória!');</script>";
@@ -80,11 +80,11 @@
 						//verifica se o comando foi executado com sucesso
 						$SQL = "INSERT INTO usuario_estoria VALUES ('".$id_usuario."','".$id_estoria."')";
 						if ($conn->query($SQL) === TRUE){
-							echo "<script>alert('Estória cadastrada no Sprint Backlog com sucesso!');</script>";
-							echo "<script>window.location = '../controller/exibirSprintBacklog.php?id=$projeto_id';</script>";
+							//echo "<script>alert('Estória cadastrada no Sprint Backlog com sucesso!');</script>";
+							echo "<script>window.location = '../controller/dashboardProjeto.php?id=$projeto_id';</script>";
 						}else{
 							//mensagem exibida caso ocorra algum erro na execução do comando sql
-							echo "<script>alert('Erro ao cadastrar estória no Sprint Backlog!');</script>";
+							echo "<script>alert('Erro ao adicionar estória ao Sprint Backlog!');</script>";
 							echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
 						}
 					}
@@ -99,7 +99,7 @@
 		    //echo "<script>alert(".$sql.");</script>";
 		    if ($conn->query($sql) === TRUE) {
 		      echo "<script>alert('A estória foi atualizada com sucesso!');</script>";
-		      echo "<script>window.location = '../controller/exibirProductBacklog.php?id=".$projeto_id."';</script>";
+		      echo "<script>window.location = '../controller/dashboardProjeto.php?id=".$projeto_id."';</script>";
 		    } else {
 		      echo "Erro: " . $sql . "<br>" . $conn->error;
 		    }
@@ -112,7 +112,7 @@
 			$sql = " DELETE FROM estoria WHERE id = ".$estoria.";";
  			if ($conn->query($sql) === TRUE) { //se o comando funcionou
 				echo "<script>alert('A estória foi excluída com sucesso.');</script>";
-				echo "<script>window.location = '../controller/exibirProductBacklog.php?id=$projeto_id';</script>";
+				echo "<script>window.location = '../controller/dashboardProjeto.php?id=$projeto_id';</script>";
 			}
 			else{ //se o comando não funcionou
 				echo "<script>alert('Erro ao excluir estória!');</script>";
@@ -124,8 +124,8 @@
 			include("conexao/conecta.php");
 			$sql = "UPDATE estoria SET sprint_backlog = 0 WHERE id = ".$id_estoria.";";
 			if ($conn->query($sql) === TRUE) { //se o comando funcionou
-				echo "<script>alert('Sua estória foi excluída com sucesso.');</script>";
-				echo "<script>window.location = '../controller/exibirSprintBacklog.php?id=$projeto_id';</script>";
+				//echo "<script>alert('A estória foi excluída com sucesso do Sprint Backlog.');</script>";
+				echo "<script>window.location = '../controller/dashboardProjeto.php?id=$projeto_id';</script>";
 			}
 			else{ //se o comando não funcionou
 				echo "<script>alert('Erro ao excluir estória!');</script>";

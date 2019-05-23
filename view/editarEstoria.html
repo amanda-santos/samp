@@ -27,7 +27,7 @@
         <div class="form-group required">
           <label class="control-label" for="descricao">Descrição:</label>
           <div class="col-sm-30">
-            <textarea rows="4" cols="50" class="form-control" id="descricao" name="descricao" required>
+            <textarea rows="4" cols="50" maxlength="300" class="form-control" id="descricao" name="descricao" required>
               {$estoria->getDesc()}
     		    </textarea>
           </div>
