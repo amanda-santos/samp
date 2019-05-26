@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-23 18:35:32
+/* Smarty version 3.1.33, created on 2019-05-26 19:50:11
   from 'C:\xampp\htdocs\samp\view\dashboardProjeto.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5ce6cbd4112502_15503332',
+  'unifunc' => 'content_5cead1d35d54f1_25352331',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2bd1f0b7fb4b6d25c3baf2568e7b7c9ebe188716' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\dashboardProjeto.html',
-      1 => 1558629321,
+      1 => 1558893008,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5ce6cbd4112502_15503332 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cead1d35d54f1_25352331 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -96,35 +96,38 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 									<br><br>
 
-									<button data-toggle="modal" data-target="#adicionarSubtarefa-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
-" type="button" title="Adicionar Subtarefa" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-plus"></i> Adicionar Subtarefa</button>
+									<button data-toggle="modal" data-target="#adicionarTarefa-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+" type="button" title="Adicionar Subtarefa" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-tasks"></i>  Adicionar Tarefa</button>
 
 									<!-- Inicio Modal -->
-									<div class="modal fade" id="adicionarSubtarefa-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+									<div class="modal fade" id="adicionarTarefa-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 " tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 										<div class="modal-dialog" role="document">
 											<div class="modal-content">
 												<div class= "modal-header">
 													<h4 class="modal-title text-center" id="myModalLabel">	
-														Adicionar Subtarefa
+														Adicionar Tarefa
 													</h4>
 													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 													<span aria-hidden="true">&times;</span></button>
 												</div>
 												<div class="modal-body">
-													<form>
-													</form>
+													<form class="form-horizontal" method="POST" action="../controller/cadastrarTarefa.php?id=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+&idProjeto=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+" enctype="multipart/form-data" data-toggle="validator">
+														<label for="recipient-name" class="control-label">Informe o nome da tarefa:</label>
+														<input name="nome" type="text" class="form-control" id="recipient-name">
 												</div>
 												<div class="modal-footer">
 													<button class="btn btn-secondary" type="button" data-dismiss="modal">Fechar</button>
-													<a class="btn btn-primary" href="../controller/cadastrarSubtarefa.php?id=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
-">Adicionar</a>
+													<input type="submit" class="btn btn-success" name="cadastrar_tarefa" value="Adicionar"></input>
+													</form>
 												</div> 
-
 											</div>
 										</div>
 									</div>
 									<!-- Fim Modal -->
+
 
 	                  			</div>
 	                		</div>
