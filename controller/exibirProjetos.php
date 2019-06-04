@@ -5,6 +5,7 @@
 		require '../libs/Smarty.class.php';
 		$smarty = new Smarty;
 
+		
 		$projetoDAO = new projetoDAO();
 		$projetos = $projetoDAO->selecionarProjetos();
 		
