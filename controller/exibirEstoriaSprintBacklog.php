@@ -19,9 +19,9 @@
 	
 	$smarty->assign("estoria", $estoria);
 	$smarty->assign("projeto", $projeto);
-	$smarty->display('../view/editarEstoria.html');
+	$smarty->display('../view/editarEstoriaSprintBacklog.html');
   }else {
-	echo "<script>window.location = '../view/exibirProjetos.html';</script>";
+	echo "<script>window.location = '../view/exibirProductBacklog.html';</script>";
   }
   
 ?> 

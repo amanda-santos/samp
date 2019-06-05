@@ -248,7 +248,10 @@
 					            	{if $projeto->getScrumMaster() == 1}
 					            		<br>
 						            	<br>
-										<a href="editarEstoriaSprintBacklog.php?id={$estoria->getId()}"><button title="Editar estória" onclick="editar" type="button" class="btn-sm btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a>
+										<a href="../controller/exibirEstoriaSprintBacklog.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}">
+											<button title="Editar estória" type="button" class="btn-sm btn btn-warning"><i class="fas fa-pencil-alt"></i>
+											</button>
+										</a>
 
 										<button title="Excluir estória do Sprint Backlog" onclick="apagarSprintProductBacklog('{$estoria->getId()}','{$projeto->getId()}');" type="button" class="btn-sm btn btn-danger"><i class="fas fa-trash-alt"></i></button>
 
