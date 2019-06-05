@@ -61,7 +61,7 @@
 					$projeto->setId($exibir["id"]);
 					$projeto->setScrumMaster($exibir["scrum_master"]);
 
-					$SQL2 = "SELECT nome FROM usuario_projeto JOIN usuario ON usuario = Usuario_usuario where Projeto_id = ".$exibir["id"].";";
+					$SQL2 = "SELECT nome FROM usuario_projeto JOIN usuario ON usuario = Usuario_usuario where Projeto_id = '".$exibir["id"]."';";
 					$result_participantes = $conn->query($SQL2);
 					if ($result_participantes->num_rows > 0){
 						while ($exibir_participantes = $result_participantes->fetch_assoc()){
