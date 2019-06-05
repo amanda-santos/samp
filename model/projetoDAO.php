@@ -52,14 +52,26 @@
     		if ($result->num_rows > 0) { // Exibindo cada linha retornada com a consulta
 				$projetos = new ArrayObject();
 				//verifica se o comando foi executado com sucesso
+
 				while ($exibir = $result->fetch_assoc()){
 					$projeto = new Projeto();
+					
 					$projeto->setNome($exibir["nome"]);
 					$projeto->setDesc($exibir["descricao"]);
 					$projeto->setId($exibir["id"]);
 					$projeto->setScrumMaster($exibir["scrum_master"]);
+
+					$SQL2 = "SELECT nome FROM usuario_projeto JOIN usuario ON usuario = Usuario_usuario where Projeto_id = '".$exibir["id"]."';";
+					$result_participantes = $conn->query($SQL2);
+					if ($result_participantes->num_rows > 0){
+						while ($exibir_participantes = $result_participantes->fetch_assoc()){
+							$projeto->setParticipantes($exibir_participantes["nome"]);
+						}
+					}
+
 					$projetos -> append($projeto);
 				}
+				
 				return $projetos;
 			}else{
 				$projetos = new ArrayObject();

@@ -13,7 +13,7 @@
 		    $this->data_inicio = $paramDataFim;
 		    $this->porcentagem_concluido = $paramPorcentagemConcluido;
 		    $this->total_horas = $paramTotalHoras;
-		    $this->participantes = $paramParticipantes;
+		    $this->participantes = new ArrayObject();
 		}
 
 		public function setNome($nome){
@@ -46,8 +46,8 @@
 		public function setTotalHoras($total_horas){
 			$this->total_horas=$total_horas;
 		}
-		public function setParticipantes($participantes){
-			$this->participantes=$participantes;
+		public function setParticipantes($participante){
+			$this->participantes->append($participante);
 		}
 
 		public function getNome(){

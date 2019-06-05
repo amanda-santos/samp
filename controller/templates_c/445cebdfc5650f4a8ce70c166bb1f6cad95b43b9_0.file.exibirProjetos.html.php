@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-23 18:04:25
+/* Smarty version 3.1.33, created on 2019-06-04 21:12:11
   from 'C:\xampp\htdocs\samp\view\exibirProjetos.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5ce6c489e00385_28857114',
+  'unifunc' => 'content_5cf6c28be7bf62_78019196',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '445cebdfc5650f4a8ce70c166bb1f6cad95b43b9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\exibirProjetos.html',
-      1 => 1558627458,
+      1 => 1559675527,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5ce6c489e00385_28857114 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cf6c28be7bf62_78019196 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -99,6 +99,46 @@ foreach ($_from as $_smarty_tpl->tpl_vars['projeto']->value) {
 					</div>
 					<!-- Fim Modal -->
 								
+									<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#ModalUsers<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+"><i class="fa fa-user"></i></button>
+
+					<!-- Inicio Modal integrantes -->
+					<div class="modal fade" id="ModalUsers<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class= "modal-header">
+								<h4 class="modal-title text-center" id="myModalLabel"><?php echo $_smarty_tpl->tpl_vars['projeto']->value->getNome();?>
+</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span></button>
+								</div>
+								<div class="modal-body">
+									<p>
+										<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['projeto']->value->getParticipantes(), 'participantes');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['participantes']->value) {
+?>
+											<br>
+											<?php echo $_smarty_tpl->tpl_vars['participantes']->value;?>
+
+										<?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+									</p>
+								</div>
+								<div class="modal-footer">
+									<button class="btn btn-secondary" type="button" data-dismiss="modal">Fechar</button>
+									
+								</div> 
+
+							</div>
+						</div>
+					</div>
+					<!-- Fim Modal -->
+				
 		      	  <?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
 					
 					<a href="../controller/exibirProjeto.php?id=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
