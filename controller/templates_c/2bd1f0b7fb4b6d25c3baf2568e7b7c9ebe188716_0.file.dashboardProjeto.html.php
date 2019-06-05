@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-05 05:06:43
+/* Smarty version 3.1.33, created on 2019-06-06 01:14:01
   from 'C:\xampp\htdocs\samp\view\dashboardProjeto.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cf731c397de38_34621902',
+  'unifunc' => 'content_5cf84cb9f29c39_26482619',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2bd1f0b7fb4b6d25c3baf2568e7b7c9ebe188716' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\dashboardProjeto.html',
-      1 => 1559702963,
+      1 => 1559775116,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cf731c397de38_34621902 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cf84cb9f29c39_26482619 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -76,6 +76,10 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 					            	<br>
 					            	<b>Situação:</b> <?php echo $_smarty_tpl->tpl_vars['estoria']->value->getSituacao();?>
 
+					            	<button data-toggle="modal" data-target="#situacao-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+" type="button" title="Adicionar Situação" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-pencil-alt"></i> 
+					            		Editar Situação
+					            	</button>
 					            	<br>
 					            	<b>Nível de Dificuldade:</b> <?php echo $_smarty_tpl->tpl_vars['estoria']->value->getNivelDificuldade();?>
 
@@ -128,13 +132,16 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 											</div>
 										</div>
 									</div>
+								
+									<br>
+
+									<div class = "post">
+									<form class="form-horizontal" method="POST" action="../controller/editarSituacao.php?idEstoria=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+&idProjeto=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+" enctype="multipart/form-data" data-toggle="validator">
 									
-									<br><br>
-									
-									<button data-toggle="modal" data-target="#Situação-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
-" type="button" title="Adicionar Situação" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-pencil-alt"></i>  Situação</button>
 									<!-- Inicio Modal -->
-									<div class="modal fade" id="Situação-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+									<div class="modal fade" id="situacao-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 " tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 										<div class="modal-dialog" role="document">
 											<div class="modal-content">
@@ -146,15 +153,18 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 													<span aria-hidden="true">&times;</span></button>
 												</div>
 												<div class="modal-body">
-													<form class="form-horizontal" method="POST" action="../controller/editarSituacao.php?idEstoria=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
-&idProjeto=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
-" enctype="multipart/form-data" data-toggle="validator">
-														<label for="recipient-name" class="control-label">Informe a situação:</label>	
-														<input name="nome" type="text" class="form-control" id="recipient-name">
+													
+														<label class="control-label" for="situacao">Selecione a situação:</label>
+														<select id=situacao name="situacao">
+															<option value="1">Não Iniciada</option>
+															<option value="2">Iniciada</option>
+															<option value="3">Concluída</option> 
+														</select>
 												</div>
 												<div class="modal-footer">
 													<button class="btn btn-secondary" type="button" data-dismiss="modal">Fechar</button>
-													<input type="submit" class="btn btn-success" name="situação" value="Atualizar"></input>
+													<input type="submit" class="btn btn-success" name="atualizar" value="Atualizar"></input>
+													<!--<input type="button" data-toggle="modal" data-target="#confirm-submit" class="btn btn-success" name="atualizar" value="Atualizar" id="myBtn"></input>-->
 													</form>
 												</div> 
 											</div>
@@ -165,7 +175,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 	                  			</div>
 	                		</div>
-              			</div>
+						</div>
+						</div>
               		</div>
               	<?php
 }
@@ -338,8 +349,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 					            	<?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
 					            		<br>
 						            	<br>
-										<a href="editarEstoriaSprintBacklog.php?id=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
-"><button title="Editar estória" onclick="editar" type="button" class="btn-sm btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a>
+										<a href="../controller/exibirEstoriaSprintBacklog.php?idEstoria=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+&idProjeto=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+">
+											<button title="Editar estória" type="button" class="btn-sm btn btn-warning"><i class="fas fa-pencil-alt"></i>
+											</button>
+										</a>
 
 										<button title="Excluir estória do Sprint Backlog" onclick="apagarSprintProductBacklog('<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 ','<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
@@ -380,67 +395,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 	    <div style="padding: 10px 10px;">
 		
-		<?php if ($_smarty_tpl->tpl_vars['sprintBacklog']->value->getEstorias() != null && $_smarty_tpl->tpl_vars['estoria']->value->getSituacao() != "Concluída") {?>
-			<?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['sprintBacklog']->value->getEstorias(), 'estoria');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
-?>
-				
-				    <div class="card border-left-info h-10">
-
-				        <!-- Collapsable Card Example -->
-              			<div class="card">
-
-	                		<!-- Card Header - Accordion -->
-						
-	            			<a href="#estoriaFinalizado-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
-" class="d-block card-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="estoriaFinalizado-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
-">
-	                  			<h6 class="font-weight-bold text-secondary"><?php echo $_smarty_tpl->tpl_vars['estoria']->value->getNome();?>
-</h6>
-	                		</a>
-						
-	                		<!-- Card Content - Collapse -->
-	                		<div class="collapse" id="estoriaFinalizado-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
-">
-	                  			<div class="card-body">
-	                    			
-									<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getDesc();?>
-
-					            	<br>
-					            	<b>Situação:</b> <?php echo $_smarty_tpl->tpl_vars['estoria']->value->getSituacao();?>
-
-					            	<br>
-					            	<b>Nível de Dificuldade:</b> <?php echo $_smarty_tpl->tpl_vars['estoria']->value->getNivelDificuldade();?>
-
-					            	<br>
-					            	<b>Duração:</b> <?php echo $_smarty_tpl->tpl_vars['estoria']->value->getDuracao();?>
- horas
-					            	<b>Responsáveis:</b>
-					            	<?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['estoria']->value->getResponsaveis(), 'responsavel');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['responsavel']->value) {
-?>
-										<br>
-										<?php echo $_smarty_tpl->tpl_vars['responsavel']->value;?>
-
-									<?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-	                  			</div>
-	                		</div>
-						
-              			</div>
-              		</div>
-				
-			<?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-		<?php }?>
+		
 	    </div>
 	    
 	  </div>
