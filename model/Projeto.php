@@ -46,8 +46,8 @@
 		public function setTotalHoras($total_horas){
 			$this->total_horas=$total_horas;
 		}
-		public function setParticipantes($participante){
-			$this->participantes->append($participante);
+		public function setParticipantes($participantes){
+			$this->participantes = $participantes;
 		}
 
 		public function getNome(){
