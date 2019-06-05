@@ -147,9 +147,9 @@
 			}
 		}
 
-		function editarEstoriaSprintBacklog($niveldificuldade_id, $duracao, $estoria_id, $projeto_id,){
+		function editarEstoriaSprintBacklog($niveldificuldade_id, $duracao, $estoria_id, $projeto_id){
 			include 'conexao/conecta.php';
-		    $sql = "UPDATE estoria SET niveldificuldade_id = "$niveldificuldade_id", duracao = "$duracao" WHERE id = '".$id_estoria"'";
+		    $sql = "UPDATE estoria SET niveldificuldade_id = ".$nivel_dificuldade.", duracao = ".$duracao." WHERE id = '".$id_estoria."'";
 		    //echo "<script>alert(".$sql.");</script>";
 		    if ($conn->query($sql) === TRUE) {
 		      echo "<script>alert('A estória foi atualizada com sucesso!');</script>";
