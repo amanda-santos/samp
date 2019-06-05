@@ -39,6 +39,9 @@
 	                    			{$estoria->getDesc()}
 					            	<br>
 					            	<b>Situação:</b> {$estoria->getSituacao()}
+					            	<button data-toggle="modal" data-target="#situacao-{$estoria->getId()}" type="button" title="Adicionar Situação" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-pencil-alt"></i> 
+					            		Editar Situação
+					            	</button>
 					            	<br>
 					            	<b>Nível de Dificuldade:</b> {$estoria->getNivelDificuldade()}
 					            	<br>
@@ -77,12 +80,14 @@
 											</div>
 										</div>
 									</div>
+								
+									<br>
+
+									<div class = "post">
+									<form class="form-horizontal" method="POST" action="../controller/editarSituacao.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}" enctype="multipart/form-data" data-toggle="validator">
 									
-									<br><br>
-									
-									<button data-toggle="modal" data-target="#Situação-{$estoria->getId()}" type="button" title="Adicionar Situação" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-pencil-alt"></i>  Situação</button>
 									<!-- Inicio Modal -->
-									<div class="modal fade" id="Situação-{$estoria->getId()}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+									<div class="modal fade" id="situacao-{$estoria->getId()}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 										<div class="modal-dialog" role="document">
 											<div class="modal-content">
 												<div class= "modal-header">
@@ -93,13 +98,18 @@
 													<span aria-hidden="true">&times;</span></button>
 												</div>
 												<div class="modal-body">
-													<form class="form-horizontal" method="POST" action="../controller/editarSituacao.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}" enctype="multipart/form-data" data-toggle="validator">
-														<label for="recipient-name" class="control-label">Informe a situação:</label>	
-														<input name="nome" type="text" class="form-control" id="recipient-name">
+													
+														<label class="control-label" for="situacao">Selecione a situação:</label>
+														<select id=situacao name="situacao">
+															<option value="1">Não Iniciada</option>
+															<option value="2">Iniciada</option>
+															<option value="3">Concluída</option> 
+														</select>
 												</div>
 												<div class="modal-footer">
 													<button class="btn btn-secondary" type="button" data-dismiss="modal">Fechar</button>
-													<input type="submit" class="btn btn-success" name="situação" value="Atualizar"></input>
+													<input type="submit" class="btn btn-success" name="atualizar" value="Atualizar"></input>
+													<!--<input type="button" data-toggle="modal" data-target="#confirm-submit" class="btn btn-success" name="atualizar" value="Atualizar" id="myBtn"></input>-->
 													</form>
 												</div> 
 											</div>
@@ -110,7 +120,8 @@
 
 	                  			</div>
 	                		</div>
-              			</div>
+						</div>
+						</div>
               		</div>
               	{/foreach}
 			{/if}		
@@ -271,44 +282,7 @@
 
 	    <div style="padding: 10px 10px;">
 		
-		{if $sprintBacklog->getEstorias() != null && $estoria->getSituacao() !="Concluída"}
-			{foreach item=estoria from=$sprintBacklog->getEstorias()}
-				
-				    <div class="card border-left-info h-10">
-
-				        <!-- Collapsable Card Example -->
-              			<div class="card">
-
-	                		<!-- Card Header - Accordion -->
-						
-	            			<a href="#estoriaFinalizado-{$estoria->getId()}" class="d-block card-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="estoriaFinalizado-{$estoria->getId()}">
-	                  			<h6 class="font-weight-bold text-secondary">{$estoria->getNome()}</h6>
-	                		</a>
-						
-	                		<!-- Card Content - Collapse -->
-	                		<div class="collapse" id="estoriaFinalizado-{$estoria->getId()}">
-	                  			<div class="card-body">
-	                    			
-									{$estoria->getDesc()}
-					            	<br>
-					            	<b>Situação:</b> {$estoria->getSituacao()}
-					            	<br>
-					            	<b>Nível de Dificuldade:</b> {$estoria->getNivelDificuldade()}
-					            	<br>
-					            	<b>Duração:</b> {$estoria->getDuracao()} horas
-					            	<b>Responsáveis:</b>
-					            	{foreach item=responsavel from=$estoria->getResponsaveis()}
-										<br>
-										{$responsavel}
-									{/foreach}
-	                  			</div>
-	                		</div>
-						
-              			</div>
-              		</div>
-				
-			{/foreach}
-		{/if}
+		
 	    </div>
 	    
 	  </div>
