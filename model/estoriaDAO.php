@@ -106,9 +106,10 @@
 		    $conn->close();
 		  
 		}
+
 		public function editarSituacao($situacao,$estoria_id,$projeto_id){
 			include 'conexao/conecta.php';
-			$sql = "UPDATE estoria set Situacao_id= ".$situacao." WHERE id = ".$estoria_id;
+			$sql = "UPDATE estoria set Situacao_id= '".$situacao."' WHERE id = '".$estoria_id."'";
 			//echo "<script>alert(".$sql.");</script>";
 			if ($conn->query($sql) === TRUE) {
 		      echo "<script>alert('A situação foi atualizada com sucesso!');</script>";
