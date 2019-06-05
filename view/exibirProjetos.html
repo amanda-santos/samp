@@ -75,9 +75,15 @@
 								<div class="modal-body">
 									<p>
 										{foreach item=participante from=$projeto->getParticipantes()}
+											<p>
+											Nome: {$participante->getNome()} {$participante->getSobrenome()}
 											<br>
-											{$participante->getNome()} {$participante->getSobrenome()} 
-											- {$participante->getUsuario()} -  {if ($participante->getScrumMaster() == 1)} Scrum Master {else} Membro da Equipe {/if} - {$participante->getEmail()}
+											Usuario: {$participante->getUsuario()}
+											<br>
+											Atuação: {if ($participante->getScrumMaster() == 1)} Scrum Master {else} Membro da Equipe {/if}
+											<br>
+											E-Mail: {$participante->getEmail()}
+											</p>
 										{/foreach}
 									</p>
 								</div>
