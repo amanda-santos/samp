@@ -76,8 +76,19 @@
 									<p>
 										{foreach item=participante from=$projeto->getParticipantes()}
 											<br>
-											{$participante->getNome()} {$participante->getSobrenome()} 
-											- {$participante->getUsuario()} -  {if ($participante->getScrumMaster() == 1)} Scrum Master {else} Membro da Equipe {/if} - {$participante->getEmail()}
+											<b>Nome:</b> {$participante->getNome()} {$participante->getSobrenome()} 
+											<br>
+											<b>Usuário:</b> {$participante->getUsuario()} 
+											<br>
+											<b>E-mail:</b> {$participante->getEmail()}
+											<br>
+											<b>Atuação:</b> 
+											{if ($participante->getScrumMaster() == 1)} 
+												Scrum Master 
+											{else} 
+												Membro da Equipe 
+											{/if}
+											<br>
 										{/foreach}
 									</p>
 								</div>
