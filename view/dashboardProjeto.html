@@ -164,7 +164,15 @@
 
 					            	{if $projeto->getScrumMaster() == 1}
 
-										<a href="../controller/criarEstoriaSprintBacklog.php?id={$projeto->getId()}&id_estoria={$estoria->getId()}" title="Adicionar estória ao Sprint Backlog" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i></a>
+					            		{if $estoria->getSprintBacklog() == 0}
+
+											<a href="../controller/criarEstoriaSprintBacklog.php?id={$projeto->getId()}&id_estoria={$estoria->getId()}" title="Adicionar estória ao Sprint Backlog" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i></a>
+
+										{else}
+
+											<a href="../controller/criarEstoriaSprintBacklog.php?id={$projeto->getId()}&id_estoria={$estoria->getId()}" title="Adicionar estória ao Sprint Backlog" class="disabled d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus"></i></a>
+
+										{/if}
 
 										<button title="Editar estória" onclick="editar('{$estoria->getId()}','{$projeto->getId()}')" type="button" class="btn btn-sm btn-warning"><i class="fas fa-pencil-alt"></i></button>
 
@@ -253,12 +261,12 @@
 											</button>
 										</a>
 
-										<button title="Excluir estória do Sprint Backlog" onclick="apagarSprintProductBacklog('{$estoria->getId()}','{$projeto->getId()}');" type="button" class="btn-sm btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+										<button title="Excluir estória do Sprint Backlog" onclick="apagarEstoriaSprintBacklog('{$estoria->getId()}','{$projeto->getId()}');" type="button" class="btn-sm btn btn-danger"><i class="fas fa-trash-alt"></i></button>
 
 										<script type="text/javascript">
-											function apagar(estoria, idProjeto) {
+											function apagarEstoriaSprintBacklog(estoria, idProjeto) {
 												if (window.confirm('Deseja realmente excluir esta estória do Sprint Backlog?')) {
-													window.location = '../controller/apagarSprintProductBacklog.php?idEstoria=' + estoria + '&idProjeto=' + idProjeto;
+													window.location = '../controller/excluirEstoriaSprintBacklog.php?idEstoria=' + estoria + '&idProjeto=' + idProjeto;
 												}
 											}
 										</script>
