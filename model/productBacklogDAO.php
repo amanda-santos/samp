@@ -17,7 +17,7 @@
 					$estoria->setId($exibir["id"]);
 					$estoria->setNome($exibir["nome"]);
 					$estoria->setDesc($exibir["descricao"]);
-					
+					$estoria->setSprintBacklog($exibir["sprint_backlog"]);
 					$estorias -> append($estoria);
 				}
 				$productBacklog = new ProductBacklog($estorias);
