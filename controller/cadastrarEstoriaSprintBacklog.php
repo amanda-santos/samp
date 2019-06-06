@@ -9,8 +9,13 @@
 
     $estoriaDAO = new estoriaDAO();
     $nivel_dificuldade = $_POST['nivel_dificuldade'];
+    $duracao = $_POST['duracao'];
 
-    $estoriaDAO->persistirEstoriaSprintBacklog($_POST['id_responsavel'], $idProjeto, $idEstoria, $nivel_dificuldade, $_POST['duracao']);
+    if(isset($_POST["responsavel"])){
+      $responsaveis = $_POST['responsavel'];
+    }
+
+    $estoriaDAO->persistirEstoriaSprintBacklog($responsaveis, $idProjeto, $idEstoria, $nivel_dificuldade, $duracao);
     exit;
   }
 ?>

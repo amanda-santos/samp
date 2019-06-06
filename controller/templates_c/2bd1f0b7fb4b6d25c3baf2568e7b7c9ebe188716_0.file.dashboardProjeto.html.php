@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-06 05:43:19
+/* Smarty version 3.1.33, created on 2019-06-06 17:09:11
   from 'C:\xampp\htdocs\samp\view\dashboardProjeto.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cf88bd78ac6c5_99340592',
+  'unifunc' => 'content_5cf92c97c672e7_92663939',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2bd1f0b7fb4b6d25c3baf2568e7b7c9ebe188716' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\dashboardProjeto.html',
-      1 => 1559792290,
+      1 => 1559833749,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cf88bd78ac6c5_99340592 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cf92c97c672e7_92663939 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -37,7 +37,7 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
 	<?php if ((!($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster()))) {?>
 
 	<!-- Primeira Coluna -->
-	<div class="col-lg-3">
+	<div class="col-lg-3"> 
 
 	  <!-- Título -->
 	  <div class="card shadow mb-4">
@@ -231,9 +231,19 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 
 					            	<?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
 
-										<a href="../controller/criarEstoriaSprintBacklog.php?id=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+					            		<?php if ($_smarty_tpl->tpl_vars['estoria']->value->getSprintBacklog() == 0) {?>
+
+											<a href="../controller/criarEstoriaSprintBacklog.php?id=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 &id_estoria=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 " title="Adicionar estória ao Sprint Backlog" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i></a>
+
+										<?php } else { ?>
+
+											<a href="../controller/criarEstoriaSprintBacklog.php?id=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+&id_estoria=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+" title="Adicionar estória ao Sprint Backlog" class="disabled d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus"></i></a>
+
+										<?php }?>
 
 										<button title="Editar estória" onclick="editar('<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 ','<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
@@ -356,15 +366,15 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 											</button>
 										</a>
 
-										<button title="Excluir estória do Sprint Backlog" onclick="apagarSprintProductBacklog('<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+										<button title="Excluir estória do Sprint Backlog" onclick="apagarEstoriaSprintBacklog('<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 ','<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 ');" type="button" class="btn-sm btn btn-danger"><i class="fas fa-trash-alt"></i></button>
 
 										<?php echo '<script'; ?>
  type="text/javascript">
-											function apagar(estoria, idProjeto) {
+											function apagarEstoriaSprintBacklog(estoria, idProjeto) {
 												if (window.confirm('Deseja realmente excluir esta estória do Sprint Backlog?')) {
-													window.location = '../controller/apagarSprintProductBacklog.php?idEstoria=' + estoria + '&idProjeto=' + idProjeto;
+													window.location = '../controller/excluirEstoriaSprintBacklog.php?idEstoria=' + estoria + '&idProjeto=' + idProjeto;
 												}
 											}
 										<?php echo '</script'; ?>

@@ -60,33 +60,29 @@
 			$conn->close();
 		}
 		
-		public static function persistirEstoriaSprintBacklog($id_usuario, $projeto_id, $id_estoria, $nivel_dificuldade, $duracao){
+		public static function persistirEstoriaSprintBacklog($responsaveis, $projeto_id, $id_estoria, $nivel_dificuldade, $duracao){
 			include 'conexao/conecta.php';
-			$sql = "SELECT * FROM usuario_estoria WHERE usuario_usuario = '".$id_usuario."' and estoria_id = '".$id_estoria."';";
-			$result = $conn->query($sql);
-			if ($result->num_rows > 0) { // se achar algum registro
-				echo "<script>alert('Esse usuário já é responsável por essa estória!');</script>";
-				echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
-			}else{
-				$sql = "SELECT * FROM usuario_projeto WHERE usuario_usuario = '".$id_usuario."' and projeto_id = '".$projeto_id."';";
+			foreach($responsaveis as $responsavel){
+				$sql = "SELECT * FROM usuario_estoria WHERE usuario_usuario = '".$responsavel."' and estoria_id = '".$id_estoria."';";
 				$result = $conn->query($sql);
-				if($result->num_rows <= 0){
-					echo "<script>alert('Usuário responsável não faz parte do projeto!');</script>";
+				if ($result->num_rows > 0) { // se achar algum registro
+					echo "<script>alert('O usuário " . $responsavel . " já é responsável por essa estória!');</script>";
 					echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
-				}else{
-					//define o comando sql para inserção
-					$SQL = "UPDATE estoria SET duracao = '".$duracao."', niveldificuldade_id = ".$nivel_dificuldade.", situacao_id = 1, sprint_backlog = 1 WHERE id = ".$id_estoria.";";
-					if ($conn->query($SQL) === TRUE){
-						//verifica se o comando foi executado com sucesso
-						$SQL = "INSERT INTO usuario_estoria VALUES ('".$id_usuario."','".$id_estoria."')";
-						if ($conn->query($SQL) === TRUE){
-							//echo "<script>alert('Estória cadastrada no Sprint Backlog com sucesso!');</script>";
-							echo "<script>window.location = '../controller/dashboardProjeto.php?id=$projeto_id';</script>";
-						}else{
-							//mensagem exibida caso ocorra algum erro na execução do comando sql
-							echo "<script>alert('Erro ao adicionar estória ao Sprint Backlog!');</script>";
-							echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
-						}
+				}
+			}
+			//define o comando sql para inserção
+			$SQL = "UPDATE estoria SET duracao = '".$duracao."', niveldificuldade_id = ".$nivel_dificuldade.", situacao_id = 1, sprint_backlog = 1 WHERE id = ".$id_estoria.";";
+			if ($conn->query($SQL) === TRUE){
+				//verifica se o comando foi executado com sucesso
+				foreach($responsaveis as $responsavel){
+					$SQL2 = "INSERT INTO usuario_estoria VALUES ('".$responsavel."','".$id_estoria."')";
+					if ($conn->query($SQL2) === TRUE){
+						//echo "<script>alert('Estória cadastrada no Sprint Backlog com sucesso!');</script>";
+						echo "<script>window.location = '../controller/dashboardProjeto.php?id=$projeto_id';</script>";
+					}else{
+						//mensagem exibida caso ocorra algum erro na execução do comando sql
+						echo "<script>alert('Erro ao adicionar estória ao Sprint Backlog!');</script>";
+						echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
 					}
 				}
 			}

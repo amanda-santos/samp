@@ -97,6 +97,34 @@
 			$conn->close();
 		}
 
+		function selecionarIntegrantes($id){
+			require_once 'Usuario.php';
+			include 'conexao/conecta.php';
+			//define o comando sql para inserção
+			$SQL = "SELECT * FROM usuario JOIN usuario_projeto ON usuario = Usuario_usuario WHERE Projeto_id = '" . $id . "';";
+			$result = $conn->query($SQL);
+    		if ($result->num_rows > 0) { // Exibindo cada linha retornada com a consulta
+    			$projeto = new Projeto();
+    			$participantes = new ArrayObject();
+				while ($exibir = $result->fetch_assoc()){
+					$usuario = new Usuario();
+					$usuario->setNome($exibir["nome"]);
+			        $usuario->setSobrenome($exibir["sobrenome"]); 
+			        $usuario->setEmail($exibir["email"]);
+			        $usuario->setUsuario($exibir["usuario"]);
+			        $usuario->setScrumMaster($exibir["scrum_master"]);
+			        $participantes->append($usuario);
+				}
+				$projeto->setParticipantes($participantes);
+				return $projeto;
+			}else{
+				//mensagem exibida caso ocorra algum erro na execução do comando sql
+				echo "<script>alert('Erro ao selecionar integrantes!');</script>";
+				echo "Erro: ". $SQL. "<br>" . $conn->error;
+			}
+			$conn->close();
+		}
+
 		function entrarProjeto($projeto_id){
 			include 'conexao/conecta.php';
 		  	$sql = "SELECT * FROM projeto WHERE id='".$projeto_id."'";
