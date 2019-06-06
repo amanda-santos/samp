@@ -146,5 +146,18 @@
 				echo "Erro: ". $SQL. "<br>" . $conn->error;
 			}
 		}
+
+		function editarEstoriaSprintBacklog($nivel_dificuldade, $duracao, $id_estoria, $projeto_id){
+			include 'conexao/conecta.php';
+	$sql = "UPDATE estoria SET niveldificuldade_id = ".$nivel_dificuldade.", duracao = ".$duracao." WHERE id = ".$id_estoria.";";
+		    //echo "<script>alert(".$sql.");</script>";
+		    if ($conn->query($sql) === TRUE) {
+		      echo "<script>alert('A estória foi atualizada com sucesso!');</script>";
+		      echo "<script>window.location = '../controller/dashboardProjeto.php?id=".$projeto_id."';</script>";
+		    } else {
+		      echo "Erro: " . $sql . "<br>" . $conn->error;
+		    }
+		    $conn->close();
+		}
 	}
 ?>

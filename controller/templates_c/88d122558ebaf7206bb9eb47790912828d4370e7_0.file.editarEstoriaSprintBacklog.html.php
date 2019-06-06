@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-06 01:16:27
+/* Smarty version 3.1.33, created on 2019-06-06 06:24:12
   from 'C:\xampp\htdocs\samp\view\editarEstoriaSprintBacklog.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cf84d4b0d6169_49369720',
+  'unifunc' => 'content_5cf8956cacde91_01276977',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '88d122558ebaf7206bb9eb47790912828d4370e7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\editarEstoriaSprintBacklog.html',
-      1 => 1559771317,
+      1 => 1559795050,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cf84d4b0d6169_49369720 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cf8956cacde91_01276977 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -41,26 +41,38 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
       <form class="form-horizontal" method="POST" action="../controller/editarEstoriaSprintBacklog.php?idEstoria=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 &idProjeto=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 " enctype="multipart/form-data" data-toggle="validator">
-		
-      <!--início do campo do formulário-->
-        <div class="form-group required">
-        <label class="control-label col-sm-20" for="nome">Nome da Estória:</label>
-        <div class="col-sm-30">
-          <input type="text" class="form-control" id="name" name="nome" value="<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getNome();?>
-" required>
-        </div> <!--fim col-sm-5-->
-        </div> <!--fim form-group-->
+        
+		  <!--início do campo do formulário-->
+      <div class="form-group row">
+         <label for="staticEmail" class="col-sm-2 col-form-label">Estória: </label>
+         <div class="col-sm-10">
+        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getNome();?>
+">
+       </div>
+      </div>
       <!--fim do campo do formulário-->
+
+
+
+     <!--início do campo do formulário-->
+            <div class="form-group required">
+        <label class="control-label" for="nivel_dificuldade">Selecione o nível de dificuldade:</label>
+          <select id=nivel_dificuldade name="nivel_dificuldade">
+            <option value="1">Baixo</option>
+            <option value="2">Médio</option>
+            <option value="3">Alto</option>
+            <option value="4">Muito Alto</option>
+          </select>
+      </div>
+       <!--fim do campo do formulário-->
       
       <!--início do campo do formulário-->
         <div class="form-group required">
-          <label class="control-label" for="descricao">Duração:</label>
-          <div class="col-sm-30">
-            <textarea rows="4" cols="50" maxlength="300" class="form-control" id="duracao" name="duracao" required>
-              <?php echo $_smarty_tpl->tpl_vars['estoria']->value->getDuracao();?>
-
-    		    </textarea>
-          </div>
+        <label class="control-label col-sm-20" for="nome">Informe a duração da estória:</label>
+        <div class="col-sm-30">
+          <input type="text" class="form-control" id="duracao" name="duracao" value="<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getDuracao();?>
+" required>
+        </div> <!--fim col-sm-5-->
         </div> <!--fim form-group-->
       <!--fim do campo do formulário-->
 

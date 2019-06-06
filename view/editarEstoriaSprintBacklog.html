@@ -13,24 +13,36 @@
 	
   	<div class = "post">
       <form class="form-horizontal" method="POST" action="../controller/editarEstoriaSprintBacklog.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}" enctype="multipart/form-data" data-toggle="validator">
-		
-      <!--início do campo do formulário-->
-        <div class="form-group required">
-        <label class="control-label col-sm-20" for="nome">Nome da Estória:</label>
-        <div class="col-sm-30">
-          <input type="text" class="form-control" id="name" name="nome" value="{$estoria->getNome()}" required>
-        </div> <!--fim col-sm-5-->
-        </div> <!--fim form-group-->
+        
+		  <!--início do campo do formulário-->
+      <div class="form-group row">
+         <label for="staticEmail" class="col-sm-2 col-form-label">Estória: </label>
+         <div class="col-sm-10">
+        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{$estoria->getNome()}">
+       </div>
+      </div>
       <!--fim do campo do formulário-->
+
+
+
+     <!--início do campo do formulário-->
+            <div class="form-group required">
+        <label class="control-label" for="nivel_dificuldade">Selecione o nível de dificuldade:</label>
+          <select id=nivel_dificuldade name="nivel_dificuldade">
+            <option value="1">Baixo</option>
+            <option value="2">Médio</option>
+            <option value="3">Alto</option>
+            <option value="4">Muito Alto</option>
+          </select>
+      </div>
+       <!--fim do campo do formulário-->
       
       <!--início do campo do formulário-->
         <div class="form-group required">
-          <label class="control-label" for="descricao">Duração:</label>
-          <div class="col-sm-30">
-            <textarea rows="4" cols="50" maxlength="300" class="form-control" id="duracao" name="duracao" required>
-              {$estoria->getDuracao()}
-    		    </textarea>
-          </div>
+        <label class="control-label col-sm-20" for="nome">Informe a duração da estória:</label>
+        <div class="col-sm-30">
+          <input type="text" class="form-control" id="duracao" name="duracao" value="{$estoria->getDuracao()}" required>
+        </div> <!--fim col-sm-5-->
         </div> <!--fim form-group-->
       <!--fim do campo do formulário-->
 
