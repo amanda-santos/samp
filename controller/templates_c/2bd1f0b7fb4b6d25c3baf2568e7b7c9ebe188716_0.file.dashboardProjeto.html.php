@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-09 02:19:33
+/* Smarty version 3.1.33, created on 2019-06-09 04:40:33
   from 'C:\xampp\htdocs\samp\view\dashboardProjeto.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cfc50955e5b07_12947599',
+  'unifunc' => 'content_5cfc71a11bde57_27519161',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2bd1f0b7fb4b6d25c3baf2568e7b7c9ebe188716' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\dashboardProjeto.html',
-      1 => 1560039569,
+      1 => 1560048028,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cfc50955e5b07_12947599 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cfc71a11bde57_27519161 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -46,7 +46,7 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
 	    </div>
 	    <div style="padding: 10px 10px;">
 		
-			<?php if ($_smarty_tpl->tpl_vars['sprintBacklog']->value->getEstorias() != null) {?>
+			<?php if ($_smarty_tpl->tpl_vars['meuTrabalho']->value->getEstorias() != null) {?>
 				<?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['meuTrabalho']->value->getEstorias(), 'estoria');
 if ($_from !== null) {
@@ -170,6 +170,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 									</div>
 									<!-- Fim Modal -->
 
+									<?php if ($_smarty_tpl->tpl_vars['estoria']->value->getTarefas() != null) {?>
+
+									<?php }?>
 
 	                  			</div>
 	                		</div>

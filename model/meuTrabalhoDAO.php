@@ -75,9 +75,10 @@
 						        $tarefas->append($tarefa);
 								
 							} // fim while tarefas
+
+							$estoria->setTarefas($tarefas); // adicionando a lista de tarefas à estória
+
 						} // fim if tarefas
-					
-						$estoria->setTarefas($tarefas); // adicionando a lista de tarefas à estória
 
 					} // fim if responsaveis
 					

@@ -19,7 +19,7 @@
 	    </div>
 	    <div style="padding: 10px 10px;">
 		
-			{if $sprintBacklog->getEstorias() != null}
+			{if $meuTrabalho->getEstorias() != null}
 				{foreach item=estoria from=$meuTrabalho->getEstorias()}
 		    	
 				    <div class="card border-left-danger h-10">
@@ -115,6 +115,9 @@
 									</div>
 									<!-- Fim Modal -->
 
+									{if $estoria->getTarefas() != null}
+
+									{/if}
 
 	                  			</div>
 	                		</div>
