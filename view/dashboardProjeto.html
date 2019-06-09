@@ -47,7 +47,7 @@
 					            	<b>Responsáveis:</b>
 					            	{foreach item=responsavel from=$estoria->getResponsaveis()}
 										<br>
-										{$responsavel}
+										{$responsavel->getNome()} {$responsavel->getSobrenome()}
 									{/foreach}
 
 									<br><br>
@@ -251,7 +251,7 @@
 					            	<b>Responsáveis:</b>
 					            	{foreach item=responsavel from=$estoria->getResponsaveis()}
 										<br>
-										{$responsavel}
+										{$responsavel->getNome()} {$responsavel->getSobrenome()}
 									{/foreach}
 
 					            	{if $projeto->getScrumMaster() == 1}

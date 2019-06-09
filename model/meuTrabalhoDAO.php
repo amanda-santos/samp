@@ -34,7 +34,7 @@
 					$estoria->setNivelDificuldade($exibir["nivel_dificuldade"]);
 					$estoria->setSituacao($exibir["situacao"]);
 					
-					$SQL2 = "SELECT nome, sobrenome 
+					$SQL2 = "SELECT nome, sobrenome, email, usuario 
 							 FROM usuario_estoria 
 							 JOIN usuario ON usuario = Usuario_usuario 
 							 WHERE Estoria_id = ".$exibir["id"].";";
@@ -42,10 +42,20 @@
 					$result_responsaveis = $conn->query($SQL2);
 
 					if ($result_responsaveis->num_rows > 0){
-						
+
+						$responsaveis = new ArrayObject();
+
 						while ($exibir_responsaveis = $result_responsaveis->fetch_assoc()){
-							$estoria->setResponsaveis($exibir_responsaveis["nome"] . " " . $exibir_responsaveis["sobrenome"] );
+							$usuario = new Usuario();
+							$usuario->setNome($exibir_responsaveis["nome"]);
+					        $usuario->setSobrenome($exibir_responsaveis["sobrenome"]); 
+					        $usuario->setEmail($exibir_responsaveis["email"]);
+					        $usuario->setUsuario($exibir_responsaveis["usuario"]);
+
+					        $responsaveis->append($usuario);
 						} // fim while responsaveis
+
+						$estoria->setResponsaveis($responsaveis);
 
 						$SQL3 = "SELECT T.id, T.nome, S.situacao
 								 FROM tarefa AS T 

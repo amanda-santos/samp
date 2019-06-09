@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-23 15:46:25
+/* Smarty version 3.1.33, created on 2019-06-09 21:31:15
   from 'C:\xampp\htdocs\samp\view\editarEstoria.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5ce6a4316ff3d7_88875991',
+  'unifunc' => 'content_5cfd5e837996c6_15664320',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e2123080335e8f21dfb8e6de9ce21c1f706cf697' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\editarEstoria.html',
-      1 => 1558619180,
+      1 => 1560049899,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5ce6a4316ff3d7_88875991 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cfd5e837996c6_15664320 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 

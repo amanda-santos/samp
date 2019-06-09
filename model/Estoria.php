@@ -3,14 +3,14 @@
 	class Estoria{
 		private $id, $nome, $descricao, $duracao, $nivel_dificuldade, $situacao, $responsaveis, $sprint_backlog, $tarefas;
 
-		public function __construct($paramId='', $paramNome='', $paramDesc='', $paramDuracao='', $paramNivelDificuldade='', $paramSituacao='', $paramSprintBacklog='', $paramTarefas=''){
+		public function __construct($paramId='', $paramNome='', $paramDesc='', $paramDuracao='', $paramNivelDificuldade='', $paramSituacao='', $paramResponsaveis='', $paramSprintBacklog='', $paramTarefas=''){
 			$this->id = $paramId;
 		    $this->nome = $paramNome;
 		    $this->descricao = $paramDesc;
 		    $this->duracao = $paramDuracao;
 		    $this->nivel_dificuldade = $paramNivelDificuldade;
 		    $this->situacao = $paramSituacao;
-		    $this->responsaveis = new ArrayObject();
+		    $this->responsaveis = $paramResponsaveis;
 		    $this->sprint_backlog = $paramSprintBacklog;
 		    $this->tarefas = $paramTarefas;
 		}
@@ -33,8 +33,8 @@
 		public function setSituacao($situacao){
 			$this->situacao=$situacao;
 		}
-		public function setResponsaveis($responsavel){
-			$this->responsaveis->append($responsavel);
+		public function setResponsaveis($responsaveis){
+			$this->responsaveis = $responsaveis;
 		}
 		public function setSprintBacklog($sprint_backlog){
 			$this->sprint_backlog = $sprint_backlog;

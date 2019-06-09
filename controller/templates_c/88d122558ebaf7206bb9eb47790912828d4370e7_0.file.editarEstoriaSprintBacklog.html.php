@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-06 06:24:12
+/* Smarty version 3.1.33, created on 2019-06-09 21:54:29
   from 'C:\xampp\htdocs\samp\view\editarEstoriaSprintBacklog.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cf8956cacde91_01276977',
+  'unifunc' => 'content_5cfd63f54bb867_43123408',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '88d122558ebaf7206bb9eb47790912828d4370e7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\editarEstoriaSprintBacklog.html',
-      1 => 1559795050,
+      1 => 1560110059,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cf8956cacde91_01276977 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cfd63f54bb867_43123408 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -51,8 +51,6 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
        </div>
       </div>
       <!--fim do campo do formulário-->
-
-
 
      <!--início do campo do formulário-->
             <div class="form-group required">

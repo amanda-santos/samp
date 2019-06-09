@@ -28,6 +28,8 @@
 					$estoria->setNome($exibir["nome"]);
 					$estoria->setDesc($exibir["descricao"]);
 					$estoria->setId($exibir["id"]);
+					$estoria->setNivelDificuldade($exibir["NivelDificuldade_id"]);
+					$estoria->setDuracao($exibir["duracao"]);
 					return $estoria;
 				}
 			}else{
