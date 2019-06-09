@@ -1,9 +1,9 @@
  <?php
 	require_once '../model/ProductBacklog.php';
 	class Estoria{
-		private $id, $nome, $descricao, $duracao, $nivel_dificuldade, $situacao, $responsaveis, $sprint_backlog;
+		private $id, $nome, $descricao, $duracao, $nivel_dificuldade, $situacao, $responsaveis, $sprint_backlog, $tarefas;
 
-		public function __construct($paramId='', $paramNome='', $paramDesc='', $paramDuracao='', $paramNivelDificuldade='', $paramSituacao='', $paramSprintBacklog=''){
+		public function __construct($paramId='', $paramNome='', $paramDesc='', $paramDuracao='', $paramNivelDificuldade='', $paramSituacao='', $paramSprintBacklog='', $paramTarefas=''){
 			$this->id = $paramId;
 		    $this->nome = $paramNome;
 		    $this->descricao = $paramDesc;
@@ -12,6 +12,7 @@
 		    $this->situacao = $paramSituacao;
 		    $this->responsaveis = new ArrayObject();
 		    $this->sprint_backlog = $paramSprintBacklog;
+		    $this->tarefas = $paramTarefas;
 		}
 
 		public function setId($id){
@@ -38,6 +39,9 @@
 		public function setSprintBacklog($sprint_backlog){
 			$this->sprint_backlog = $sprint_backlog;
 		}
+		public function setTarefas($tarefas){
+			$this->tarefas = $tarefas;
+		}
 
 		public function getId(){
 			return $this->id;
@@ -62,6 +66,9 @@
 		}
 		public function getSprintBacklog(){
 			return $this->sprint_backlog;
+		}
+		public function getTarefas(){
+			return $this->tarefas;
 		}
 	}
 ?>

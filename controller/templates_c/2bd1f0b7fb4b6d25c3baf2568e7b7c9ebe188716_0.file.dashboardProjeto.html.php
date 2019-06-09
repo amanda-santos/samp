@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-06 17:09:11
+/* Smarty version 3.1.33, created on 2019-06-09 02:19:33
   from 'C:\xampp\htdocs\samp\view\dashboardProjeto.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cf92c97c672e7_92663939',
+  'unifunc' => 'content_5cfc50955e5b07_12947599',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2bd1f0b7fb4b6d25c3baf2568e7b7c9ebe188716' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\dashboardProjeto.html',
-      1 => 1559833749,
+      1 => 1560039569,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cf92c97c672e7_92663939 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cfc50955e5b07_12947599 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -48,11 +48,10 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
 		
 			<?php if ($_smarty_tpl->tpl_vars['sprintBacklog']->value->getEstorias() != null) {?>
 				<?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['sprintBacklog']->value->getEstorias(), 'estoria');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['meuTrabalho']->value->getEstorias(), 'estoria');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 ?>
-				
 		    	
 				    <div class="card border-left-danger h-10">
 
@@ -76,10 +75,9 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 					            	<br>
 					            	<b>Situação:</b> <?php echo $_smarty_tpl->tpl_vars['estoria']->value->getSituacao();?>
 
-					            	<button data-toggle="modal" data-target="#situacao-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
-" type="button" title="Adicionar Situação" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-pencil-alt"></i> 
-					            		Editar Situação
-					            	</button>
+					            	<a href="" style="color: red" data-toggle="modal" data-target="#situacao-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+" title="Adicionar Situação" ><i class="fas fa-pencil-alt"></i> 
+					            	</a>
 					            	<br>
 					            	<b>Nível de Dificuldade:</b> <?php echo $_smarty_tpl->tpl_vars['estoria']->value->getNivelDificuldade();?>
 
@@ -111,7 +109,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 										<div class="modal-dialog" role="document">
 											<div class="modal-content">
 												<div class= "modal-header">
-													<h4 class="modal-title text-center" id="myModalLabel">	
+													<h4 class="modal-title text-center" id="myModalLabel">
 														Adicionar Tarefa
 													</h4>
 													<button type="button" class="close" data-dismiss="modal" aria-label="Close">

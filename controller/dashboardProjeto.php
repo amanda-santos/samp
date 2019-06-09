@@ -3,6 +3,7 @@
 	require_once '../model/projetoDAO.php';
 	require_once '../model/productBacklogDAO.php';
 	require_once '../model/sprintBacklogDAO.php';
+	require_once '../model/meuTrabalhoDAO.php';
 
 	if (isset($_SESSION["usuario"])) { //SE EXISTIR AUTENTICAÇÃO
 
@@ -19,10 +20,14 @@
 
 		$sprintBacklogDAO = new sprintBacklogDAO();
 		$sprintBacklog = $sprintBacklogDAO->selecionarSprintBacklog($idProjeto);
+
+		$meuTrabalhoDAO = new meuTrabalhoDAO();
+		$meuTrabalho = $meuTrabalhoDAO->selecionarMeuTrabalho($idProjeto);
 		
 		$smarty->assign("projeto", $projeto);
 		$smarty->assign("productBacklog", $productBacklog);
 		$smarty->assign("sprintBacklog", $sprintBacklog);
+		$smarty->assign("meuTrabalho", $meuTrabalho);
 
 		$smarty->display('../view/dashboardProjeto.html');
 

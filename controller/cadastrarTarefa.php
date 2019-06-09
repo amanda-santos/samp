@@ -4,6 +4,6 @@
 
  	if (isset($_POST["cadastrar_tarefa"])){
     	$tarefaDAO = new tarefaDAO();
-    	$tarefaDAO->persistirTarefa($_POST['nome'], $_GET['id'], $_GET['idProjeto']);
+    	$tarefaDAO->persistirTarefa($_POST['nome'], $_GET['idEstoria'], $_GET['idProjeto']);
   	}
 ?>
