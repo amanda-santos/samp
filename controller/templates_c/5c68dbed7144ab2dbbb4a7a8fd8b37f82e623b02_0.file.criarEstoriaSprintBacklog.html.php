@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-06 17:14:20
+/* Smarty version 3.1.33, created on 2019-06-10 00:03:45
   from 'C:\xampp\htdocs\samp\view\criarEstoriaSprintBacklog.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cf92dcc7f51f4_50822638',
+  'unifunc' => 'content_5cfd82411fd777_73998263',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5c68dbed7144ab2dbbb4a7a8fd8b37f82e623b02' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\criarEstoriaSprintBacklog.html',
-      1 => 1559834053,
+      1 => 1560117821,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cf92dcc7f51f4_50822638 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cfd82411fd777_73998263 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -70,7 +70,7 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['participante']->value) {
 ?>
             <div class="form-check form-check-inline">
-              <input required class="form-check-input" type="checkbox" name="responsavel[]" id="responsavel" value="<?php echo $_smarty_tpl->tpl_vars['participante']->value->getUsuario();?>
+              <input class="form-check-input" type="checkbox" name="responsavel[]" id="responsavel" value="<?php echo $_smarty_tpl->tpl_vars['participante']->value->getUsuario();?>
 ">
               <label class="form-check-label" for="responsavel">
                 <?php echo $_smarty_tpl->tpl_vars['participante']->value->getNome();?>

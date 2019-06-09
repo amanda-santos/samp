@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-09 21:54:29
+/* Smarty version 3.1.33, created on 2019-06-09 23:29:04
   from 'C:\xampp\htdocs\samp\view\editarEstoriaSprintBacklog.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cfd63f54bb867_43123408',
+  'unifunc' => 'content_5cfd7a20bb8366_71593374',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '88d122558ebaf7206bb9eb47790912828d4370e7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\editarEstoriaSprintBacklog.html',
-      1 => 1560110059,
+      1 => 1560115741,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cfd63f54bb867_43123408 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cfd7a20bb8366_71593374 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -56,7 +56,11 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
             <div class="form-group required">
         <label class="control-label" for="nivel_dificuldade">Selecione o nível de dificuldade:</label>
           <select id=nivel_dificuldade name="nivel_dificuldade">
-            <option value="1">Baixo</option>
+            <?php if (($_smarty_tpl->tpl_vars['estoria']->value->getNivelDificuldade() == 1)) {?>
+              <option value="1" selected>Baixo</option>
+            <?php } else { ?>
+              <option value="1">Baixo</option>
+            <?php }?>
             <option value="2">Médio</option>
             <option value="3">Alto</option>
             <option value="4">Muito Alto</option>

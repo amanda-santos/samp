@@ -27,7 +27,11 @@
             <div class="form-group required">
         <label class="control-label" for="nivel_dificuldade">Selecione o nível de dificuldade:</label>
           <select id=nivel_dificuldade name="nivel_dificuldade">
-            <option value="1">Baixo</option>
+            {if ($estoria->getNivelDificuldade() == 1)}
+              <option value="1" selected>Baixo</option>
+            {else}
+              <option value="1">Baixo</option>
+            {/if}
             <option value="2">Médio</option>
             <option value="3">Alto</option>
             <option value="4">Muito Alto</option>

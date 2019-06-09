@@ -38,7 +38,7 @@
 
           {foreach item=participante from=$projeto->getParticipantes()}
             <div class="form-check form-check-inline">
-              <input required class="form-check-input" type="checkbox" name="responsavel[]" id="responsavel" value="{$participante->getUsuario()}">
+              <input class="form-check-input" type="checkbox" name="responsavel[]" id="responsavel" value="{$participante->getUsuario()}">
               <label class="form-check-label" for="responsavel">
                 {$participante->getNome()} {$participante->getSobrenome()}
               </label>
