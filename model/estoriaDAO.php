@@ -3,6 +3,7 @@
 	class estoriaDAO{
 		public static function persistirEstoria($nome, $descricao, $projeto_id){
 			include 'conexao/conecta.php';
+
 			//define o comando sql para inserção
 			$SQL = "INSERT INTO estoria (nome, descricao, projeto_id) VALUES ('".$nome."','".$descricao."','".$projeto_id."');";
 			if ($conn->query($SQL) === TRUE){
@@ -19,6 +20,7 @@
 		
 		function selecionarEstoria($id){
 			include 'conexao/conecta.php';
+			require_once 'Usuario.php';
 			//define o comando sql para inserção
 			$SQL = "SELECT * FROM estoria AS e WHERE e.id = " . $id;
 			$result = $conn->query($SQL);
@@ -30,6 +32,29 @@
 					$estoria->setId($exibir["id"]);
 					$estoria->setNivelDificuldade($exibir["NivelDificuldade_id"]);
 					$estoria->setDuracao($exibir["duracao"]);
+					$SQL2 = "SELECT nome, sobrenome, email, usuario 
+							 FROM usuario_estoria 
+							 JOIN usuario ON usuario = Usuario_usuario 
+							 WHERE Estoria_id = ".$exibir["id"].";";
+
+					$result_responsaveis = $conn->query($SQL2);
+
+					if ($result_responsaveis->num_rows > 0){
+
+						$responsaveis = new ArrayObject();
+
+						while ($exibir_responsaveis = $result_responsaveis->fetch_assoc()){
+							$usuario = new Usuario();
+							$usuario->setNome($exibir_responsaveis["nome"]);
+					        $usuario->setSobrenome($exibir_responsaveis["sobrenome"]); 
+					        $usuario->setEmail($exibir_responsaveis["email"]);
+					        $usuario->setUsuario($exibir_responsaveis["usuario"]);
+
+					        $responsaveis->append($usuario);
+						} // fim while responsaveis
+
+						$estoria->setResponsaveis($responsaveis);
+					}
 					return $estoria;
 				}
 			}else{
@@ -154,7 +179,7 @@
 
 		function editarEstoriaSprintBacklog($nivel_dificuldade, $duracao, $id_estoria, $projeto_id){
 			include 'conexao/conecta.php';
-	$sql = "UPDATE estoria SET niveldificuldade_id = ".$nivel_dificuldade.", duracao = ".$duracao." WHERE id = ".$id_estoria.";";
+			$sql = "UPDATE estoria SET niveldificuldade_id = ".$nivel_dificuldade.", duracao = ".$duracao." WHERE id = ".$id_estoria.";";
 		    //echo "<script>alert(".$sql.");</script>";
 		    if ($conn->query($sql) === TRUE) {
 		      echo "<script>alert('A estória foi atualizada com sucesso!');</script>";
@@ -164,5 +189,19 @@
 		    }
 		    $conn->close();
 		}
-	}
+		
+		function excluirUsuarioResponsavel($idProjeto, $usuario, $idEstoria){
+			include("conexao/conecta.php");
+			$sql = " DELETE FROM usuario_estoria WHERE Usuario_usuario = '".$usuario."' AND Estoria_id = ".$idEstoria.";";
+			if ($conn->query($sql) === TRUE) { //se o comando funcionou
+				echo "<script>alert('O usuário foi removido com sucesso.');</script>";
+				echo "<script>window.location = '../controller/exibirEstoriaSprintBacklog.php?idEstoria=44&idProjeto=$idProjeto';</script>";
+			}
+			else{ //se o comando não funcionou
+			echo "<script>alert('Erro ao remover usuário!');</script>";
+			echo "Erro: ". $sql. "<br>" . $conn->error;
+			}
+		}	
+	}	
+
 ?>
