@@ -36,7 +36,8 @@
 							 FROM usuario_estoria AS UE
 							 JOIN usuario AS U ON U.usuario = UE.Usuario_usuario 
 							 JOIN usuario_projeto AS UP ON UE.Usuario_usuario = UP.Usuario_usuario 
-							 WHERE Estoria_id = ".$exibir["id"].";";
+							 WHERE Estoria_id = ".$exibir["id"]."
+							 GROUP BY usuario;";
 
 					$result_responsaveis = $conn->query($SQL2);
 
