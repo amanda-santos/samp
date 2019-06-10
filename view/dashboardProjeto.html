@@ -19,10 +19,9 @@
 	    </div>
 	    <div style="padding: 10px 10px;">
 		
-			{if $sprintBacklog->getEstorias() != null}
-				{foreach item=estoria from=$sprintBacklog->getEstorias()}
-				
-		    	
+			{if $meuTrabalho->getEstorias() != null}
+				{foreach item=estoria from=$meuTrabalho->getEstorias()}
+									
 				    <div class="card border-left-danger h-10">
 
 				        <!-- Collapsable Card Example -->
@@ -39,9 +38,8 @@
 	                    			{$estoria->getDesc()}
 					            	<br>
 					            	<b>Situação:</b> {$estoria->getSituacao()}
-					            	<button data-toggle="modal" data-target="#situacao-{$estoria->getId()}" type="button" title="Adicionar Situação" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-pencil-alt"></i> 
-					            		Editar Situação
-					            	</button>
+					            	<a href="" style="color: red" data-toggle="modal" data-target="#situacao-{$estoria->getId()}" title="Adicionar Situação" ><i class="fas fa-pencil-alt"></i> 
+					            	</a>
 					            	<br>
 					            	<b>Nível de Dificuldade:</b> {$estoria->getNivelDificuldade()}
 					            	<br>
@@ -49,9 +47,11 @@
 					            	<b>Responsáveis:</b>
 					            	{foreach item=responsavel from=$estoria->getResponsaveis()}
 										<br>
-										{$responsavel}
+										{$responsavel->getNome()} {$responsavel->getSobrenome()}
 									{/foreach}
-
+									
+									
+					            	
 									<br><br>
 
 									<button data-toggle="modal" data-target="#adicionarTarefa-{$estoria->getId()}" type="button" title="Adicionar Subtarefa" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-tasks"></i>  Adicionar Tarefa</button>
@@ -61,7 +61,7 @@
 										<div class="modal-dialog" role="document">
 											<div class="modal-content">
 												<div class= "modal-header">
-													<h4 class="modal-title text-center" id="myModalLabel">	
+													<h4 class="modal-title text-center" id="myModalLabel">
 														Adicionar Tarefa
 													</h4>
 													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -115,8 +115,21 @@
 											</div>
 										</div>
 									</div>
+									
+									
 									<!-- Fim Modal -->
-
+						{if $estoria->getTarefas() != null}
+							{foreach item=tarefa from=$estoria->getTarefas()}
+									<br>
+									<b>Nome: </b> {$tarefa->getNome()}
+									</b>
+					            	<b>Situação:</b> {$tarefa->getSituacao()}
+					            	<br>
+					            	
+			
+									{/foreach}
+									{/if}
+						
 
 	                  			</div>
 	                		</div>
@@ -250,7 +263,7 @@
 					            	<b>Responsáveis:</b>
 					            	{foreach item=responsavel from=$estoria->getResponsaveis()}
 										<br>
-										{$responsavel}
+										{$responsavel->getNome()} {$responsavel->getSobrenome()}
 									{/foreach}
 
 					            	{if $projeto->getScrumMaster() == 1}
