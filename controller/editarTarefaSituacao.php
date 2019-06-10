@@ -5,7 +5,7 @@
   //Criando e Instanciando o objeto
   if (isset($_POST["atualizarTarefa"])){
     $tarefaDAO = new tarefaDAO();
-    $tarefaDAO->editarSituacao($_POST['situacao'], $_GET['id'], $_GET['idProjeto']);
+    $tarefaDAO->editarSituacao($_POST['situacao'], $_GET['idTarefa'], $_GET['idProjeto']);
   }
 
 ?>
