@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-09 21:51:59
+/* Smarty version 3.1.33, created on 2019-06-10 06:32:02
   from 'C:\xampp\htdocs\samp\view\dashboardProjeto.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cfd635f39dcc3_02204968',
+  'unifunc' => 'content_5cfddd424e6323_50319886',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2bd1f0b7fb4b6d25c3baf2568e7b7c9ebe188716' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\dashboardProjeto.html',
-      1 => 1560109853,
+      1 => 1560141119,
       2 => 'file',
     ),
   ),
@@ -22,13 +22,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cfd635f39dcc3_02204968 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cfddd424e6323_50319886 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
 <!-- Título da Página -->
-<h1 class="h3 mb-1 text-gray-800"><?php echo $_smarty_tpl->tpl_vars['projeto']->value->getNome();?>
-</h1>
+<b><h1 class="h3 mb-1 text-gray-800"><?php echo $_smarty_tpl->tpl_vars['projeto']->value->getNome();?>
+</h1></b>
 <p class="mb-4"></p>
 
 <!-- div - conteúdo horizontal -->
@@ -52,7 +52,7 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 ?>
-		    	
+									
 				    <div class="card border-left-danger h-10">
 
 				        <!-- Collapsable Card Example -->
@@ -76,7 +76,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 					            	<b>Situação:</b> <?php echo $_smarty_tpl->tpl_vars['estoria']->value->getSituacao();?>
 
 					            	<a href="" style="color: red" data-toggle="modal" data-target="#situacao-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
-" title="Adicionar Situação" ><i class="fas fa-pencil-alt"></i> 
+" title="Adicionar Situação" ><i class="fas fa-edit"></i> 
 					            	</a>
 					            	<br>
 					            	<b>Nível de Dificuldade:</b> <?php echo $_smarty_tpl->tpl_vars['estoria']->value->getNivelDificuldade();?>
@@ -98,11 +98,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['responsavel']->value) {
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-
+					            	
 									<br><br>
-
-									<button data-toggle="modal" data-target="#adicionarTarefa-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
-" type="button" title="Adicionar Subtarefa" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-tasks"></i>  Adicionar Tarefa</button>
 
 									<!-- Inicio Modal -->
 									<div class="modal fade" id="adicionarTarefa-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
@@ -131,8 +128,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 											</div>
 										</div>
 									</div>
-								
-									<br>
 
 									<div class = "post">
 									<form class="form-horizontal" method="POST" action="../controller/editarSituacao.php?idEstoria=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
@@ -146,7 +141,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 											<div class="modal-content">
 												<div class= "modal-header">
 													<h4 class="modal-title text-center" id="myModalLabel">	
-														Situação
+														Editar Situação da Estória
 													</h4>
 													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 													<span aria-hidden="true">&times;</span></button>
@@ -154,7 +149,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 												<div class="modal-body">
 													
 														<label class="control-label" for="situacao">Selecione a situação:</label>
-														<select id=situacao name="situacao">
+														<select class="form-control" id=situacao name="situacao">
 															<option value="1">Não Iniciada</option>
 															<option value="2">Iniciada</option>
 															<option value="3">Concluída</option> 
@@ -171,10 +166,48 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 									</div>
 									<!-- Fim Modal -->
 
-									<?php if ($_smarty_tpl->tpl_vars['estoria']->value->getTarefas() != null) {?>
+									<div style="padding: 0px 0px;">
+										<a href="#tarefas-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="tarefas-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+">
 
-									<?php }?>
+			                  				<h6 style="color:red" class="font-weight-bold">Tarefas   
+			                  					<i  class="fas fa-chevron-right"></i>
+			                  				</h6>
 
+			                			</a>
+										<div class="collapse" id="tarefas-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+">
+
+											<?php if ($_smarty_tpl->tpl_vars['estoria']->value->getTarefas() != null) {?>
+												<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['estoria']->value->getTarefas(), 'tarefa');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['tarefa']->value) {
+?>
+													
+													<br>
+													<i style="color:red" class="fas fa-check"></i>
+													<?php echo $_smarty_tpl->tpl_vars['tarefa']->value->getNome();?>
+
+													<br>
+									            	<b>Situação:</b> <?php echo $_smarty_tpl->tpl_vars['tarefa']->value->getSituacao();?>
+
+									            	<br>
+									            	
+												<?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+											<?php }?>
+
+											<br>
+
+											<button data-toggle="modal" data-target="#adicionarTarefa-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+" type="button" title="Adicionar Subtarefa" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-tasks"></i>  Adicionar Tarefa</button>
+
+										</div>
+									</div>
 	                  			</div>
 	                		</div>
 						</div>

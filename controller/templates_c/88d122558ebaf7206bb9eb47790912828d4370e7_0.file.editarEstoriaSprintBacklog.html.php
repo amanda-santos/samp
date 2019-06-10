@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-10 05:36:56
+/* Smarty version 3.1.33, created on 2019-06-10 06:29:05
   from 'C:\xampp\htdocs\samp\view\editarEstoriaSprintBacklog.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cfdd058818544_86669379',
+  'unifunc' => 'content_5cfddc9153ae31_17086983',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '88d122558ebaf7206bb9eb47790912828d4370e7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\editarEstoriaSprintBacklog.html',
-      1 => 1560137784,
+      1 => 1560140941,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../view/footer.html' => 1,
   ),
 ),false)) {
-function content_5cfdd058818544_86669379 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cfddc9153ae31_17086983 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -53,19 +53,29 @@ $_smarty_tpl->_subTemplateRender("file:../view/header.html", $_smarty_tpl->cache
 " enctype="multipart/form-data" data-toggle="validator">
         
 		  <!--início do campo do formulário-->
-      <div class="form-group row">
-         <label for="staticEmail" class="col-sm-2 col-form-label control-label">Estória: </label>
-         <div class="col-sm-10">
-            <input type="text" readonly class="form-control" id="staticEmail" value="<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getNome();?>
-">
-         </div>
-      </div>
+        <div class="form-group required">
+        <label class="control-label col-sm-20" for="nome">Estória:</label>
+        <div class="col-sm-30">
+          <input type="text" readonly class="form-control" id="nome" name="nome" value="<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getNome();?>
+" required>
+        </div> <!--fim col-sm-5-->
+        </div> <!--fim form-group-->
+      <!--fim do campo do formulário-->
+
+      <!--início do campo do formulário-->
+        <div class="form-group required">
+        <label class="control-label col-sm-20" for="descricao">Descrição:</label>
+        <div class="col-sm-30">
+          <textarea class="form-control" id="descricao" name="descricao" readonly><?php echo $_smarty_tpl->tpl_vars['estoria']->value->getDesc();?>
+</textarea>
+        </div> <!--fim col-sm-5-->
+        </div> <!--fim form-group-->
       <!--fim do campo do formulário-->
 
      <!--início do campo do formulário-->
       <div class="form-group required">
         <label class="control-label" for="nivel_dificuldade">Selecione o nível de dificuldade:</label>
-          <select id=nivel_dificuldade name="nivel_dificuldade">
+          <select class="form-control" id=nivel_dificuldade name="nivel_dificuldade">
 
             <?php if (($_smarty_tpl->tpl_vars['estoria']->value->getNivelDificuldade() == 1)) {?>
               <option value ="1" selected>Baixo</option>
