@@ -17,5 +17,18 @@
 			$conn->close();
 		}
 
+
+		public function editarSituacao($situacao,$id,$projeto_id){
+			include 'conexao/conecta.php';
+			$sql = "UPDATE tarefa set Situacao_id= '".$situacao."' WHERE id = '".$id."'";
+			
+			if ($conn->query($sql) === TRUE) {		      
+		      echo "<script>window.location = '../controller/dashboardProjeto.php?id=".$projeto_id."';</script>";
+		    } else {
+		      echo "Erro: " . $sql . "<br>" . $conn->error;
+		    }
+		    $conn->close();
+		  
+		}
 	}
 ?>
