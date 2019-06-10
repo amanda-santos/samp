@@ -38,7 +38,7 @@
 	                    			{$estoria->getDesc()}
 					            	<br>
 					            	<b>Situação:</b> {$estoria->getSituacao()}
-					            	<a href="" style="color: red" data-toggle="modal" data-target="#situacao-{$estoria->getId()}" title="Adicionar Situação" ><i class="fas fa-edit"></i> 
+					            	<a href="" style="color: red" data-toggle="modal" data-target="#situacao-{$estoria->getId()}" title="Editar Situação" ><i class="fas fa-edit"></i> 
 					            	</a>
 					            	<br>
 					            	<b>Nível de Dificuldade:</b> {$estoria->getNivelDificuldade()}
@@ -133,15 +133,8 @@
 													<a href="" style="color: red" data-toggle="modal" data-target="#situacaoTarefa-{$tarefa->getId()}" title="Adicionar Situação" ><i class="fas fa-edit"></i> 
 													</a>
 									            	<br>
-									            	
-												{/foreach}
-											{/if}
 
-											<div class = "post">
-												<form class="form-horizontal" method="POST" action="../controller/editarTarefaSituacao.php?idTarefa={$tarefa->getId()}&idProjeto={$projeto->getId()}" enctype="multipart/form-data" data-toggle="validator">
-												
-											
-													<!-- Inicio Modal Situação Tarefas -->
+									            	<!-- Inicio Modal Situação Tarefas -->
 													<div class="modal fade" id="situacaoTarefa-{$tarefa->getId()}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 														<div class="modal-dialog" role="document">
 															<div class="modal-content">
@@ -152,22 +145,29 @@
 																	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 																	<span aria-hidden="true">&times;</span></button>
 																</div>
-																<div class="modal-body">													
-																		<label class="control-label" for="situacao">Selecione a situação:</label>
-																		<select class="form-control" id=situacao name="situacao">								
-																			<option value="1">Iniciada</option>
-																			<option value="2">Concluída</option> 
-																		</select>
+																<div class="modal-body">
+																<form class="form-horizontal" method="POST" action="../controller/editarTarefaSituacao.php?idTarefa={$tarefa->getId()}&idProjeto={$projeto->getId()}" enctype="multipart/form-data" data-toggle="validator">		
+																	<label class="control-label" for="situacao">Selecione a situação:</label>
+																	<select class="form-control" id=situacao name="situacao">	
+																		<option value="2">Iniciada</option>
+																		<option value="3">Concluída</option> 
+																	</select>
 																</div>
 																<div class="modal-footer">
 																	<button class="btn btn-secondary" type="button" data-dismiss="modal">Fechar</button>
-																	<input type="submit" class="btn btn-success" name="atualizarTarefa" value="Atualizar"></input>													
-																	
+																	<input type="submit" class="btn btn-success" name="atualizarTarefa" value="Atualizar"></input>										
+																</form>
 																</div> 
 															</div>
 														</div>
 													</div>
 													<!-- Fim Modal -->
+									            	
+												{/foreach}
+											{/if}
+
+											<div class = "post">
+												<form class="form-horizontal" method="POST" action="../controller/editarTarefaSituacao.php?idTarefa={$tarefa->getId()}&idProjeto={$projeto->getId()}" enctype="multipart/form-data" data-toggle="validator">
 												</form>
 											</div>		
 
