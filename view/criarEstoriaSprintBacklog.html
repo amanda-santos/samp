@@ -2,7 +2,7 @@
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <h1 class="h3 mb-0 text-gray-800">Cadastrar Estória Sprint Backlog</h1>
+  <h1 class="h3 mb-0 text-gray-800">Cadastrar Estória no Sprint Backlog</h1>
 </div>
 
 <!-- Content Row -->
@@ -14,7 +14,7 @@
 
       <div class="form-group required">
         <label class="control-label" for="nivel_dificuldade">Selecione o nível de dificuldade:</label>
-          <select id=nivel_dificuldade name="nivel_dificuldade">
+          <select class="form-control" id=nivel_dificuldade name="nivel_dificuldade">
             <option value="1">Baixo</option>
             <option value="2">Médio</option>
             <option value="3">Alto</option>
@@ -37,12 +37,14 @@
         <div class="col-sm-30">
 
           {foreach item=participante from=$projeto->getParticipantes()}
+            {if ($participante->getScrumMaster() == 0)}
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="checkbox" name="responsavel[]" id="responsavel" value="{$participante->getUsuario()}">
               <label class="form-check-label" for="responsavel">
                 {$participante->getNome()} {$participante->getSobrenome()}
               </label>
             </div>
+            {/if}
           {/foreach}
 
         </div> <!--fim col-sm-5-->
