@@ -32,9 +32,10 @@
 					$estoria->setId($exibir["id"]);
 					$estoria->setNivelDificuldade($exibir["NivelDificuldade_id"]);
 					$estoria->setDuracao($exibir["duracao"]);
-					$SQL2 = "SELECT nome, sobrenome, email, usuario 
-							 FROM usuario_estoria 
-							 JOIN usuario ON usuario = Usuario_usuario 
+					$SQL2 = "SELECT nome, sobrenome, email, usuario, scrum_master 
+							 FROM usuario_estoria AS UE
+							 JOIN usuario AS U ON U.usuario = UE.Usuario_usuario 
+							 JOIN usuario_projeto AS UP ON UE.Usuario_usuario = UP.Usuario_usuario 
 							 WHERE Estoria_id = ".$exibir["id"].";";
 
 					$result_responsaveis = $conn->query($SQL2);
@@ -49,7 +50,7 @@
 					        $usuario->setSobrenome($exibir_responsaveis["sobrenome"]); 
 					        $usuario->setEmail($exibir_responsaveis["email"]);
 					        $usuario->setUsuario($exibir_responsaveis["usuario"]);
-
+					        $usuario->setScrumMaster($exibir_responsaveis["scrum_master"]);
 					        $responsaveis->append($usuario);
 						} // fim while responsaveis
 
