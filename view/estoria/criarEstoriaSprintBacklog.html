@@ -1,0 +1,64 @@
+{include file="../../view/dashboard/header.html" title=foo}
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Cadastrar Estória no Sprint Backlog</h1>
+</div>
+
+<!-- Content Row -->
+<div class="col-md-8"> 
+<div class="row">
+
+  	<div class = "post">
+      <form class="form-horizontal" method="POST" action="../../controller/estoria/cadastrarEstoriaSprintBacklog.php?idProjeto={$idProjeto}&id_estoria={$estoria}" enctype="multipart/form-data" data-toggle="validator">
+
+      <div class="form-group required">
+        <label class="control-label" for="nivel_dificuldade">Selecione o nível de dificuldade:</label>
+          <select class="form-control" id=nivel_dificuldade name="nivel_dificuldade">
+            <option value="1">Baixo</option>
+            <option value="2">Médio</option>
+            <option value="3">Alto</option>
+            <option value="4">Muito Alto</option>
+          </select>
+      </div>
+
+      <!--início do campo do formulário-->
+        <div class="form-group required">
+        <label class="control-label col-sm-20" for="nome">Informe a duração da estória:</label>
+        <div class="col-sm-30">
+          <input type="text" class="form-control" id="duracao" name="duracao" placeholder="Em horas" required>
+        </div> <!--fim col-sm-5-->
+        </div> <!--fim form-group-->
+      <!--fim do campo do formulário-->
+
+      <!--início do campo do formulário-->
+        <div class="form-group required">
+        <label class="control-label col-sm-20" for="nome">Selecione o(s) responsável(eis) pela estória:</label>
+        <div class="col-sm-30">
+
+          {foreach item=participante from=$projeto->getParticipantes()}
+            {if ($participante->getScrumMaster() == 0)}
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="responsavel[]" id="responsavel" value="{$participante->getUsuario()}">
+              <label class="form-check-label" for="responsavel">
+                {$participante->getNome()} {$participante->getSobrenome()}
+              </label>
+            </div>
+            {/if}
+          {/foreach}
+
+        </div> <!--fim col-sm-5-->
+        </div> <!--fim form-group-->
+      <!--fim do campo do formulário-->
+
+      <div>
+        <input type="submit" class="btn btn-success" name="cadastrar_estoria" value="Cadastrar Estória no Sprint Backlog"></input>
+      </div> <!--fim col-sm-8-->
+
+      </form>
+    </div> <!-- fim da div post -->
+    <!-- fim do post -->  
+</div>
+</div>
+
+{include file="../../view/dashboard/footer.html" title=foo}

@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\controller",
+    "\\controller\\projeto",
+    "\\model",
+    "\\model\\estoria",
+    "\\model\\meu_trabalho",
+    "\\view",
+    "\\view\\projeto"
+  ],
+  "SelectedNode": "\\model\\estoria\\estoriaDAO.php",
+  "PreviewInSolutionExplorer": false
+}
