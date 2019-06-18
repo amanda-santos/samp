@@ -346,24 +346,72 @@
         </div>
     </div>
 </div> <!-- fim coluna -->
+
 <!-- Quarta Coluna -->
 <div class="col-lg-3">
-
     <!-- Título -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="font-weight-bold text-success text-uppercase mb-1">Finalizado</h6>
         </div>
-
         <div style="padding: 10px 10px;">
 
+            {if ($finalizado->getEstorias() != null)}
+            {foreach item=estoria from=$finalizado->getEstorias()}
 
+            <div  class="card border-left-success h-10">
+                <!-- Collapsable Card Example -->
+                <div class="card">
+
+                    <!-- Card Header - Accordion -->
+                    <a href="#estoriaFinalizado-{$estoria->getId()}" class="d-block card-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="estoriaFinalizado-{$estoria->getId()}">
+                        <h6 class="font-weight-bold text-secondary">{$estoria->getNome()}</h6>
+                    </a>
+
+                    <!-- Card Content - Collapse -->
+                    <div class="collapse" id="finalizado-{$estoria->getId()}">
+                        <div class="card-body">
+                            {$estoria->getDesc()}
+                            <br>
+                            <b>Nível de Dificuldade:</b> {$estoria->getNivelDificuldade()}
+                            <br>
+                            <b>Duração:</b> {$estoria->getDuracao()} horas
+                            <br>
+                            <b>Responsáveis:</b>
+                            {foreach item=responsavel from=$estoria->getResponsaveis()}
+                                <br>
+                                {$responsavel->getNome()} {$responsavel->getSobrenome()}
+                            {/foreach}
+                            <br><br>
+
+                            <div style="padding: 0px 0px;">
+                                <a href="#tarefas-{$estoria->getId()}" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="tarefas-{$estoria->getId()}">
+                                    <h6 style="color:green" class="font-weight-bold">
+                                        Tarefas
+                                        <i class="fas fa-chevron-right"></i>
+                                    </h6>
+                                </a>
+                                <div class="collapse" id="tarefas-{$estoria->getId()}">
+                                    {if ($estoria->getTarefas() != null)}
+                                        {foreach item=tarefa from=$estoria->getTarefas()}
+                                            <br>
+                                            <i style="color:green" class="fas fa-check"></i>
+                                            {$tarefa->getNome()}
+                                            <br>
+                                            <b>Situação:</b> {$tarefa->getSituacao()}
+                                        {/foreach}
+                                    {/if}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/foreach}
+            {/if}
         </div>
-
     </div>
-
 </div>
-
 </div>
 
 {include file="../../view/dashboard/footer.html" title=foo}

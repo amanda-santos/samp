@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-15 05:07:59
+/* Smarty version 3.1.33, created on 2019-06-18 21:48:12
   from 'C:\xampp\htdocs\samp\view\projeto\dashboardProjeto.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d04610fb99398_66761774',
+  'unifunc' => 'content_5d093ffc76fcf4_66661391',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '84e6497698c9e1910f83c59822fe7e20577ccf25' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\projeto\\dashboardProjeto.html',
-      1 => 1560568059,
+      1 => 1560887290,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../../view/dashboard/footer.html' => 1,
   ),
 ),false)) {
-function content_5d04610fb99398_66761774 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d093ffc76fcf4_66661391 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../../view/dashboard/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -478,24 +478,107 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </div>
     </div>
 </div> <!-- fim coluna -->
+
 <!-- Quarta Coluna -->
 <div class="col-lg-3">
-
     <!-- Título -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="font-weight-bold text-success text-uppercase mb-1">Finalizado</h6>
         </div>
-
         <div style="padding: 10px 10px;">
 
+            <?php if (($_smarty_tpl->tpl_vars['finalizado']->value->getEstorias() != null)) {?>
+            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['finalizado']->value->getEstorias(), 'estoria');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
+?>
 
+            <div  class="card border-left-success h-10">
+                <!-- Collapsable Card Example -->
+                <div class="card">
+
+                    <!-- Card Header - Accordion -->
+                    <a href="#estoriaFinalizado-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+" class="d-block card-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="estoriaFinalizado-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+">
+                        <h6 class="font-weight-bold text-secondary"><?php echo $_smarty_tpl->tpl_vars['estoria']->value->getNome();?>
+</h6>
+                    </a>
+
+                    <!-- Card Content - Collapse -->
+                    <div class="collapse" id="finalizado-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+">
+                        <div class="card-body">
+                            <?php echo $_smarty_tpl->tpl_vars['estoria']->value->getDesc();?>
+
+                            <br>
+                            <b>Nível de Dificuldade:</b> <?php echo $_smarty_tpl->tpl_vars['estoria']->value->getNivelDificuldade();?>
+
+                            <br>
+                            <b>Duração:</b> <?php echo $_smarty_tpl->tpl_vars['estoria']->value->getDuracao();?>
+ horas
+                            <br>
+                            <b>Responsáveis:</b>
+                            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['estoria']->value->getResponsaveis(), 'responsavel');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['responsavel']->value) {
+?>
+                                <br>
+                                <?php echo $_smarty_tpl->tpl_vars['responsavel']->value->getNome();?>
+ <?php echo $_smarty_tpl->tpl_vars['responsavel']->value->getSobrenome();?>
+
+                            <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                            <br><br>
+
+                            <div style="padding: 0px 0px;">
+                                <a href="#tarefas-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="tarefas-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+">
+                                    <h6 style="color:green" class="font-weight-bold">
+                                        Tarefas
+                                        <i class="fas fa-chevron-right"></i>
+                                    </h6>
+                                </a>
+                                <div class="collapse" id="tarefas-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+">
+                                    <?php if (($_smarty_tpl->tpl_vars['estoria']->value->getTarefas() != null)) {?>
+                                        <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['estoria']->value->getTarefas(), 'tarefa');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['tarefa']->value) {
+?>
+                                            <br>
+                                            <i style="color:green" class="fas fa-check"></i>
+                                            <?php echo $_smarty_tpl->tpl_vars['tarefa']->value->getNome();?>
+
+                                            <br>
+                                            <b>Situação:</b> <?php echo $_smarty_tpl->tpl_vars['tarefa']->value->getSituacao();?>
+
+                                        <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                                    <?php }?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+            <?php }?>
         </div>
-
     </div>
-
 </div>
-
 </div>
 
 <?php $_smarty_tpl->_subTemplateRender("file:../../view/dashboard/footer.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
