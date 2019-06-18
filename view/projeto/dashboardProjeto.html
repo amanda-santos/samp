@@ -349,6 +349,7 @@
 
 <!-- Quarta Coluna -->
 <div class="col-lg-3">
+
     <!-- Título -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -369,7 +370,7 @@
                     </a>
 
                     <!-- Card Content - Collapse -->
-                    <div class="collapse" id="finalizado-{$estoria->getId()}">
+                    <div class="collapse" id="estoriaFinalizado-{$estoria->getId()}">
                         <div class="card-body">
                             {$estoria->getDesc()}
                             <br>
@@ -394,11 +395,9 @@
                                 <div class="collapse" id="tarefas-{$estoria->getId()}">
                                     {if ($estoria->getTarefas() != null)}
                                         {foreach item=tarefa from=$estoria->getTarefas()}
-                                            <br>
                                             <i style="color:green" class="fas fa-check"></i>
                                             {$tarefa->getNome()}
                                             <br>
-                                            <b>Situação:</b> {$tarefa->getSituacao()}
                                         {/foreach}
                                     {/if}
                                 </div>

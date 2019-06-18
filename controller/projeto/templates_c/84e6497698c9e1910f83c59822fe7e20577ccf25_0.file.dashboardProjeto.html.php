@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-18 21:48:12
+/* Smarty version 3.1.33, created on 2019-06-19 01:39:14
   from 'C:\xampp\htdocs\samp\view\projeto\dashboardProjeto.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d093ffc76fcf4_66661391',
+  'unifunc' => 'content_5d09762244dcc1_74616942',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '84e6497698c9e1910f83c59822fe7e20577ccf25' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\projeto\\dashboardProjeto.html',
-      1 => 1560887290,
+      1 => 1560901151,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../../view/dashboard/footer.html' => 1,
   ),
 ),false)) {
-function content_5d093ffc76fcf4_66661391 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d09762244dcc1_74616942 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../../view/dashboard/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -481,6 +481,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 <!-- Quarta Coluna -->
 <div class="col-lg-3">
+
     <!-- Título -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -508,7 +509,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
                     </a>
 
                     <!-- Card Content - Collapse -->
-                    <div class="collapse" id="finalizado-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+                    <div class="collapse" id="estoriaFinalizado-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 ">
                         <div class="card-body">
                             <?php echo $_smarty_tpl->tpl_vars['estoria']->value->getDesc();?>
@@ -553,13 +554,10 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['tarefa']->value) {
 ?>
-                                            <br>
                                             <i style="color:green" class="fas fa-check"></i>
                                             <?php echo $_smarty_tpl->tpl_vars['tarefa']->value->getNome();?>
 
                                             <br>
-                                            <b>Situação:</b> <?php echo $_smarty_tpl->tpl_vars['tarefa']->value->getSituacao();?>
-
                                         <?php
 }
 }

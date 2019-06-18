@@ -61,7 +61,6 @@
 					}
 					$estorias->append($estoria);
 				}
-
 				$finalizado = new Finalizado($estorias);
 				return $finalizado;
 			}else{
