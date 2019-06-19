@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-19 01:42:48
+/* Smarty version 3.1.33, created on 2019-06-19 22:04:41
   from 'C:\xampp\htdocs\samp\view\projeto\dashboardProjeto.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d0976f8eba6f2_98078186',
+  'unifunc' => 'content_5d0a9559231dc0_90034450',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '84e6497698c9e1910f83c59822fe7e20577ccf25' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\projeto\\dashboardProjeto.html',
-      1 => 1560901247,
+      1 => 1560974677,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../../view/dashboard/footer.html' => 1,
   ),
 ),false)) {
-function content_5d0976f8eba6f2_98078186 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d0a9559231dc0_90034450 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../../view/dashboard/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -100,6 +100,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['responsavel']->value) {
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+
+
 
                                 <br><br>
 
@@ -435,6 +437,12 @@ foreach ($_from as $_smarty_tpl->tpl_vars['responsavel']->value) {
                             <?php echo $_smarty_tpl->tpl_vars['responsavel']->value->getNome();?>
  <?php echo $_smarty_tpl->tpl_vars['responsavel']->value->getSobrenome();?>
 
+
+                                                            <?php if ($_smarty_tpl->tpl_vars['estoria']->value->getSituacao() == 3) {?>
+                                <button type="button" class="btn btn-success">Aceitar</button>
+                                <button type="button" class="btn btn-danger">Rejeitar</button>
+                                <?php }?>
+                                
                             <?php
 }
 }
