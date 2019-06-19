@@ -101,6 +101,34 @@
 						</div>
 					</div>
 					<!-- Fim Modal -->
+
+					{if $projeto->getScrumMaster() == 0}
+
+					<button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modalSairProjeto{$projeto->getId()}"><i class="fas fa-sign-out-alt"></i></button>
+
+                  	<!-- Inicio Modal -->
+					<div class="modal fade" id="modalSairProjeto{$projeto->getId()}" tabindex="-1" role="dialog" aria-labelledby="modalSairProjeto">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class= "modal-header">
+								<h4 class="modal-title text-center" id="myModalLabel">Sair do Projeto</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span></button>
+								</div>
+								<div class="modal-body">
+									<p>Tem certeza que deseja realmente sair do projeto?</p>
+									<p>Esta ação não poderá ser desfeita</p>
+								</div>
+								<div class="modal-footer">
+									<a class="btn btn-primary" href="../../controller/projeto/sairProjeto.php?id_projeto={$projeto->getId()}">Sair do Projeto</a>
+									<button class="btn btn-danger" type="button btn-danger" data-dismiss="modal">Cancelar</button>
+								</div> 
+							</div>
+						</div>
+					</div>
+					<!-- Fim Modal -->
+
+					{/if}
 				
 		      	  {if $projeto->getScrumMaster() == 1}
 					

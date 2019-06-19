@@ -11,6 +11,7 @@
 		$smarty->assign("usuario", $usuario);
 
 		$smarty->display('../../view/usuario/editarUsuario.html');
+		$smarty->display('../../view/projeto/exibirProjetos.html');
 	} else {
 		echo "<script>window.location = '../view/index.html';</script>";
 	}

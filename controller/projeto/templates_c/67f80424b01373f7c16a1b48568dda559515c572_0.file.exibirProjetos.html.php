@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-18 19:37:10
+/* Smarty version 3.1.33, created on 2019-06-19 03:24:46
   from 'C:\xampp\htdocs\samp\view\projeto\exibirProjetos.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d092146c65455_28816446',
+  'unifunc' => 'content_5d098ede08c3e0_95678119',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '67f80424b01373f7c16a1b48568dda559515c572' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\projeto\\exibirProjetos.html',
-      1 => 1560879052,
+      1 => 1560907484,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../../view/dashboard/footer.html' => 1,
   ),
 ),false)) {
-function content_5d092146c65455_28816446 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d098ede08c3e0_95678119 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../../view/dashboard/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -153,6 +153,37 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 						</div>
 					</div>
 					<!-- Fim Modal -->
+
+					<?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 0) {?>
+
+					<button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modalSairProjeto<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+"><i class="fas fa-sign-out-alt"></i></button>
+
+                  	<!-- Inicio Modal -->
+					<div class="modal fade" id="modalSairProjeto<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+" tabindex="-1" role="dialog" aria-labelledby="modalSairProjeto">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class= "modal-header">
+								<h4 class="modal-title text-center" id="myModalLabel">Sair do Projeto</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span></button>
+								</div>
+								<div class="modal-body">
+									<p>Tem certeza que deseja realmente sair do projeto?</p>
+									<p>Esta ação não poderá ser desfeita</p>
+								</div>
+								<div class="modal-footer">
+									<a class="btn btn-primary" href="../../controller/projeto/sairProjeto.php?id_projeto=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+">Sair do Projeto</a>
+									<button class="btn btn-danger" type="button btn-danger" data-dismiss="modal">Cancelar</button>
+								</div> 
+							</div>
+						</div>
+					</div>
+					<!-- Fim Modal -->
+
+					<?php }?>
 				
 		      	  <?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
 					
