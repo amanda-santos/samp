@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-20 06:02:55
+/* Smarty version 3.1.33, created on 2019-06-20 21:54:06
   from 'C:\xampp\htdocs\samp\view\projeto\dashboardProjeto.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d0b056f3c8845_82491028',
+  'unifunc' => 'content_5d0be45e5d35f1_99198597',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '84e6497698c9e1910f83c59822fe7e20577ccf25' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\projeto\\dashboardProjeto.html',
-      1 => 1561003362,
+      1 => 1561057659,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../../view/dashboard/footer.html' => 1,
   ),
 ),false)) {
-function content_5d0b056f3c8845_82491028 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d0be45e5d35f1_99198597 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../../view/dashboard/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -119,7 +119,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form class="form-horizontal" method="POST" action="../../controller/meu_trabalho/cadastrarTarefa.php?idEstoria=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+                                                <form class="form-horizontal" method="POST" action="../../controller/estoria/tarefa/cadastrarTarefa.php?idEstoria=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 &idProjeto=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 " enctype="multipart/form-data" data-toggle="validator">
                                                     <label for="recipient-name" class="control-label">Informe o nome da tarefa:</label>
@@ -220,7 +220,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['tarefa']->value) {
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form class="form-horizontal" method="POST" action="../../controller/meu_trabalho/editarTarefaSituacao.php?idTarefa=<?php echo $_smarty_tpl->tpl_vars['tarefa']->value->getId();?>
+                                                    <form class="form-horizontal" method="POST" action="../../controller/estoria/tarefa/editarSituacao.php?idTarefa=<?php echo $_smarty_tpl->tpl_vars['tarefa']->value->getId();?>
 &idProjeto=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 " enctype="multipart/form-data" data-toggle="validator">
                                                         <label class="control-label" for="situacao">Selecione a situação:</label>

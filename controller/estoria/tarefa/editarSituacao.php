@@ -1,6 +1,6 @@
 <?php
   session_start();
-  require_once '../../model/estoria/tarefa/tarefaDAO.php';
+  require_once '../../../model/estoria/tarefa/tarefaDAO.php';
 
   //Criando e Instanciando o objeto
   if (isset($_POST["atualizarTarefa"])){

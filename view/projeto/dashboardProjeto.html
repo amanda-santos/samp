@@ -69,7 +69,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form class="form-horizontal" method="POST" action="../../controller/meu_trabalho/cadastrarTarefa.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}" enctype="multipart/form-data" data-toggle="validator">
+                                                <form class="form-horizontal" method="POST" action="../../controller/estoria/tarefa/cadastrarTarefa.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}" enctype="multipart/form-data" data-toggle="validator">
                                                     <label for="recipient-name" class="control-label">Informe o nome da tarefa:</label>
                                                     <input name="nome" type="text" class="form-control" id="recipient-name">
                                             </div>
@@ -154,7 +154,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form class="form-horizontal" method="POST" action="../../controller/meu_trabalho/editarTarefaSituacao.php?idTarefa={$tarefa->getId()}&idProjeto={$projeto->getId()}" enctype="multipart/form-data" data-toggle="validator">
+                                                    <form class="form-horizontal" method="POST" action="../../controller/estoria/tarefa/editarSituacao.php?idTarefa={$tarefa->getId()}&idProjeto={$projeto->getId()}" enctype="multipart/form-data" data-toggle="validator">
                                                         <label class="control-label" for="situacao">Selecione a situação:</label>
                                                         <select class="form-control" id=situacao name="situacao">
                                                             <option value="2">Iniciada</option>
