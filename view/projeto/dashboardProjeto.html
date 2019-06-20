@@ -306,6 +306,18 @@
                             <br>
                             <b>Situação:</b> {$estoria->getSituacao()}
                             <br>
+
+                            {if $projeto->getScrumMaster() == 1}
+                            {if ($estoria->getSituacao() == "Concluída")}
+                        
+                            <a href="../../controller/estoria/aprovarEstoria.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}" class="btn btn-success btn-sm">Aceitar</a>
+
+                            <a href="../../controller/estoria/rejeitarEstoria.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}" class="btn btn-danger btn-sm">Rejeitar</a>
+                            <br>
+
+                            {/if}
+                            {/if}
+                            
                             <!--BOTÕES DE APROVAR E REJEITAR-->
                             <b>Nível de Dificuldade:</b> {$estoria->getNivelDificuldade()}
                             <br>

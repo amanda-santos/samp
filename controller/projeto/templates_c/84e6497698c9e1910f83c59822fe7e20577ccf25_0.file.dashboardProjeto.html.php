@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-20 06:02:55
+/* Smarty version 3.1.33, created on 2019-06-20 22:57:28
   from 'C:\xampp\htdocs\samp\view\projeto\dashboardProjeto.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d0b056f3c8845_82491028',
+  'unifunc' => 'content_5d0bf3389b5099_53938311',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '84e6497698c9e1910f83c59822fe7e20577ccf25' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\projeto\\dashboardProjeto.html',
-      1 => 1561003362,
+      1 => 1561064237,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../../view/dashboard/footer.html' => 1,
   ),
 ),false)) {
-function content_5d0b056f3c8845_82491028 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d0bf3389b5099_53938311 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../../view/dashboard/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -416,6 +416,22 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
                             <b>Situação:</b> <?php echo $_smarty_tpl->tpl_vars['estoria']->value->getSituacao();?>
 
                             <br>
+
+                            <?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
+                            <?php if (($_smarty_tpl->tpl_vars['estoria']->value->getSituacao() == "Concluída")) {?>
+                        
+                            <a href="../../controller/estoria/aprovarEstoria.php?idEstoria=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+&idProjeto=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+" class="btn btn-success btn-sm">Aceitar</a>
+
+                            <a href="../../controller/estoria/reprovarEstoria.php?idEstoria=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+&idProjeto=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+" class="btn btn-danger btn-sm">Rejeitar</a>
+                            <br>
+
+                            <?php }?>
+                            <?php }?>
+                            
                             <!--BOTÕES DE APROVAR E REJEITAR-->
                             <b>Nível de Dificuldade:</b> <?php echo $_smarty_tpl->tpl_vars['estoria']->value->getNivelDificuldade();?>
 
