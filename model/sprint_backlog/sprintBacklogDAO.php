@@ -41,15 +41,27 @@
 
 		function excluirUsuarioResponsavel($idProjeto, $usuario, $idEstoria){
 			include("../../model/conexao/conecta.php");
-			$sql = " DELETE FROM usuario_estoria WHERE Usuario_usuario = '".$usuario."' AND Estoria_id = ".$idEstoria.";";
-			if ($conn->query($sql) === TRUE) { //se o comando funcionou
-				echo "<script>alert('O usuário foi removido com sucesso.');</script>";
-				echo "<script>window.location = '../../controller/projeto/dashboardProjeto.php?id=$idProjeto';</script>";
-			}
-			else{ //se o comando não funcionou
-			echo "<script>alert('Erro ao remover usuário!');</script>";
-			echo "Erro: ". $sql. "<br>" . $conn->error;
-			}
+
+			$SQL = "SELECT * FROM usuario_estoria 
+				WHERE Estoria_id = ".$idEstoria.";";
+				$result_responsaveis = $conn->query($SQL);
+				if ($result_responsaveis->num_rows > 1){
+					
+					$sql = " DELETE FROM usuario_estoria WHERE Usuario_usuario = '".$usuario."' AND Estoria_id = ".$idEstoria.";";
+					if ($conn->query($sql) === TRUE) { //se o comando funcionou
+						echo "<script>alert('O usuário foi removido com sucesso.');</script>";
+						echo "<script>window.location = '../../controller/projeto/dashboardProjeto.php?id=$idProjeto';</script>";
+					}
+					else{ //se o comando não funcionou
+					echo "<script>alert('Erro ao remover usuário!');</script>";
+					echo "Erro: ". $sql. "<br>" . $conn->error;
+					}
+				}else{
+					echo "<script>alert('Precisa conter ao menos um usuário responsável');</script>";
+					echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
+				}
+			
+
 		}	
 
 		function excluirEstoria($id_estoria,$projeto_id){
