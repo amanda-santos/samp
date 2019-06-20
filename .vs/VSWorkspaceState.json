@@ -2,13 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\controller",
-    "\\controller\\projeto",
+    "\\controller\\estoria",
     "\\model",
     "\\model\\estoria",
+    "\\model\\finalizado",
     "\\model\\meu_trabalho",
+    "\\model\\projeto",
     "\\view",
     "\\view\\projeto"
   ],
-  "SelectedNode": "\\model\\estoria\\estoriaDAO.php",
+  "SelectedNode": "\\model\\finalizado\\finalizadoDAO.php",
   "PreviewInSolutionExplorer": false
 }
