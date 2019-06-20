@@ -86,7 +86,19 @@
 			}
 			$conn->close();
 		}
+
+		function  selecionarUsuariosNaoResponsaveis(){
+			$SQL = "SELECT nome, sobrenome, email, usuario, scrum_master
+				FROM usuario_projeto AS UP 
+    			JOIN usuario AS U ON UP.Usuario_usuario = U.usuario 
+    			WHERE UP.Projeto_id = '"$projeto_id."'
+    			AND NOT EXISTS (SELECT UE.Usuario_usuario 
+				FROM usuario_estoria AS UE 
+                WHERE UP.Usuario_usuario = UE.Usuario_usuario 
+                AND UE.Estoria_id = "idEstoria.") 
+    			GROUP BY U.usuario;"
 		
-	}	
+		}
+}	
 
 ?>
