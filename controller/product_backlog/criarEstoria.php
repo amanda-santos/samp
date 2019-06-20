@@ -7,7 +7,7 @@
 		$smarty = new Smarty;
 
 		$smarty->assign("idProjeto", $idProjeto);
-		$smarty->display('../../view/estoria/criarEstoria.html');
+		$smarty->display('../../view/product_backlog/criarEstoria.html');
 		
 	} else {
 		echo "<script>window.location = '../../view/index.html';</script>";

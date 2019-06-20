@@ -69,7 +69,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form class="form-horizontal" method="POST" action="../../controller/estoria/cadastrarTarefa.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}" enctype="multipart/form-data" data-toggle="validator">
+                                                <form class="form-horizontal" method="POST" action="../../controller/meu_trabalho/cadastrarTarefa.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}" enctype="multipart/form-data" data-toggle="validator">
                                                     <label for="recipient-name" class="control-label">Informe o nome da tarefa:</label>
                                                     <input name="nome" type="text" class="form-control" id="recipient-name">
                                             </div>
@@ -154,7 +154,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form class="form-horizontal" method="POST" action="../../controller/estoria/editarTarefaSituacao.php?idTarefa={$tarefa->getId()}&idProjeto={$projeto->getId()}" enctype="multipart/form-data" data-toggle="validator">
+                                                    <form class="form-horizontal" method="POST" action="../../controller/meu_trabalho/editarTarefaSituacao.php?idTarefa={$tarefa->getId()}&idProjeto={$projeto->getId()}" enctype="multipart/form-data" data-toggle="validator">
                                                         <label class="control-label" for="situacao">Selecione a situação:</label>
                                                         <select class="form-control" id=situacao name="situacao">
                                                             <option value="2">Iniciada</option>
@@ -170,10 +170,6 @@
                                         </div>
                                     </div>
                                     <!-- Fim Modal -->
-
-                                    <div class="post">
-                                        <form class="form-horizontal" method="POST" action="../../controller/estoria/editarTarefaSituacao.php?idTarefa={$tarefa->getId()}&idProjeto={$projeto->getId()}" enctype="multipart/form-data" data-toggle="validator"></form>
-                                    </div>
 
                                 {/foreach}
                             {/if}
@@ -232,11 +228,11 @@
 
                             {if $estoria->getSprintBacklog() == 0}
 
-                            <a href="../../controller/estoria/criarEstoriaSprintBacklog.php?id={$projeto->getId()}&id_estoria={$estoria->getId()}" title="Adicionar estória ao Sprint Backlog" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i></a>
+                            <a href="../../controller/sprint_backlog/criarEstoria.php?id={$projeto->getId()}&id_estoria={$estoria->getId()}" title="Adicionar estória ao Sprint Backlog" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i></a>
 
                             {else}
 
-                            <a href="../../controller/estoria/criarEstoriaSprintBacklog.php?id={$projeto->getId()}&id_estoria={$estoria->getId()}" title="Adicionar estória ao Sprint Backlog" class="disabled d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus"></i></a>
+                            <a href="../../controller/sprint_backlog/criarEstoria.php?id={$projeto->getId()}&id_estoria={$estoria->getId()}" title="Adicionar estória ao Sprint Backlog" class="disabled d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus"></i></a>
 
                             {/if}
 
@@ -244,7 +240,7 @@
 
                             <script type="text/javascript">
                                 function editar(estoria, projeto) {
-                                    window.location = '../../controller/estoria/exibirEstoria.php?idEstoria=' + estoria + '&idProjeto=' + projeto;
+                                    window.location = '../../controller/product_backlog/exibirEstoria.php?idEstoria=' + estoria + '&idProjeto=' + projeto;
                                 }
                             </script>
 
@@ -253,7 +249,7 @@
                             <script type="text/javascript">
                                 function apagarEstoriaProductBacklog(estoria, projeto) {
                                     if (window.confirm('Deseja realmente excluir esta estória do projeto? Essa ação não poderá ser desfeita.')) {
-                                        window.location = '../../controller/estoria/excluirEstoria.php?idEstoria=' + estoria + '&idProjeto=' + projeto;
+                                        window.location = '../../controller/product_backlog/excluirEstoria.php?idEstoria=' + estoria + '&idProjeto=' + projeto;
                                     }
                                 }
                             </script>
@@ -272,7 +268,7 @@
             <br>
 
             <div style="padding-bottom: 10px;" class="col mr-2">
-                <a href="../../controller/estoria/criarEstoria.php?id={$projeto->getId()}" class="d-none d-sm-inline-block btn btn-warning shadow-sm"><i class="fas fa-plus"></i> Cadastrar nova estória</a>
+                <a href="../../controller/product_backlog/criarEstoria.php?id={$projeto->getId()}" class="d-none d-sm-inline-block btn btn-warning shadow-sm"><i class="fas fa-plus"></i> Cadastrar nova estória</a>
             </div>
 
             {/if}
@@ -324,7 +320,7 @@
                             {if $projeto->getScrumMaster() == 1}
                             <br>
                             <br>
-                            <a href="../../controller/estoria/exibirEstoriaSprintBacklog.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}">
+                            <a href="../../controller/sprint_backlog/exibirEstoria.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}">
                                 <button title="Editar estória" type="button" class="btn-sm btn btn-warning">
                                     <i class="fas fa-pencil-alt"></i>
                                 </button>
@@ -335,7 +331,7 @@
                             <script type="text/javascript">
                                 function apagarEstoriaSprintBacklog(estoria, idProjeto) {
                                     if (window.confirm('Deseja realmente excluir esta estória do Sprint Backlog?')) {
-                                        window.location = '../../controller/estoria/excluirEstoriaSprintBacklog.php?idEstoria=' + estoria + '&idProjeto=' + idProjeto;
+                                        window.location = '../../controller/sprint_backlog/excluirEstoria.php?idEstoria=' + estoria + '&idProjeto=' + idProjeto;
                                     }
                                 }
                             </script>

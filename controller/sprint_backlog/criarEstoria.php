@@ -17,7 +17,7 @@
 		$idEstoria = $_GET["id_estoria"];
 		$smarty->assign("estoria", $idEstoria);
 		
-		$smarty->display('../../view/estoria/criarEstoriaSprintBacklog.html');
+		$smarty->display('../../view/sprint_backlog/criarEstoria.html');
 		
 	} else {
 		echo "<script>window.location = '../../view/index.html';</script>";

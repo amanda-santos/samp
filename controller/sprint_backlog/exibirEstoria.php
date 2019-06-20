@@ -19,7 +19,7 @@
 	
 	$smarty->assign("estoria", $estoria);
 	$smarty->assign("projeto", $projeto);
-	$smarty->display('../../view/estoria/editarEstoriaSprintBacklog.html');
+	$smarty->display('../../view/sprint_backlog/editarEstoria.html');
   }else {
 	echo "<script>window.location = '../../view/index.html';</script>";
   }

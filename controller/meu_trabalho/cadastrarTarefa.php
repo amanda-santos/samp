@@ -1,6 +1,6 @@
 <?php
   session_start();
-  require_once '../../model/estoria/tarefaDAO.php';
+  require_once '../../model/estoria/tarefa/tarefaDAO.php';
 
  	if (isset($_POST["cadastrar_tarefa"])){
     	$tarefaDAO = new tarefaDAO();

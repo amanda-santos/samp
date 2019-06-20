@@ -1,7 +1,7 @@
 <?php
 	require_once 'Finalizado.php';
 	require_once '../../model/estoria/Estoria.php';
-	require_once '../../model/estoria/Tarefa.php';
+	require_once '../../model/estoria/tarefa/Tarefa.php';
 
 	class finalizadoDAO{
 
@@ -13,7 +13,7 @@
 					FROM estoria AS e 
 					JOIN nivel_dificuldade AS nd ON e.NivelDificuldade_id = nd.id 
 					JOIN situacao AS s ON e.Situacao_id = s.id
-					WHERE Projeto_id = '" . $projeto_id . "' AND finalizado = 1;";
+					WHERE Projeto_id = '" . $projeto_id . "' AND Situacao_id = 5;";
 			$result = $conn->query($SQL);
     		if ($result->num_rows > 0) {
 				$estorias = new ArrayObject();

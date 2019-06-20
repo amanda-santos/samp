@@ -3,7 +3,7 @@
 <script type="text/javascript">
   function apagar(estoria,projeto,usuario) {
     if (window.confirm('Deseja realmente remover esse usuário?')) {
-      window.location = '../../controller/estoria/excluirUsuarioResponsavel.php?idProjeto=' + projeto + '&usuario=' + usuario + '&idEstoria=' + estoria;
+      window.location = '../../controller/sprint_backlog/excluirUsuarioResponsavel.php?idProjeto=' + projeto + '&usuario=' + usuario + '&idEstoria=' + estoria;
     }
   }
 </script>
@@ -20,7 +20,7 @@
 	<!-- início do post -->
 	
   	<div class = "post">
-      <form class="form-horizontal" method="POST" action="../../controller/estoria/editarEstoriaSprintBacklog.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}" enctype="multipart/form-data" data-toggle="validator">
+      <form class="form-horizontal" method="POST" action="../../controller/sprint_backlog/editarEstoria.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}" enctype="multipart/form-data" data-toggle="validator">
         
   		  <!--início do campo do formulário-->
           <div class="form-group required">
