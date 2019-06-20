@@ -8,7 +8,7 @@
 		const Iniciada = 2;
 		const Concluída = 3;
 		const Rejeitada = 4;
-		const Aceitada = 5;
+		const Aprovada = 5;
 
 	}
 
