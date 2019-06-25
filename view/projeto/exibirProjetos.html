@@ -88,8 +88,22 @@
 											{else} 
 												Membro da Equipe 
 											{/if}
+											<br>
+											{if $projeto->getScrumMaster() == 1}
+
+											<button onclick="apagarIntegrante('{$projeto->getId()}');" type="button" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+
+												<script type="text/javascript">
+													function apagarIntegrante(projeto) {
+														if (window.confirm('Deseja realmente remover este integrante?')) {
+															window.location = '../../controller/projeto/excluirIntegrante.php?idProjeto={$projeto->getId()}&usuario={$participante->getUsuario()}';
+														}
+													}
+												</script>
+
+											{/if}
 											<br><br>
-										{/foreach}
+										{/foreach}										
 									</p>
 								</div>
 								<div class="modal-footer">

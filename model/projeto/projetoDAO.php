@@ -215,5 +215,18 @@
 				}
 			}
 		}
+
+		function excluirIntegrante($idProjeto,$usuario){
+			include("../../model/conexao/conecta.php");
+			$sql = " DELETE FROM samp.usuario_projeto WHERE Usuario_usuario = '".$usuario."' AND Projeto_id = '".$idProjeto."';";
+ 			if ($conn->query($sql) === TRUE) { //se o comando funcionou
+				echo "<script>alert('Integrante foi excluído com sucesso.');</script>";
+				echo "<script>window.location = '../../controller/projeto/exibirProjetos.php';</script>";
+			}
+			else{ //se o comando não funcionou
+				echo "<script>alert('Erro ao excluir projeto!');</script>";
+				echo "Erro: ". $SQL. "<br>" . $conn->error;
+			}
+		}
 	}
 ?>

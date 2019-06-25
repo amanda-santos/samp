@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-20 05:02:35
+/* Smarty version 3.1.33, created on 2019-06-26 00:22:54
   from 'C:\xampp\htdocs\samp\view\projeto\exibirProjetos.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d0af74bcb51a7_04900474',
+  'unifunc' => 'content_5d129ebe350506_81078594',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '67f80424b01373f7c16a1b48568dda559515c572' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\projeto\\exibirProjetos.html',
-      1 => 1560999750,
+      1 => 1561500421,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../../view/dashboard/footer.html' => 1,
   ),
 ),false)) {
-function content_5d0af74bcb51a7_04900474 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d129ebe350506_81078594 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../../view/dashboard/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -137,11 +137,30 @@ foreach ($_from as $_smarty_tpl->tpl_vars['participante']->value) {
 											<?php } else { ?> 
 												Membro da Equipe 
 											<?php }?>
+											<br>
+											<?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
+
+											<button onclick="apagarIntegrante('<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+');" type="button" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+
+												<?php echo '<script'; ?>
+ type="text/javascript">
+													function apagarIntegrante(projeto) {
+														if (window.confirm('Deseja realmente remover este integrante?')) {
+															window.location = '../../controller/projeto/excluirIntegrante.php?idProjeto=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+&usuario=<?php echo $_smarty_tpl->tpl_vars['participante']->value->getUsuario();?>
+';
+														}
+													}
+												<?php echo '</script'; ?>
+>
+
+											<?php }?>
 											<br><br>
 										<?php
 }
 }
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>										
 									</p>
 								</div>
 								<div class="modal-footer">
