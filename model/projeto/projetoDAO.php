@@ -216,16 +216,40 @@
 			}
 		}
 
-		function excluirIntegrante($idProjeto,$usuario){
+		function excluirIntegrante($projeto_id, $usuario_id){
 			include("../../model/conexao/conecta.php");
-			$sql = " DELETE FROM samp.usuario_projeto WHERE Usuario_usuario = '".$usuario."' AND Projeto_id = '".$idProjeto."';";
- 			if ($conn->query($sql) === TRUE) { //se o comando funcionou
-				echo "<script>alert('Integrante foi excluído com sucesso.');</script>";
-				echo "<script>window.location = '../../controller/projeto/exibirProjetos.php';</script>";
+
+		  	$sql = "SELECT ua.Usuario_usuario, ua.Estoria_id, e.finalizado FROM samp.usuario_estoria as ua
+					JOIN samp.estoria as e ON ua.Estoria_id = e.id WHERE Usuario_usuario = '".$usuario_id."';";
+
+			$entrou = false;
+		  	$result = $conn->query($sql);
+    		if ($result->num_rows > 0){
+    			while ($exibir = $result->fetch_assoc()){
+	    			$finalizado = $exibir["finalizado"];
+	    			if($finalizado!=1){
+	    				$entrou = true;
+	    			} 
+    			}
 			}
-			else{ //se o comando não funcionou
-				echo "<script>alert('Erro ao excluir projeto!');</script>";
-				echo "Erro: ". $SQL. "<br>" . $conn->error;
+			if($entrou){
+				echo "<script>alert('Integrante não pode ser removido do projeto pois possui estórias pendentes! Peça para finaliza-las para poder remove-lo.');</script>";
+	    		echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
+	    	}else{
+	    		$sql2 = "DELETE FROM samp.usuario_estoria WHERE samp.usuario_estoria.Usuario_usuario = '".$usuario_id."' AND Estoria_id NOT IN (SELECT id FROM samp.estoria Where Projeto_id != '".$projeto_id."');";
+				if ($conn->query($sql2) === TRUE){
+						$sql3 = "DELETE FROM samp.usuario_projeto WHERE Usuario_usuario = '".$usuario_id."' AND Projeto_id = '".$projeto_id."';";
+						if ($conn->query($sql3) === TRUE){
+							echo "<script>alert('Integrante removido do projeto com sucesso!');</script>";
+							echo "<script>window.location = '../../controller/projeto/exibirProjetos.php';</script>";
+						}else{
+							echo "<script>alert('Erro ao tentar remover integrante do projeto!');</script>";
+							echo "Erro: ". $sql3. "<br>" . $conn->error;
+						}
+				}else{
+					echo "<script>alert('Erro ao tentar remover integrante do projeto!');</script>";
+					echo "Erro: ". $sql2. "<br>" . $conn->error;
+				}
 			}
 		}
 	}
