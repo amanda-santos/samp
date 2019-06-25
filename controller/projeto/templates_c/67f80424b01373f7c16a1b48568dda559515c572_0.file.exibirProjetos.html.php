@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-19 03:24:46
+/* Smarty version 3.1.33, created on 2019-06-20 05:02:35
   from 'C:\xampp\htdocs\samp\view\projeto\exibirProjetos.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d098ede08c3e0_95678119',
+  'unifunc' => 'content_5d0af74bcb51a7_04900474',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '67f80424b01373f7c16a1b48568dda559515c572' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\projeto\\exibirProjetos.html',
-      1 => 1560907484,
+      1 => 1560999750,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../../view/dashboard/footer.html' => 1,
   ),
 ),false)) {
-function content_5d098ede08c3e0_95678119 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d0af74bcb51a7_04900474 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../../view/dashboard/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -99,7 +99,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['projeto']->value) {
 					</div>
 					<!-- Fim Modal -->
 								
-					<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#ModalUsers<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+					<button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ModalUsers<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 "><i class="fa fa-user"></i></button>
 
 					<!-- Inicio Modal integrantes -->
