@@ -1,0 +1,50 @@
+{include file="../../view/dashboard/header.html" title=foo}
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Editar Estória</h1>
+</div>
+
+<!-- Content Row -->
+<div class="col-md-8"> 
+<div class="row">
+
+	<!-- início do post -->
+	
+  	<div class = "post">
+      <form class="form-horizontal" method="POST" action="../../controller/product_backlog/editarEstoria.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}" enctype="multipart/form-data" data-toggle="validator">
+		
+      <!--início do campo do formulário-->
+        <div class="form-group required">
+        <label class="control-label col-sm-20" for="nome">Nome da Estória:</label>
+        <div class="col-sm-30">
+          <input type="text" class="form-control" id="name" name="nome" value="{$estoria->getNome()}" required>
+        </div> <!--fim col-sm-5-->
+        </div> <!--fim form-group-->
+      <!--fim do campo do formulário-->
+      
+      <!--início do campo do formulário-->
+        <div class="form-group required">
+          <label class="control-label" for="descricao">Descrição:</label>
+          <div class="col-sm-30">
+            <textarea rows="4" cols="50" maxlength="300" class="form-control" id="descricao" name="descricao" required>
+              {$estoria->getDesc()}
+    		    </textarea>
+          </div>
+        </div> <!--fim form-group-->
+      <!--fim do campo do formulário-->
+
+      <div>
+        <input type="submit" class="btn btn-success" name="atualizar" value="Atualizar"></input>
+              <!--<input type="button" data-toggle="modal" data-target="#confirm-submit" class="btn btn-success" name="atualizar" value="Atualizar" id="myBtn"></input>-->
+			  
+	  <a href="javascript:window.history.go(-1)"><input type="button" class="btn btn-default" value="Cancelar"></input></a>
+      </div> <!--fim col-sm-8-->
+
+      </form>
+    </div> <!-- fim da div post -->
+    <!-- fim do post -->  
+</div>
+</div>
+
+{include file="../../view/dashboard/footer.html" title=foo}

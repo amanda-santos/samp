@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-19 01:42:48
+/* Smarty version 3.1.33, created on 2019-06-20 22:57:28
   from 'C:\xampp\htdocs\samp\view\projeto\dashboardProjeto.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d0976f8eba6f2_98078186',
+  'unifunc' => 'content_5d0bf3389b5099_53938311',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '84e6497698c9e1910f83c59822fe7e20577ccf25' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\projeto\\dashboardProjeto.html',
-      1 => 1560901247,
+      1 => 1561064237,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../../view/dashboard/footer.html' => 1,
   ),
 ),false)) {
-function content_5d0976f8eba6f2_98078186 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d0bf3389b5099_53938311 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../../view/dashboard/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -101,6 +101,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['responsavel']->value) {
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
+
+
                                 <br><br>
 
                                 <!-- Inicio Modal -->
@@ -117,7 +119,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form class="form-horizontal" method="POST" action="../../controller/estoria/cadastrarTarefa.php?idEstoria=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+                                                <form class="form-horizontal" method="POST" action="../../controller/meu_trabalho/cadastrarTarefa.php?idEstoria=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 &idProjeto=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 " enctype="multipart/form-data" data-toggle="validator">
                                                     <label for="recipient-name" class="control-label">Informe o nome da tarefa:</label>
@@ -218,7 +220,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['tarefa']->value) {
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form class="form-horizontal" method="POST" action="../../controller/estoria/editarTarefaSituacao.php?idTarefa=<?php echo $_smarty_tpl->tpl_vars['tarefa']->value->getId();?>
+                                                    <form class="form-horizontal" method="POST" action="../../controller/meu_trabalho/editarTarefaSituacao.php?idTarefa=<?php echo $_smarty_tpl->tpl_vars['tarefa']->value->getId();?>
 &idProjeto=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 " enctype="multipart/form-data" data-toggle="validator">
                                                         <label class="control-label" for="situacao">Selecione a situação:</label>
@@ -236,12 +238,6 @@ foreach ($_from as $_smarty_tpl->tpl_vars['tarefa']->value) {
                                         </div>
                                     </div>
                                     <!-- Fim Modal -->
-
-                                    <div class="post">
-                                        <form class="form-horizontal" method="POST" action="../../controller/estoria/editarTarefaSituacao.php?idTarefa=<?php echo $_smarty_tpl->tpl_vars['tarefa']->value->getId();?>
-&idProjeto=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
-" enctype="multipart/form-data" data-toggle="validator"></form>
-                                    </div>
 
                                 <?php
 }
@@ -316,13 +312,13 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
 
                             <?php if ($_smarty_tpl->tpl_vars['estoria']->value->getSprintBacklog() == 0) {?>
 
-                            <a href="../../controller/estoria/criarEstoriaSprintBacklog.php?id=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+                            <a href="../../controller/sprint_backlog/criarEstoria.php?id=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 &id_estoria=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 " title="Adicionar estória ao Sprint Backlog" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i></a>
 
                             <?php } else { ?>
 
-                            <a href="../../controller/estoria/criarEstoriaSprintBacklog.php?id=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+                            <a href="../../controller/sprint_backlog/criarEstoria.php?id=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 &id_estoria=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 " title="Adicionar estória ao Sprint Backlog" class="disabled d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus"></i></a>
 
@@ -335,7 +331,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
                             <?php echo '<script'; ?>
  type="text/javascript">
                                 function editar(estoria, projeto) {
-                                    window.location = '../../controller/estoria/exibirEstoria.php?idEstoria=' + estoria + '&idProjeto=' + projeto;
+                                    window.location = '../../controller/product_backlog/exibirEstoria.php?idEstoria=' + estoria + '&idProjeto=' + projeto;
                                 }
                             <?php echo '</script'; ?>
 >
@@ -348,7 +344,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
  type="text/javascript">
                                 function apagarEstoriaProductBacklog(estoria, projeto) {
                                     if (window.confirm('Deseja realmente excluir esta estória do projeto? Essa ação não poderá ser desfeita.')) {
-                                        window.location = '../../controller/estoria/excluirEstoria.php?idEstoria=' + estoria + '&idProjeto=' + projeto;
+                                        window.location = '../../controller/product_backlog/excluirEstoria.php?idEstoria=' + estoria + '&idProjeto=' + projeto;
                                     }
                                 }
                             <?php echo '</script'; ?>
@@ -371,7 +367,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             <br>
 
             <div style="padding-bottom: 10px;" class="col mr-2">
-                <a href="../../controller/estoria/criarEstoria.php?id=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+                <a href="../../controller/product_backlog/criarEstoria.php?id=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 " class="d-none d-sm-inline-block btn btn-warning shadow-sm"><i class="fas fa-plus"></i> Cadastrar nova estória</a>
             </div>
 
@@ -380,6 +376,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </div>
     </div>
 </div> <!-- fim coluna -->
+
 <!-- Terceira Coluna -->
 <div class="col-lg-3">
 
@@ -419,6 +416,23 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
                             <b>Situação:</b> <?php echo $_smarty_tpl->tpl_vars['estoria']->value->getSituacao();?>
 
                             <br>
+
+                            <?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
+                            <?php if (($_smarty_tpl->tpl_vars['estoria']->value->getSituacao() == "Concluída")) {?>
+                        
+                            <a href="../../controller/estoria/aprovarEstoria.php?idEstoria=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+&idProjeto=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+" class="btn btn-success btn-sm">Aceitar</a>
+
+                            <a href="../../controller/estoria/reprovarEstoria.php?idEstoria=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+&idProjeto=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+" class="btn btn-danger btn-sm">Rejeitar</a>
+                            <br>
+
+                            <?php }?>
+                            <?php }?>
+                            
+                            <!--BOTÕES DE APROVAR E REJEITAR-->
                             <b>Nível de Dificuldade:</b> <?php echo $_smarty_tpl->tpl_vars['estoria']->value->getNivelDificuldade();?>
 
                             <br>
@@ -443,7 +457,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                             <?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
                             <br>
                             <br>
-                            <a href="../../controller/estoria/exibirEstoriaSprintBacklog.php?idEstoria=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+                            <a href="../../controller/sprint_backlog/exibirEstoria.php?idEstoria=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 &idProjeto=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 ">
                                 <button title="Editar estória" type="button" class="btn-sm btn btn-warning">
@@ -459,7 +473,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
  type="text/javascript">
                                 function apagarEstoriaSprintBacklog(estoria, idProjeto) {
                                     if (window.confirm('Deseja realmente excluir esta estória do Sprint Backlog?')) {
-                                        window.location = '../../controller/estoria/excluirEstoriaSprintBacklog.php?idEstoria=' + estoria + '&idProjeto=' + idProjeto;
+                                        window.location = '../../controller/sprint_backlog/excluirEstoria.php?idEstoria=' + estoria + '&idProjeto=' + idProjeto;
                                     }
                                 }
                             <?php echo '</script'; ?>

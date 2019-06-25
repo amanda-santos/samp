@@ -196,7 +196,7 @@
     			}
 			}
 			if($entrou){
-				echo "<script>alert('Você não pode sair do projeto pois possui estorias pendentes! Finalize-as para poder sair.');</script>";
+				echo "<script>alert('Você não pode sair do projeto pois possui estórias pendentes! Finalize-as para poder sair.');</script>";
 	    		echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
 	    	}else{
 	    		$sql2 = "DELETE FROM samp.usuario_estoria WHERE samp.usuario_estoria.Usuario_usuario = '".$usuario_id."' AND Estoria_id NOT IN (SELECT id FROM samp.estoria Where Projeto_id != '".$projeto_id."');";
@@ -210,7 +210,7 @@
 							echo "Erro: ". $sql3. "<br>" . $conn->error;
 						}
 				}else{
-					echo "<script>alert('Erro ao excluir estorias do usuário!');</script>";
+					echo "<script>alert('Erro ao excluir estórias do usuário!');</script>";
 					echo "Erro: ". $sql2. "<br>" . $conn->error;
 				}
 			}

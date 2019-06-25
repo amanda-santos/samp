@@ -2,7 +2,7 @@
 	require_once 'MeuTrabalho.php';
 	require_once '../../model/estoria/Estoria.php';
 	require_once '../../model/usuario/Usuario.php';
-	require_once '../../model/estoria/Tarefa.php';
+	require_once '../../model/estoria/tarefa/Tarefa.php';
 
 	class meuTrabalhoDAO{
 
@@ -16,7 +16,8 @@
 					JOIN situacao AS s ON e.Situacao_id = s.id
 					JOIN usuario_estoria AS ue ON e.id = ue.Estoria_id 
 					WHERE ue.Usuario_usuario = '".$_SESSION["usuario"]."' 
-					AND Projeto_id = '" . $projeto_id . "'"; // aqui faltou selecionar somente as estórias que são do projeto que está sendo exibido no momento (AND Projeto_id = '" . $projeto_id . "'"), além de fazer JOIN com as outras tabelas (nível de dificuldade, situação)
+					AND Projeto_id = '" . $projeto_id . "'
+                    AND Situacao_id != 5"; // aqui faltou selecionar somente as estórias que são do projeto que está sendo exibido no momento (AND Projeto_id = '" . $projeto_id . "'"), além de fazer JOIN com as outras tabelas (nível de dificuldade, situação)
 
 			//echo $SQL;
 
