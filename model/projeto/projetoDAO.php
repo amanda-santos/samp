@@ -178,7 +178,24 @@
 		    }
 		  $conn->close();		  
 		}
-
+		
+		function editarScrumMaster( $projeto_id, $usuario_id){
+			require_once '../../model/usuario/Usuario.php';
+			include("../../model/conexao/conecta.php");
+			
+			$SQL = "UPDATE usuario_projeto SET scrum_master = 1 WHERE Projeto_id = '".$projeto_id."' and Usuario_usuario = '".$usuario_id."' ";
+			
+			if ($conn->query($SQL) === TRUE) {
+			echo "<script>alert('Scrum Master alterado com sucesso!');</script>";
+		    echo "<script>window.location = '../../controller/projeto/exibirProjetos.php';</script>";
+			
+			}else{
+			  echo "Erro: " . $SQL . "<br>" . $conn->error;
+		    }
+			$conn->close();
+			
+		}
+		
 		function sairProjeto($projeto_id, $usuario_id){
 			include("../../model/conexao/conecta.php");
 
@@ -211,43 +228,6 @@
 						}
 				}else{
 					echo "<script>alert('Erro ao excluir estórias do usuário!');</script>";
-					echo "Erro: ". $sql2. "<br>" . $conn->error;
-				}
-			}
-		}
-
-		function excluirIntegrante($projeto_id, $usuario_id){
-			include("../../model/conexao/conecta.php");
-
-		  	$sql = "SELECT ua.Usuario_usuario, ua.Estoria_id, e.finalizado FROM samp.usuario_estoria as ua
-					JOIN samp.estoria as e ON ua.Estoria_id = e.id WHERE Usuario_usuario = '".$usuario_id."';";
-
-			$entrou = false;
-		  	$result = $conn->query($sql);
-    		if ($result->num_rows > 0){
-    			while ($exibir = $result->fetch_assoc()){
-	    			$finalizado = $exibir["finalizado"];
-	    			if($finalizado!=1){
-	    				$entrou = true;
-	    			} 
-    			}
-			}
-			if($entrou){
-				echo "<script>alert('Integrante não pode ser removido do projeto pois possui estórias pendentes! Peça para finaliza-las para poder remove-lo.');</script>";
-	    		echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
-	    	}else{
-	    		$sql2 = "DELETE FROM samp.usuario_estoria WHERE samp.usuario_estoria.Usuario_usuario = '".$usuario_id."' AND Estoria_id NOT IN (SELECT id FROM samp.estoria Where Projeto_id != '".$projeto_id."');";
-				if ($conn->query($sql2) === TRUE){
-						$sql3 = "DELETE FROM samp.usuario_projeto WHERE Usuario_usuario = '".$usuario_id."' AND Projeto_id = '".$projeto_id."';";
-						if ($conn->query($sql3) === TRUE){
-							echo "<script>alert('Integrante removido do projeto com sucesso!');</script>";
-							echo "<script>window.location = '../../controller/projeto/exibirProjetos.php';</script>";
-						}else{
-							echo "<script>alert('Erro ao tentar remover integrante do projeto!');</script>";
-							echo "Erro: ". $sql3. "<br>" . $conn->error;
-						}
-				}else{
-					echo "<script>alert('Erro ao tentar remover integrante do projeto!');</script>";
 					echo "Erro: ". $sql2. "<br>" . $conn->error;
 				}
 			}
