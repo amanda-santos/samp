@@ -179,21 +179,27 @@
 		  $conn->close();		  
 		}
 		
-		function editarScrumMaster( $projeto_id, $usuario_id){
+		function editarScrumMaster($projeto_id, $usuario_id){
 			require_once '../../model/usuario/Usuario.php';
 			include("../../model/conexao/conecta.php");
 			
-			$SQL = "UPDATE usuario_projeto SET scrum_master = 1 WHERE Projeto_id = '".$projeto_id."' and Usuario_usuario = '".$usuario_id."' ";
+			$SQL = "UPDATE usuario_projeto SET scrum_master = 1 WHERE Projeto_id = '".$projeto_id."' AND Usuario_usuario = '".$usuario_id."'";
 			
 			if ($conn->query($SQL) === TRUE) {
-			echo "<script>alert('Scrum Master alterado com sucesso!');</script>";
-		    echo "<script>window.location = '../../controller/projeto/exibirProjetos.php';</script>";
-			
+
+				$SQL2 = "UPDATE usuario_projeto SET scrum_master = 0 WHERE Projeto_id = '".$projeto_id."' AND Usuario_usuario = '".$_SESSION["usuario"]."'";
+
+				if ($conn->query($SQL2) === TRUE) {
+					echo "<script>alert('Scrum Master alterado com sucesso!');</script>";
+				    echo "<script>window.location = '../../controller/projeto/exibirProjetos.php';</script>";
+				}else{
+				  echo "Erro: " . $SQL2 . "<br>" . $conn->error;
+			    }
+
 			}else{
 			  echo "Erro: " . $SQL . "<br>" . $conn->error;
 		    }
 			$conn->close();
-			
 		}
 		
 		function sairProjeto($projeto_id, $usuario_id){
@@ -230,6 +236,19 @@
 					echo "<script>alert('Erro ao excluir estórias do usuário!');</script>";
 					echo "Erro: ". $sql2. "<br>" . $conn->error;
 				}
+			}
+		}
+
+		function excluirIntegrante($idProjeto,$usuario){
+			include("../../model/conexao/conecta.php");
+			$sql = " DELETE FROM samp.usuario_projeto WHERE Usuario_usuario = '".$usuario."' AND Projeto_id = '".$idProjeto."';";
+ 			if ($conn->query($sql) === TRUE) { //se o comando funcionou
+				echo "<script>alert('Integrante foi excluído com sucesso.');</script>";
+				echo "<script>window.location = '../../controller/projeto/exibirProjetos.php';</script>";
+			}
+			else{ //se o comando não funcionou
+				echo "<script>alert('Erro ao excluir projeto!');</script>";
+				echo "Erro: ". $SQL. "<br>" . $conn->error;
 			}
 		}
 	}
