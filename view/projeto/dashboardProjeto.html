@@ -133,6 +133,8 @@
 
                                     <br>
                                     <i style="color:red" class="fas fa-check"></i>
+									<a href="" style="color: red" data-toggle="modal" data-target="#editarTarefa-{$tarefa->getId()}" title="Editar Nome" ><i class="fas fa-edit"></i> 
+									</a>
                                     {$tarefa->getNome()}
                                     <br>
                                     <b>Situação:</b> {$tarefa->getSituacao()}
@@ -170,7 +172,37 @@
                                         </div>
                                     </div>
                                     <!-- Fim Modal -->
-
+									
+									<!-- Inicio Modal Nome Tarefa -->
+									<div class="modal fade" id="editarTarefa-{$tarefa->getId()}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												
+												<div class= "modal-header">
+													<h4 class="modal-title text-center" id="myModalLabel">
+														Editar Nome da Tarefa
+													</h4>
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span></button>
+												</div>
+												
+												<div class="modal-body">
+													<form class="form-horizontal" method="POST" action="../../controller/estoria/tarefa/editarTarefa.php?idTarefa={$tarefa->getId()}&idProjeto={$projeto->getId()}" enctype="multipart/form-data" data-toggle="validator">
+														<label for="recipient-name" class="control-label">Informe o novo nome da tarefa:</label>
+														<input  name="nome" type="text" class="form-control" id="recipient-name">
+												</div>
+												
+												<div class="modal-footer">
+													<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+													<input type="submit" class="btn btn-success" name="atualizar" value="Atualizar"></input>
+													</form>
+												</div>
+												
+											</div>
+										</div>
+									</div>
+									<!-- Fim Modal -->
+									
                                 {/foreach}
                             {/if}
 
@@ -306,18 +338,6 @@
                             <br>
                             <b>Situação:</b> {$estoria->getSituacao()}
                             <br>
-
-                            {if $projeto->getScrumMaster() == 1}
-                            {if ($estoria->getSituacao() == "Concluída")}
-                        
-                            <a href="../../controller/estoria/aprovarEstoria.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}" class="btn btn-success btn-sm">Aceitar</a>
-
-                            <a href="../../controller/estoria/rejeitarEstoria.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}" class="btn btn-danger btn-sm">Rejeitar</a>
-                            <br>
-
-                            {/if}
-                            {/if}
-                            
                             <!--BOTÕES DE APROVAR E REJEITAR-->
                             <b>Nível de Dificuldade:</b> {$estoria->getNivelDificuldade()}
                             <br>
