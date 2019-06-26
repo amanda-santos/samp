@@ -84,26 +84,15 @@
 											<br>
 											<i class="fas fa-users"></i> 
 											{if ($participante->getScrumMaster() == 1)} 
+											<a href="" style="color: grey" data-toggle="modal" data-target="#editarScrum{$projeto->getId()}" title="Editar Scrum Master" ><i class="fas fa-edit"></i> 
+											</a>
+											
 												Scrum Master 
 											{else} 
 												Membro da Equipe 
 											{/if}
-											<br>
-											{if $projeto->getScrumMaster() == 1}
-
-											<button onclick="apagarIntegrante('{$projeto->getId()}');" type="button" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
-
-												<script type="text/javascript">
-													function apagarIntegrante(projeto) {
-														if (window.confirm('Deseja realmente remover este integrante?')) {
-															window.location = '../../controller/projeto/excluirIntegrante.php?idProjeto={$projeto->getId()}&usuario={$participante->getUsuario()}';
-														}
-													}
-												</script>
-
-											{/if}
 											<br><br>
-										{/foreach}										
+										{/foreach}
 									</p>
 								</div>
 								<div class="modal-footer">
@@ -156,8 +145,49 @@
 								window.location = '../../controller/projeto/excluirProjeto.php?projeto=' + projeto;
 							}
 						}
-					</script>
+					</script>		
 
+					
+							
+					<!-- Inicio Modal -->
+					<div class="modal fade" id="editarScrum{$projeto->getId()}" tabindex="-1" role="dialog" aria-labelledby="editarScrum">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+							
+								<div class= "modal-header">
+								   <h4 class="modal-title text-center" id="myModalLabel">
+                                                    Adicionar novo Scrum Master
+                                                </h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+											
+								<div class="modal-body">
+                                <form class="form-horizontal" method="POST" action="../../controller/projeto/editarScrum.php?id_projeto={$projeto->getId()}" enctype="multipart/form-data" data-toggle="validator">
+									<div class="form-group required">
+									  <label class="control-label" for="usuario">Selecione o novo Scrum Master:</label>
+									  <select class="form-control" id=usuario name="usuario">
+									  {foreach item=participante from=$projeto->getParticipantes()}
+										{if ($participante->getScrumMaster() == 0)}
+										
+										<option value="1">{$participante->getUsuario()}</option>
+										 
+										{/if}
+									  {/foreach}
+									   </select>
+									  </div>
+								 </div>
+								<div class="modal-footer">
+									
+									<button class="btn btn-danger" type="button btn-danger" data-dismiss="modal">Cancelar</button>
+									<input type="submit" class="btn btn-success" name="atualizar" value="Atualizar"></input>
+								</div> 
+							</div>
+						</div>
+					</div>
+					<!-- Fim Modal -->
+					
 				  {/if}
 
                 </div>
