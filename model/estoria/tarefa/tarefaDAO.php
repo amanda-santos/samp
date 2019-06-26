@@ -30,5 +30,20 @@
 		    $conn->close();
 		  
 		}
+		
+		function editarTarefa($nome, $id, $projeto_id){
+			include("../../../model/conexao/conecta.php");
+			
+		    $sql = "UPDATE tarefa SET nome= '".$nome."' WHERE id = '".$id."'";
+
+		    if ($conn->query($sql) === TRUE) {
+		      echo "<script>alert('A tarefa foi atualizada com sucesso!');</script>";
+		      echo "<script>window.location = '../../../controller/projeto/dashboardProjeto.php?id=".$projeto_id."';</script>";
+		    } else {
+		      echo "Erro: " . $sql . "<br>" . $conn->error;
+		    }
+		    $conn->close();
+		  
+		}
 	}
 ?>
