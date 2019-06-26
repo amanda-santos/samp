@@ -87,7 +87,7 @@
 			$conn->close();
 		}
 
-		function  selecionarUsuariosNaoResponsaveis(){
+		/*function  selecionarUsuariosNaoResponsaveis(){
 			$SQL = "SELECT nome, sobrenome, email, usuario, scrum_master
 				FROM usuario_projeto AS UP 
     			JOIN usuario AS U ON UP.Usuario_usuario = U.usuario 
@@ -98,7 +98,7 @@
                 AND UE.Estoria_id = "idEstoria.") 
     			GROUP BY U.usuario;"
 		
-		}
+		}*/
 }	
 
 ?>
