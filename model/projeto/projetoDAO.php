@@ -203,17 +203,14 @@
 	    	}else{
 			
 				$SQL = "UPDATE usuario_projeto SET scrum_master = 1 WHERE Projeto_id = '".$projeto_id."' AND Usuario_usuario = '".$usuario_id."'";
-				echo $SQL;
 				
 				if ($conn->query($SQL) === TRUE) {
 
 					$SQL2 = "UPDATE usuario_projeto SET scrum_master = 0 WHERE Projeto_id = '".$projeto_id."' AND Usuario_usuario = '".$_SESSION["usuario"]."'";
 
-					echo $SQL2;
-
 					if ($conn->query($SQL2) === TRUE) {
 						echo "<script>alert('Scrum Master alterado com sucesso!');</script>";
-					    //echo "<script>window.location = '../../controller/projeto/exibirProjetos.php';</script>";
+					    echo "<script>window.location = '../../controller/projeto/exibirProjetos.php';</script>";
 					}else{
 					  echo "Erro: " . $SQL2 . "<br>" . $conn->error;
 				    }
