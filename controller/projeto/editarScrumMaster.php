@@ -5,7 +5,6 @@
 
 	if (isset($_POST["atualizar"])) { //SE EXISTIR AUTENTICAÇÃO
 		$projetoDAO = new projetoDAO();
-		echo $_POST["usuario"];
 		$projetoDAO->editarScrumMaster($_GET['id_projeto'], $_POST['usuario']);
 	} else {
 		echo "<script>window.location = '../../view/index.html';</script>";
