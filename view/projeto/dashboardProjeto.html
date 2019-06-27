@@ -38,8 +38,19 @@
                                 {$estoria->getDesc()}
                                 <br>
                                 <b>Situação:</b> {$estoria->getSituacao()}
-                                <a href="" style="color: red" data-toggle="modal" data-target="#situacao-{$estoria->getId()}" title="Editar Situação">
+
+                                    {if ($estoria->getSituacao() != "Rejeitada")}
+                                    <a href="" style="color: red" data-toggle="modal" data-target="#situacao-{$estoria->getId()}" title="Editar Situação">
                                     <i class="fas fa-edit"></i>
+                                    {/if}
+
+                                    {if ($estoria->getSituacao() == "Rejeitada")}
+                                    <a href="../../controller/estoria/reiniciarEstoria.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}" class="btn btn-warning">
+                                       <i class="fas fa-undo"></i> Reiniciar
+                                    </a>
+                                    <br>
+                                    {/if}
+                                    
                                 </a>
                                 <br>
                                 <b>Nível de Dificuldade:</b> {$estoria->getNivelDificuldade()}
