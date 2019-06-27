@@ -182,38 +182,61 @@
 		function editarScrumMaster($projeto_id, $usuario_id){
 			require_once '../../model/usuario/Usuario.php';
 			include("../../model/conexao/conecta.php");
-			
-			$SQL = "UPDATE usuario_projeto SET scrum_master = 1 WHERE Projeto_id = '".$projeto_id."' AND Usuario_usuario = '".$usuario_id."'";
-			
-			if ($conn->query($SQL) === TRUE) {
 
-				$SQL2 = "UPDATE usuario_projeto SET scrum_master = 0 WHERE Projeto_id = '".$projeto_id."' AND Usuario_usuario = '".$_SESSION["usuario"]."'";
-
-				if ($conn->query($SQL2) === TRUE) {
-					echo "<script>alert('Scrum Master alterado com sucesso!');</script>";
-				    echo "<script>window.location = '../../controller/projeto/exibirProjetos.php';</script>";
-				}else{
-				  echo "Erro: " . $SQL2 . "<br>" . $conn->error;
-			    }
-
-			}else{
-			  echo "Erro: " . $SQL . "<br>" . $conn->error;
-		    }
-			$conn->close();
-		}
-		
-		function sairProjeto($projeto_id, $usuario_id){
-			include("../../model/conexao/conecta.php");
-
-		  	$sql = "SELECT ua.Usuario_usuario, ua.Estoria_id, e.finalizado FROM samp.usuario_estoria as ua
-					JOIN samp.estoria as e ON ua.Estoria_id = e.id WHERE Usuario_usuario = '".$usuario_id."';";
+			$sql = "SELECT ua.Usuario_usuario, ua.Estoria_id, e.Situacao_id FROM samp.usuario_estoria as ua
+					JOIN samp.estoria as e ON ua.Estoria_id = e.id WHERE Usuario_usuario = '".$usuario_id."' AND e.Projeto_id = '" . $projeto_id . "';";
 
 			$entrou = false;
 		  	$result = $conn->query($sql);
     		if ($result->num_rows > 0){
     			while ($exibir = $result->fetch_assoc()){
-	    			$finalizado = $exibir["finalizado"];
-	    			if($finalizado!=1){
+	    			$situacao = $exibir["Situacao_id"];
+	    			if($situacao != 5){
+	    				$entrou = true;
+	    			} 
+    			}
+			}
+
+			if($entrou){
+				echo "<script>alert('ERRO: O usuário selecionado possui estórias pendentes! É preciso que elas sejam finalizadas para que ele(a) se torne Scrum Master.');</script>";
+	    		echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
+	    	}else{
+			
+				$SQL = "UPDATE usuario_projeto SET scrum_master = 1 WHERE Projeto_id = '".$projeto_id."' AND Usuario_usuario = '".$usuario_id."'";
+				echo $SQL;
+				
+				if ($conn->query($SQL) === TRUE) {
+
+					$SQL2 = "UPDATE usuario_projeto SET scrum_master = 0 WHERE Projeto_id = '".$projeto_id."' AND Usuario_usuario = '".$_SESSION["usuario"]."'";
+
+					echo $SQL2;
+
+					if ($conn->query($SQL2) === TRUE) {
+						echo "<script>alert('Scrum Master alterado com sucesso!');</script>";
+					    //echo "<script>window.location = '../../controller/projeto/exibirProjetos.php';</script>";
+					}else{
+					  echo "Erro: " . $SQL2 . "<br>" . $conn->error;
+				    }
+
+				}else{
+				  echo "Erro: " . $SQL . "<br>" . $conn->error;
+			    }
+				$conn->close();
+			}
+		}
+		
+		function sairProjeto($projeto_id, $usuario_id){
+			include("../../model/conexao/conecta.php");
+
+		  	$sql = "SELECT ua.Usuario_usuario, ua.Estoria_id, e.Situacao_id FROM samp.usuario_estoria as ua
+					JOIN samp.estoria as e ON ua.Estoria_id = e.id WHERE Usuario_usuario = '".$usuario_id."' AND e.Projeto_id = '" . $projeto_id . "';";
+
+			$entrou = false;
+		  	$result = $conn->query($sql);
+    		if ($result->num_rows > 0){
+    			while ($exibir = $result->fetch_assoc()){
+	    			$situacao = $exibir["Situacao_id"];
+	    			if($situacao != 5){
 	    				$entrou = true;
 	    			} 
     			}
@@ -226,7 +249,7 @@
 				if ($conn->query($sql2) === TRUE){
 						$sql3 = "DELETE FROM samp.usuario_projeto WHERE Usuario_usuario = '".$usuario_id."' AND Projeto_id = '".$projeto_id."';";
 						if ($conn->query($sql3) === TRUE){
-							echo "<script>alert('Sucesso ao sair do projeto!');</script>";
+							//echo "<script>alert('Sucesso ao sair do projeto!');</script>";
 							echo "<script>window.location = '../../controller/projeto/exibirProjetos.php';</script>";
 						}else{
 							echo "<script>alert('Erro ao sair do projeto!');</script>";
@@ -239,16 +262,41 @@
 			}
 		}
 
-		function excluirIntegrante($idProjeto,$usuario){
+		function excluirIntegrante($projeto_id,$usuario_id){
 			include("../../model/conexao/conecta.php");
-			$sql = " DELETE FROM samp.usuario_projeto WHERE Usuario_usuario = '".$usuario."' AND Projeto_id = '".$idProjeto."';";
- 			if ($conn->query($sql) === TRUE) { //se o comando funcionou
-				echo "<script>alert('Integrante foi excluído com sucesso.');</script>";
-				echo "<script>window.location = '../../controller/projeto/exibirProjetos.php';</script>";
+
+			$sql = "SELECT ua.Usuario_usuario, ua.Estoria_id, e.Situacao_id FROM samp.usuario_estoria as ua
+					JOIN samp.estoria as e ON ua.Estoria_id = e.id WHERE Usuario_usuario = '".$usuario_id."' AND e.Projeto_id = '" . $projeto_id . "';";
+
+			$entrou = false;
+		  	$result = $conn->query($sql);
+    		if ($result->num_rows > 0){
+    			while ($exibir = $result->fetch_assoc()){
+	    			$situacao = $exibir["Situacao_id"];
+	    			if($situacao != 5){
+	    				$entrou = true;
+	    			} 
+    			}
 			}
-			else{ //se o comando não funcionou
-				echo "<script>alert('Erro ao excluir projeto!');</script>";
-				echo "Erro: ". $SQL. "<br>" . $conn->error;
+
+			if($entrou){
+				echo "<script>alert('ERRO: O usuário possui estórias pendentes no projeto!');</script>";
+	    		echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
+	    	}else{
+				$sql2 = "DELETE FROM samp.usuario_estoria WHERE samp.usuario_estoria.Usuario_usuario = '".$usuario_id."' AND Estoria_id NOT IN (SELECT id FROM samp.estoria Where Projeto_id != '".$projeto_id."');";
+				if ($conn->query($sql2) === TRUE){
+						$sql3 = "DELETE FROM samp.usuario_projeto WHERE Usuario_usuario = '".$usuario_id."' AND Projeto_id = '".$projeto_id."';";
+						if ($conn->query($sql3) === TRUE){
+							echo "<script>alert('Usuário removido com sucesso!');</script>";
+							echo "<script>window.location = '../../controller/projeto/exibirProjetos.php';</script>";
+						}else{
+							echo "<script>alert('Erro ao remover usuário!');</script>";
+							echo "Erro: ". $sql3. "<br>" . $conn->error;
+						}
+				}else{
+					echo "<script>alert('Erro ao excluir estórias do usuário!');</script>";
+					echo "Erro: ". $sql2. "<br>" . $conn->error;
+				}
 			}
 		}
 	}

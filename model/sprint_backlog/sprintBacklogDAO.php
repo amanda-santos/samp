@@ -57,7 +57,7 @@
 					echo "Erro: ". $sql. "<br>" . $conn->error;
 					}
 				}else{
-					echo "<script>alert('Precisa conter ao menos um usuário responsável');</script>";
+					echo "<script>alert('ERRO: A estória precisa conter ao menos um usuário como responsável.');</script>";
 					echo "<script>window.location = 'javascript:window.history.go(-1)';</script>";
 				}
 			
@@ -122,7 +122,43 @@
 					        $responsaveis->append($usuario);
 						}
 						$estoria->setResponsaveis($responsaveis);
-					}
+
+						$SQL3 = "SELECT T.id, T.nome, S.situacao
+								 FROM tarefa AS T 
+								 JOIN estoria AS E ON E.id = T.Estoria_id
+								 JOIN situacao AS S ON T.Situacao_id = S.id 
+								 WHERE T.Estoria_id = " . $exibir["id"]; // nesse select foi preciso pegar dados das tabelas estória, tarefa e situação, atenção às chaves estrangeiras entre as tabelas
+
+						//echo $SQL3;
+
+						$result_tarefa = $conn->query($SQL3);
+
+						if ($result_tarefa->num_rows > 0){ // foi preciso adicionar esse if pra testar se houve algum resultado da consulta
+
+							$tarefas = new ArrayObject(); // instanciando um arrayobject (lista) de tarefas
+
+							while ($exibir_tarefa = $result_tarefa->fetch_assoc()){
+
+								// aqui você não instancia um objeto da classe Estoria, e sim da classe Tarefa
+
+								// instanciando uma Tarefa
+								$tarefa = new Tarefa(); 
+
+								// atribuindo valores do banco para a Tarefa
+								$tarefa->setId($exibir_tarefa["id"]);
+						        $tarefa->setNome($exibir_tarefa["nome"]); 
+						        $tarefa->setSituacao($exibir_tarefa["situacao"]);
+
+						        // adicionando a Tarefa selecionada à lista de tarefas
+						        $tarefas->append($tarefa);
+								
+							} // fim while tarefas
+
+							$estoria->setTarefas($tarefas); // adicionando a lista de tarefas à estória
+
+						} // fim if tarefas
+
+					} // fim if responsáveis
 
 					$estorias ->append($estoria);
 				}

@@ -52,8 +52,6 @@
                                 {$responsavel->getNome()} {$responsavel->getSobrenome()}
                                 {/foreach}
 
-
-
                                 <br><br>
 
                                 <!-- Inicio Modal -->
@@ -133,9 +131,13 @@
 
                                     <br>
                                     <i style="color:red" class="fas fa-check"></i>
-									<a href="" style="color: red" data-toggle="modal" data-target="#editarTarefa-{$tarefa->getId()}" title="Editar Nome" ><i class="fas fa-edit"></i> 
-									</a>
+									
                                     {$tarefa->getNome()}
+
+                                    <a href="" style="color: red" data-toggle="modal" data-target="#editarTarefa-{$tarefa->getId()}" title="Editar Tarefa">
+                                        <i class="fas fa-edit"></i> 
+                                    </a>
+
                                     <br>
                                     <b>Situação:</b> {$tarefa->getSituacao()}
                                     <a href="" style="color: red" data-toggle="modal" data-target="#situacaoTarefa-{$tarefa->getId()}" title="Adicionar Situação">
@@ -180,7 +182,7 @@
 												
 												<div class= "modal-header">
 													<h4 class="modal-title text-center" id="myModalLabel">
-														Editar Nome da Tarefa
+														Editar Tarefa
 													</h4>
 													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 													<span aria-hidden="true">&times;</span></button>
@@ -188,7 +190,7 @@
 												
 												<div class="modal-body">
 													<form class="form-horizontal" method="POST" action="../../controller/estoria/tarefa/editarTarefa.php?idTarefa={$tarefa->getId()}&idProjeto={$projeto->getId()}" enctype="multipart/form-data" data-toggle="validator">
-														<label for="recipient-name" class="control-label">Informe o novo nome da tarefa:</label>
+														<label for="recipient-name" class="control-label">Informe o nome da tarefa:</label>
 														<input  name="nome" type="text" class="form-control" id="recipient-name">
 												</div>
 												
@@ -338,35 +340,79 @@
                             <br>
                             <b>Situação:</b> {$estoria->getSituacao()}
                             <br>
-                            <!--BOTÕES DE APROVAR E REJEITAR-->
+                            {if $projeto->getScrumMaster() == 1}
+                                {if ($estoria->getSituacao() == "Concluída")}
+
+                                     <a href="../../controller/estoria/aprovarEstoria.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}" class="btn btn-success btn-sm">
+                                        <i class="fas fa-check"></i> Aceitar
+                                    </a>
+
+                                     <a href="../../controller/estoria/rejeitarEstoria.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}" class="btn btn-danger btn-sm">
+                                        <i class="fas fa-times"></i> Rejeitar
+                                    </a>
+
+                                     <br>
+
+                                {/if}
+                            {/if}
                             <b>Nível de Dificuldade:</b> {$estoria->getNivelDificuldade()}
                             <br>
                             <b>Duração:</b> {$estoria->getDuracao()} horas
                             <br>
                             <b>Responsáveis:</b>
                             {foreach item=responsavel from=$estoria->getResponsaveis()}
-                            <br>
-                            {$responsavel->getNome()} {$responsavel->getSobrenome()}
+                                <br>
+                                {$responsavel->getNome()} {$responsavel->getSobrenome()}
                             {/foreach}
 
+                            <br><br>
+
+                            <div style="padding: 0px 0px;">
+                                <a href="#tarefasSB-{$estoria->getId()}" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="tarefasSB-{$estoria->getId()}">
+
+                                    <h6 style="color:#36B9CC" class="font-weight-bold">
+                                        Tarefas
+                                        <i class="fas fa-chevron-right"></i>
+                                    </h6>
+
+                                </a>
+
+                                <div class="collapse" id="tarefasSB-{$estoria->getId()}">
+
+                                    {if ($estoria->getTarefas() != null)}
+                                        {foreach item=tarefa from=$estoria->getTarefas()}
+
+                                            <br>
+                                            <i style="color:#36B9CC" class="fas fa-check"></i>
+                                            {$tarefa->getNome()}
+                                            <br>
+                                            <b>Situação:</b> {$tarefa->getSituacao()}
+                                            <br>
+                                            
+                                        {/foreach}
+                                    {/if}
+
+                                </div>
+                            </div>
+
                             {if $projeto->getScrumMaster() == 1}
-                            <br>
-                            <br>
-                            <a href="../../controller/sprint_backlog/exibirEstoria.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}">
-                                <button title="Editar estória" type="button" class="btn-sm btn btn-warning">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </button>
-                            </a>
 
-                            <button title="Excluir estória do Sprint Backlog" onclick="apagarEstoriaSprintBacklog('{$estoria->getId()}','{$projeto->getId()}');" type="button" class="btn-sm btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                <br>
+                                <a href="../../controller/sprint_backlog/exibirEstoria.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}">
+                                    <button title="Editar estória" type="button" class="btn-sm btn btn-warning">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                </a>
 
-                            <script type="text/javascript">
-                                function apagarEstoriaSprintBacklog(estoria, idProjeto) {
-                                    if (window.confirm('Deseja realmente excluir esta estória do Sprint Backlog?')) {
-                                        window.location = '../../controller/sprint_backlog/excluirEstoria.php?idEstoria=' + estoria + '&idProjeto=' + idProjeto;
+                                <button title="Excluir estória do Sprint Backlog" onclick="apagarEstoriaSprintBacklog('{$estoria->getId()}','{$projeto->getId()}');" type="button" class="btn-sm btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+
+                                <script type="text/javascript">
+                                    function apagarEstoriaSprintBacklog(estoria, idProjeto) {
+                                        if (window.confirm('Deseja realmente excluir esta estória do Sprint Backlog?')) {
+                                            window.location = '../../controller/sprint_backlog/excluirEstoria.php?idEstoria=' + estoria + '&idProjeto=' + idProjeto;
+                                        }
                                     }
-                                }
-                            </script>
+                                </script>
 
                             {/if}
                         </div>

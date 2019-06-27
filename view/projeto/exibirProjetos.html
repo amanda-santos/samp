@@ -31,7 +31,7 @@
                   <div class="h5 mb-0 font-weight-bold text-gray-800">
                   	{$projeto->getNome()}
                   </div>
-                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                  <div style="font-size:14px;" class="text-xs font-weight-bold text-primary mb-1">
                   	{if $projeto->getScrumMaster() == 1}
                   		#{$projeto->getId()}
                   	{/if}
@@ -89,17 +89,17 @@
 												Membro da Equipe 
 											{/if}
 
-											<br>
-											{if $projeto->getScrumMaster() == 1}
-
-												<button onclick="apagarIntegrante('{$projeto->getId()}');" type="button" class="btn btn-sm btn-danger">
+											
+											{if ($projeto->getScrumMaster() == 1) && ($participante->getScrumMaster() == 0)}
+												<br>
+												<button onclick="apagarIntegrante('{$projeto->getId()}', '{$participante->getUsuario()}');" type="button" class="btn btn-sm btn-danger">
 													<i class="fas fa-trash-alt"></i> Remover usuário do projeto
 												</button>
 
 												<script type="text/javascript">
-													function apagarIntegrante(projeto) {
-														if (window.confirm('Deseja realmente remover este integrante?')) {
-															window.location = '../../controller/projeto/excluirIntegrante.php?idProjeto={$projeto->getId()}&usuario={$participante->getUsuario()}';
+													function apagarIntegrante(projeto, usuario) {
+														if (window.confirm('Deseja realmente remover "' + usuario + '" do projeto? Esta ação não poderá ser desfeita.')) {
+															window.location = '../../controller/projeto/excluirIntegrante.php?idProjeto=' + projeto + '&usuario=' + usuario + '';
 														}
 													}
 												</script>
@@ -135,7 +135,8 @@
 															  <label class="control-label" for="usuario">Selecione o(a) novo(a) Scrum Master:</label>
 															  <select class="form-control" id=usuario name="usuario">
 															  {foreach item=participante from=$projeto->getParticipantes()}
-																<option value="{$participante->getUsuario()}">{$participante->getNome()} {$participante->getSobrenome()}</option>
+																<option value="{$participante->getUsuario()}">		{$participante->getNome()} {$participante->getSobrenome()}
+																</option>
 															  {/foreach}
 															   </select>
 															  </div>
@@ -178,8 +179,8 @@
 									<span aria-hidden="true">&times;</span></button>
 									</div>
 									<div class="modal-body">
-										<p>Tem certeza que deseja realmente sair do projeto?</p>
-										<p>Esta ação não poderá ser desfeita</p>
+										<p>Deseja realmente deixar este projeto?</p>
+										<p>Esta ação não poderá ser desfeita.</p>
 									</div>
 									<div class="modal-footer">
 										<a class="btn btn-primary" href="../../controller/projeto/sairProjeto.php?id_projeto={$projeto->getId()}">Sair do Projeto</a>

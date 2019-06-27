@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-26 00:22:54
+/* Smarty version 3.1.33, created on 2019-06-27 04:56:07
   from 'C:\xampp\htdocs\samp\view\projeto\exibirProjetos.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d129ebe350506_81078594',
+  'unifunc' => 'content_5d143047596987_46142102',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '67f80424b01373f7c16a1b48568dda559515c572' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\projeto\\exibirProjetos.html',
-      1 => 1561500421,
+      1 => 1561604094,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../../view/dashboard/footer.html' => 1,
   ),
 ),false)) {
-function content_5d129ebe350506_81078594 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d143047596987_46142102 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../../view/dashboard/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -63,7 +63,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['projeto']->value) {
                   	<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getNome();?>
 
                   </div>
-                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                  <div style="font-size:14px;" class="text-xs font-weight-bold text-primary mb-1">
                   	<?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
                   		#<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 
@@ -137,30 +137,91 @@ foreach ($_from as $_smarty_tpl->tpl_vars['participante']->value) {
 											<?php } else { ?> 
 												Membro da Equipe 
 											<?php }?>
-											<br>
-											<?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) {?>
 
-											<button onclick="apagarIntegrante('<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
-');" type="button" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+											
+											<?php if (($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1) && ($_smarty_tpl->tpl_vars['participante']->value->getScrumMaster() == 0)) {?>
+												<br>
+												<button onclick="apagarIntegrante('<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+', '<?php echo $_smarty_tpl->tpl_vars['participante']->value->getUsuario();?>
+');" type="button" class="btn btn-sm btn-danger">
+													<i class="fas fa-trash-alt"></i> Remover usuário do projeto
+												</button>
 
 												<?php echo '<script'; ?>
  type="text/javascript">
-													function apagarIntegrante(projeto) {
-														if (window.confirm('Deseja realmente remover este integrante?')) {
-															window.location = '../../controller/projeto/excluirIntegrante.php?idProjeto=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
-&usuario=<?php echo $_smarty_tpl->tpl_vars['participante']->value->getUsuario();?>
-';
+													function apagarIntegrante(projeto, usuario) {
+														if (window.confirm('Deseja realmente remover "' + usuario + '" do projeto? Esta ação não poderá ser desfeita.')) {
+															window.location = '../../controller/projeto/excluirIntegrante.php?idProjeto=' + projeto + '&usuario=' + usuario + '';
 														}
 													}
 												<?php echo '</script'; ?>
 >
 
 											<?php }?>
+
 											<br><br>
 										<?php
 }
 }
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>										
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+
+										<?php if (($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 1)) {?> 
+
+											<a href="" class="btn btn-primary" data-toggle="modal" data-target="#editarScrumMaster<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+" title="Editar Scrum Master" >
+												<i class="fas fa-edit"></i> Editar Scrum Master
+											</a>
+
+											<!-- Inicio Modal -->
+											<div class="modal fade" id="editarScrumMaster<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+" tabindex="-1" role="dialog" aria-labelledby="editarScrumMaster">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+													
+														<div class= "modal-header">
+														   <h4 class="modal-title text-center" id="myModalLabel">
+			                                                    Editar Scrum Master
+			                                                </h4>
+			                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			                                                    <span aria-hidden="true">&times;</span>
+			                                                </button>
+			                                            </div>
+																	
+														<div class="modal-body">
+						                                <form class="form-horizontal" method="POST" action="../../controller/projeto/editarScrumMaster.php?id_projeto=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+" enctype="multipart/form-data" data-toggle="validator">
+															<div class="form-group required">
+															  <label class="control-label" for="usuario">Selecione o(a) novo(a) Scrum Master:</label>
+															  <select class="form-control" id=usuario name="usuario">
+															  <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['projeto']->value->getParticipantes(), 'participante');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['participante']->value) {
+?>
+																<option value="<?php echo $_smarty_tpl->tpl_vars['participante']->value->getUsuario();?>
+">		<?php echo $_smarty_tpl->tpl_vars['participante']->value->getNome();?>
+ <?php echo $_smarty_tpl->tpl_vars['participante']->value->getSobrenome();?>
+
+																</option>
+															  <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+															   </select>
+															  </div>
+														 </div>
+
+														<div class="modal-footer">
+															<button class="btn btn-danger" type="button btn-danger" data-dismiss="modal">Cancelar</button>
+															<input type="submit" class="btn btn-success" name="atualizar" value="Atualizar"></input>
+														</div> 
+
+													</div>
+												</div>
+											</div>
+											<!-- Fim Modal -->
+										<?php }?>
+
 									</p>
 								</div>
 								<div class="modal-footer">
@@ -175,32 +236,32 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 					<?php if ($_smarty_tpl->tpl_vars['projeto']->value->getScrumMaster() == 0) {?>
 
-					<button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modalSairProjeto<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+						<button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modalSairProjeto<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 "><i class="fas fa-sign-out-alt"></i></button>
 
-                  	<!-- Inicio Modal -->
-					<div class="modal fade" id="modalSairProjeto<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+	                  	<!-- Inicio Modal -->
+						<div class="modal fade" id="modalSairProjeto<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 " tabindex="-1" role="dialog" aria-labelledby="modalSairProjeto">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class= "modal-header">
-								<h4 class="modal-title text-center" id="myModalLabel">Sair do Projeto</h4>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span></button>
-								</div>
-								<div class="modal-body">
-									<p>Tem certeza que deseja realmente sair do projeto?</p>
-									<p>Esta ação não poderá ser desfeita</p>
-								</div>
-								<div class="modal-footer">
-									<a class="btn btn-primary" href="../../controller/projeto/sairProjeto.php?id_projeto=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class= "modal-header">
+									<h4 class="modal-title text-center" id="myModalLabel">Sair do Projeto</h4>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span></button>
+									</div>
+									<div class="modal-body">
+										<p>Deseja realmente deixar este projeto?</p>
+										<p>Esta ação não poderá ser desfeita.</p>
+									</div>
+									<div class="modal-footer">
+										<a class="btn btn-primary" href="../../controller/projeto/sairProjeto.php?id_projeto=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 ">Sair do Projeto</a>
-									<button class="btn btn-danger" type="button btn-danger" data-dismiss="modal">Cancelar</button>
-								</div> 
+										<button class="btn btn-danger" type="button btn-danger" data-dismiss="modal">Cancelar</button>
+									</div> 
+								</div>
 							</div>
 						</div>
-					</div>
-					<!-- Fim Modal -->
+						<!-- Fim Modal -->
 
 					<?php }?>
 				
@@ -221,7 +282,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 						}
 					<?php echo '</script'; ?>
 >
-
+					
 				  <?php }?>
 
                 </div>

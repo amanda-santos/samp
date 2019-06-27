@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-20 06:03:59
+/* Smarty version 3.1.33, created on 2019-06-27 03:40:27
   from 'C:\xampp\htdocs\samp\view\sprint_backlog\editarEstoria.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d0b05afad4201_93793345',
+  'unifunc' => 'content_5d141e8ba7c238_98240676',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b741dfe13cf17dfe8c50fc8928e6ea2d045d812b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\sprint_backlog\\editarEstoria.html',
-      1 => 1561003362,
+      1 => 1561599552,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../../view/dashboard/footer.html' => 1,
   ),
 ),false)) {
-function content_5d0b05afad4201_93793345 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d141e8ba7c238_98240676 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../../view/dashboard/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 

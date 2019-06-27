@@ -40,8 +40,7 @@
 					$SQL2 = "SELECT nome, sobrenome, email, usuario 
 							 FROM usuario_estoria 
 							 JOIN usuario ON usuario = Usuario_usuario 
-							 WHERE Estoria_id = ".$exibir["id"]."
-							 AND Usuario_usuario = '".$_SESSION["usuario"]."';";
+							 WHERE Estoria_id = ".$exibir["id"];
 
 					//echo $SQL2;
 
