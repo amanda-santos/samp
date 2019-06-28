@@ -38,9 +38,19 @@
                                 {$estoria->getDesc()}
                                 <br>
                                 <b>Situação:</b> {$estoria->getSituacao()}
-                                <a href="" style="color: red" data-toggle="modal" data-target="#situacao-{$estoria->getId()}" title="Editar Situação">
-                                    <i class="fas fa-edit"></i>
-                                </a>
+
+                                {if ($estoria->getSituacao() != "Rejeitada")}
+                                    <a href="" style="color: red" data-toggle="modal" data-target="#situacao-{$estoria->getId()}" title="Editar Situação">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                {/if}
+
+                                {if ($estoria->getSituacao() == "Rejeitada")}
+                                    <a href="../../controller/estoria/reiniciarEstoria.php?idEstoria={$estoria->getId()}&idProjeto={$projeto->getId()}" class="btn btn-sm btn-danger">
+                                       <i class="fas fa-undo"></i> Reiniciar
+                                    </a>
+                                {/if}
+
                                 <br>
                                 <b>Nível de Dificuldade:</b> {$estoria->getNivelDificuldade()}
                                 <br>
@@ -191,7 +201,7 @@
 												<div class="modal-body">
 													<form class="form-horizontal" method="POST" action="../../controller/estoria/tarefa/editarTarefa.php?idTarefa={$tarefa->getId()}&idProjeto={$projeto->getId()}" enctype="multipart/form-data" data-toggle="validator">
 														<label for="recipient-name" class="control-label">Informe o nome da tarefa:</label>
-														<input  name="nome" type="text" class="form-control" id="recipient-name">
+														<input value="{$tarefa->getNome()}" name="nome" type="text" class="form-control" id="recipient-name">
 												</div>
 												
 												<div class="modal-footer">

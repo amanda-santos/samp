@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-27 04:32:09
+/* Smarty version 3.1.33, created on 2019-06-27 15:59:52
   from 'C:\xampp\htdocs\samp\view\projeto\dashboardProjeto.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d142aa9a8ee08_58561504',
+  'unifunc' => 'content_5d14cbd85871c9_39621780',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '84e6497698c9e1910f83c59822fe7e20577ccf25' => 
     array (
       0 => 'C:\\xampp\\htdocs\\samp\\view\\projeto\\dashboardProjeto.html',
-      1 => 1561602719,
+      1 => 1561643982,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../../view/dashboard/footer.html' => 1,
   ),
 ),false)) {
-function content_5d142aa9a8ee08_58561504 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d14cbd85871c9_39621780 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../../view/dashboard/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?>
 
@@ -75,10 +75,22 @@ foreach ($_from as $_smarty_tpl->tpl_vars['estoria']->value) {
                                 <br>
                                 <b>Situação:</b> <?php echo $_smarty_tpl->tpl_vars['estoria']->value->getSituacao();?>
 
-                                <a href="" style="color: red" data-toggle="modal" data-target="#situacao-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+
+                                <?php if (($_smarty_tpl->tpl_vars['estoria']->value->getSituacao() != "Rejeitada")) {?>
+                                    <a href="" style="color: red" data-toggle="modal" data-target="#situacao-<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
 " title="Editar Situação">
-                                    <i class="fas fa-edit"></i>
-                                </a>
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                <?php }?>
+
+                                <?php if (($_smarty_tpl->tpl_vars['estoria']->value->getSituacao() == "Rejeitada")) {?>
+                                    <a href="../../controller/estoria/reiniciarEstoria.php?idEstoria=<?php echo $_smarty_tpl->tpl_vars['estoria']->value->getId();?>
+&idProjeto=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
+" class="btn btn-sm btn-danger">
+                                       <i class="fas fa-undo"></i> Reiniciar
+                                    </a>
+                                <?php }?>
+
                                 <br>
                                 <b>Nível de Dificuldade:</b> <?php echo $_smarty_tpl->tpl_vars['estoria']->value->getNivelDificuldade();?>
 
@@ -263,7 +275,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['tarefa']->value) {
 &idProjeto=<?php echo $_smarty_tpl->tpl_vars['projeto']->value->getId();?>
 " enctype="multipart/form-data" data-toggle="validator">
 														<label for="recipient-name" class="control-label">Informe o nome da tarefa:</label>
-														<input  name="nome" type="text" class="form-control" id="recipient-name">
+														<input value="<?php echo $_smarty_tpl->tpl_vars['tarefa']->value->getNome();?>
+" name="nome" type="text" class="form-control" id="recipient-name">
 												</div>
 												
 												<div class="modal-footer">
